@@ -1,0 +1,28 @@
+============================================================
+Job Started
+Job ID    : 29467
+Node      : node2
+Date      : Fri Aug 14 04:56:15 PM IST 2026
+Time     : 16:56:15
+============================================================
+
+============================================================
+Python Environment
+============================================================
+Python : /apps/compilers/anaconda3-24.2/bin/python
+Python 3.11.7
+Python executable: /apps/compilers/anaconda3-24.2/bin/python
+Torch: /apps/compilers/anaconda3-24.2/lib/python3.11/site-packages/torch/__init__.py
+Torch version: 2.6.0+cu124
+CUDA: True
+CUDA version: 12.4
+GPU: NVIDIA H100 NVL
+
+Current Directory:
+/home/mazaveri/hpc-prog/Vipul
+============================================================
+Starting Pretrained Zeroshot Evaluation...
+============================================================
+------------------------------------------------------------
+Dataset : cifar_100
+------------------------------------------------------------

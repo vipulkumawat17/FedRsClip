@@ -1,0 +1,100 @@
+================================================================
+  JOB STARTED
+  Job ID   : 29021
+  Node     : node2
+  Time     : 2026-08-08 17:27:39
+================================================================
+[OK] Virtual env activated: /home/mazaveri/.conda/envs/fedrsclip/bin/python
+[OK] Pip    : pip 26.1.2 from /home/mazaveri/.conda/envs/fedrsclip/lib/python3.10/site-packages/pip (python 3.10)
+[OK] Working directory: /home/mazaveri/hpc-prog/Vipul
+
+[CHECK] GPU Status:
+NVIDIA H100 NVL, 95830 MiB, 38418 MiB
+
+  PyTorch version : 2.13.0+cu130
+  CUDA available  : True
+  GPU             : NVIDIA H100 NVL
+============================================================
+dataset Preparing
+===========================================================
+======================================
+Preparing cifar-100.zip
+======================================
+[EXTRACT] data/cifar-100.zip -> data/cifar_100/raw
+[WARNING] Unsupported dataset cifar-100: Dataset not found or corrupted. You can use download=True to download it
+[FAILED] cifar-100.zip
+======================================
+Preparing EuroSAT.zip
+======================================
+[EXTRACT] data/EuroSAT.zip -> data/eurosat/raw
+==========================
+Dataset: eurosat
+Type: ImageFolder
+Classes: 11
+Train Images: 38217
+Validation Images: 8189
+Training...
+==========================
+[PREPARED] eurosat: train=data/eurosat/train.jsonl image_root=data/eurosat/raw
+======================================
+Preparing flower-102.zip
+======================================
+ataset: flower_102
+Type: TorchVision
+Classes: 102
+Train Images: 5732
+Validation Images: 2457
+Training...D
+==========================
+[PREPARED] flower_102: train=data/flower_102/train.jsonl image_root=/home/mazaveri/hpc-prog/Vipul/data/flower_102/raw/jpg
+======================================
+Preparing food-101.zip
+======================================
+Dataset: food101
+Type: TorchVisionLocal
+Classes: 101
+Train Images: 75750
+Validation Images: 25250
+Training...
+==========================
+[PREPARED] food101: train=data/food_101/train.jsonl image_root=data/food_101/raw/images
+======================================
+Preparing caltech-101.zip
+======================================
+[EXTRACT] data/caltech-101.zip -> data/caltech_101/raw
+[CALTECH101] Dataset root: data/caltech_101/raw/caltech-101
+[CALTECH101] Classes found: 102
+[WARNING] Expected 101 Caltech-101 classes, but found 102
+[CALTECH101] Prepared 6352 train / 2792 validation images
+==========================
+Dataset: caltech101
+Type: ImageFolderLocal
+Classes: 102
+Train Images: 6352
+Validation Images: 2792
+Training...
+==========================
+[PREPARED] caltech101: train=data/caltech_101/train.jsonl image_root=data/caltech_101/raw/caltech-101
+= ===========================================================
+Dataset Preparation Completed Successfully!
+============================================================
+============================================================
+Starting CLIP Training...
+============================================================
+============================================================
+Training Completed Successfully!
+Finished at: Sat Aug  8 05:37:57 PM IST 2026
+============================================================
+============================================
+Zero-shot started
+=============================================
+============================================================
+Zero shot Completed Successfully!
+Finished at: Sat Aug  8 05:37:57 PM IST 2026
+============================================================
+============================================================
+  JOB COMPLETED
+  Job ID   : 29021
+  Node     : node2
+  Time     : 2026-08-08 17:37:57
+============================================================

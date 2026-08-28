@@ -1,0 +1,52 @@
+cat << 'EOF' > .gitignore
+# Python cache & environments
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.env
+venv/
+env/
+.venv/
+
+# Large Model Checkpoints & Weights
+*.pt
+*.pth
+*.ckpt
+*.bin
+*.onnx
+*.h5
+*.safetensors
+*.pkl
+*.joblib
+models/
+checkpoints/
+weights/
+
+# Datasets & Data Folders
+data/
+datasets/
+raw_data/
+*.csv
+*.tsv
+*.h5
+*.hdf5
+*.npy
+*.npz
+*.tar
+*.tar.gz
+*.zip
+*.7z
+
+# HPC & SLURM logs
+*.log
+slurm-*.out
+slurm-*.err
+
+# IDEs & System
+.vscode/
+.idea/
+.DS_Store
+wandb/
+runs/
+EOF 

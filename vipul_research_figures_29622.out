@@ -1,0 +1,39 @@
+============================================================
+Job Started
+Job ID    : 29622
+Node      : node1
+Date      : Tue Aug 18 12:24:56 PM IST 2026
+Time     : 12:24:56
+============================================================
+
+============================================================
+Python Environment
+============================================================
+Python : /home/mazaveri/.conda/envs/fedrsclip/bin/python
+Python 3.10.20
+Python executable: /home/mazaveri/.conda/envs/fedrsclip/bin/python
+Torch: /home/mazaveri/.conda/envs/fedrsclip/lib/python3.10/site-packages/torch/__init__.py
+Torch version: 2.13.0+cu130
+CUDA: True
+CUDA version: 13.0
+GPU: NVIDIA H100 NVL
+open_clip version: 3.3.0
+
+Current Directory:
+/home/mazaveri/hpc-prog/Vipul
+============================================================
+starting generate research figures...
+============================================================
+  checkpoint: checkpoints/uc_merced/clip_last.pt
+Saved research figures to: /home/mazaveri/hpc-prog/Vipul/checkpoints/uc_merced/research_figures/river
+  pretrained weights: open_clip ViT-B-32 / openai
+Saved research figures to: /home/mazaveri/hpc-prog/Vipul/checkpoints/pretrained_zero_shot/caltech_101/research_figures/ant
+===========================================================
+Completed generate research figures successfully!
+============================================================
+===========================================================
+Job Finished
+Job ID    : 29622
+Node      : node1
+Date      : Tue Aug 18 12:25:16 PM IST 2026
+===========================================================

@@ -1,0 +1,38 @@
+No datasets were prepared or trained successfully.
+/home/mazaveri/.conda/envs/fedrsclip/lib/python3.10/site-packages/open_clip/factory.py:450: UserWarning: QuickGELU mismatch between final model config (quick_gelu=False) and pretrained tag 'openai' (quick_gelu=True).
+  warnings.warn(
+/home/mazaveri/.conda/envs/fedrsclip/lib/python3.10/site-packages/open_clip/factory.py:450: UserWarning: QuickGELU mismatch between final model config (quick_gelu=False) and pretrained tag 'openai' (quick_gelu=True).
+  warnings.warn(
+Traceback (most recent call last):
+  File "/home/mazaveri/.conda/envs/fedrsclip/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/mazaveri/.conda/envs/fedrsclip/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/mazaveri/hpc-prog/Vipul/clip_implement/pretrained_zero_shot.py", line 254, in <module>
+    main()
+  File "/home/mazaveri/hpc-prog/Vipul/clip_implement/pretrained_zero_shot.py", line 165, in main
+    for images, targets, _paths, _captions, _class_names in loader:
+  File "/home/mazaveri/.conda/envs/fedrsclip/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 725, in __next__
+    data = self._next_data()
+  File "/home/mazaveri/.conda/envs/fedrsclip/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1529, in _next_data
+    return self._process_data(data, worker_id)
+  File "/home/mazaveri/.conda/envs/fedrsclip/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1567, in _process_data
+    data.reraise()
+  File "/home/mazaveri/.conda/envs/fedrsclip/lib/python3.10/site-packages/torch/_utils.py", line 794, in reraise
+    raise exception
+FileNotFoundError: Caught FileNotFoundError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/home/mazaveri/.conda/envs/fedrsclip/lib/python3.10/site-packages/torch/utils/data/_utils/worker.py", line 374, in _worker_loop
+    data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+  File "/home/mazaveri/.conda/envs/fedrsclip/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 54, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/mazaveri/.conda/envs/fedrsclip/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 54, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/mazaveri/hpc-prog/Vipul/clip_implement/data.py", line 206, in __getitem__
+    image = open_rgb_image(row["image_path"])
+  File "/home/mazaveri/hpc-prog/Vipul/clip_implement/data.py", line 23, in open_rgb_image
+    return Image.open(image_path).convert("RGB")
+  File "/home/mazaveri/.conda/envs/fedrsclip/lib/python3.10/site-packages/PIL/Image.py", line 3639, in open
+    fp = builtins.open(filename, "rb")
+FileNotFoundError: [Errno 2] No such file or directory: '/home/mazaveri/hpc-prog/Vipul/data/eurosat/raw/AnnualCrop/AnnualCrop_2961.png'
+

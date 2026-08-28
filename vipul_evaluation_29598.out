@@ -1,0 +1,61 @@
+============================================================
+Job Started
+Job ID    : 29598
+Node      : node1
+Date      : Tue Aug 18 11:43:57 AM IST 2026
+Time     : 11:43:57
+============================================================
+
+============================================================
+Python Environment
+============================================================
+Python : /home/mazaveri/.conda/envs/fedrsclip/bin/python
+Python 3.10.20
+Python executable: /home/mazaveri/.conda/envs/fedrsclip/bin/python
+Torch: /home/mazaveri/.conda/envs/fedrsclip/lib/python3.10/site-packages/torch/__init__.py
+Torch version: 2.13.0+cu130
+CUDA: True
+CUDA version: 13.0
+GPU: NVIDIA H100 NVL
+open_clip version: 3.3.0
+
+Current Directory:
+/home/mazaveri/hpc-prog/Vipul
+============================================================
+Starting CLip_Evaluation_Dashboard Generation for all classes...
+============================================================
+Generating evaluation dashboards for 5 dataset run(s): Caltech 101 (ViT-B-32_openai), Cifar 100 (ViT-B-32_openai), Eurosat (ViT-B-32_openai), Flower 102 (ViT-B-32_openai), Food 101 (ViT-B-32_openai)
+
+=== Caltech 101 (ViT-B-32_openai) ===
+  /home/mazaveri/hpc-prog/Vipul/checkpoints/pretrained_zero_shot/caltech_101/ViT-B-32_openai/evaluation_dashboard/final_model_evaluation_dashboard_overview.png
+  /home/mazaveri/hpc-prog/Vipul/checkpoints/pretrained_zero_shot/caltech_101/ViT-B-32_openai/evaluation_dashboard/final_model_evaluation_zero_shot_grid.png
+  (no training curves page — pretrained zero-shot dataset has no metrics.csv)
+
+=== Cifar 100 (ViT-B-32_openai) ===
+  /home/mazaveri/hpc-prog/Vipul/checkpoints/pretrained_zero_shot/cifar_100/ViT-B-32_openai/evaluation_dashboard/final_model_evaluation_dashboard_overview.png
+  /home/mazaveri/hpc-prog/Vipul/checkpoints/pretrained_zero_shot/cifar_100/ViT-B-32_openai/evaluation_dashboard/final_model_evaluation_zero_shot_grid.png
+  (no training curves page — pretrained zero-shot dataset has no metrics.csv)
+
+=== Eurosat (ViT-B-32_openai) ===
+  /home/mazaveri/hpc-prog/Vipul/checkpoints/pretrained_zero_shot/eurosat/ViT-B-32_openai/evaluation_dashboard/final_model_evaluation_dashboard_overview.png
+  /home/mazaveri/hpc-prog/Vipul/checkpoints/pretrained_zero_shot/eurosat/ViT-B-32_openai/evaluation_dashboard/final_model_evaluation_zero_shot_grid.png
+  (no training curves page — pretrained zero-shot dataset has no metrics.csv)
+
+=== Flower 102 (ViT-B-32_openai) ===
+  /home/mazaveri/hpc-prog/Vipul/checkpoints/pretrained_zero_shot/flower_102/ViT-B-32_openai/evaluation_dashboard/final_model_evaluation_dashboard_overview.png
+  /home/mazaveri/hpc-prog/Vipul/checkpoints/pretrained_zero_shot/flower_102/ViT-B-32_openai/evaluation_dashboard/final_model_evaluation_zero_shot_grid.png
+  (no training curves page — pretrained zero-shot dataset has no metrics.csv)
+
+=== Food 101 (ViT-B-32_openai) ===
+  /home/mazaveri/hpc-prog/Vipul/checkpoints/pretrained_zero_shot/food_101/ViT-B-32_openai/evaluation_dashboard/final_model_evaluation_dashboard_overview.png
+  /home/mazaveri/hpc-prog/Vipul/checkpoints/pretrained_zero_shot/food_101/ViT-B-32_openai/evaluation_dashboard/final_model_evaluation_zero_shot_grid.png
+  (no training curves page — pretrained zero-shot dataset has no metrics.csv)
+============================================================
+CLip_Dashboard Generation for all classes Completed Successfully!
+============================================================
+===========================================================
+Job Finished
+Job ID    : 29598
+Node      : node1
+Date      : Tue Aug 18 11:44:34 AM IST 2026
+===========================================================

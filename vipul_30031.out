@@ -1,0 +1,51 @@
+============================================================
+Job Started
+Job ID    : 30031
+Node      : node2
+Date      : Thu Aug 27 04:02:25 PM IST 2026
+Time     : 16:02:25
+============================================================
+
+============================================================
+Python Environment
+============================================================
+Python : /home/mazaveri/.conda/envs/fedrsclip/bin/python
+Python 3.10.20
+Python executable: /home/mazaveri/.conda/envs/fedrsclip/bin/python
+Torch: /home/mazaveri/.conda/envs/fedrsclip/lib/python3.10/site-packages/torch/__init__.py
+Torch version: 2.13.0+cu130
+CUDA: True
+CUDA version: 13.0
+GPU: NVIDIA H100 NVL
+open_clip version: 3.3.0
+
+Current Directory:
+/home/mazaveri/hpc-prog/Vipul
+Dataset Preparation Started...
+======================================
+Preparing cifar-100.zip
+======================================
+[FAILED] cifar-100.zip
+======================================
+Preparing EuroSAT.zip
+======================================
+[FAILED] EuroSAT.zip
+======================================
+Preparing flower-102.zip
+======================================
+[FAILED] flower-102.zip
+======================================
+Preparing food-101.zip
+======================================
+[FAILED] food-101.zip
+======================================
+Preparing caltech-101.zip
+======================================
+[FAILED] caltech-101.zip
+============================================================
+Starting Pretrained Zeroshot Evaluation...
+============================================================
+------------------------------------------------------------
+Dataset : cifar_100
+------------------------------------------------------------
+[INFO] Loading pretrained ViT-B-32 (openai)...

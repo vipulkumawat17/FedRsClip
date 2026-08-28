@@ -1,0 +1,100 @@
+============================================================
+Job Started
+Job ID    : 29471
+Node      : node2
+Date      : Fri Aug 14 05:13:49 PM IST 2026
+Time     : 17:13:49
+============================================================
+
+============================================================
+Python Environment
+============================================================
+Python : /home/mazaveri/.conda/envs/fedrsclip/bin/python
+Python 3.10.20
+Python executable: /home/mazaveri/.conda/envs/fedrsclip/bin/python
+Torch: /home/mazaveri/.conda/envs/fedrsclip/lib/python3.10/site-packages/torch/__init__.py
+Torch version: 2.13.0+cu130
+CUDA: True
+CUDA version: 13.0
+GPU: NVIDIA H100 NVL
+open_clip version: 3.3.0
+
+Current Directory:
+/home/mazaveri/hpc-prog/Vipul
+============================================================
+Starting Pretrained Zeroshot Evaluation...
+============================================================
+------------------------------------------------------------
+Dataset : cifar_100
+------------------------------------------------------------
+[INFO] Loading pretrained ViT-B-32 (openai)...
+============================================================
+Dataset       : cifar_100
+Model         : ViT-B-32 (openai)
+Samples       : 10000
+Classes       : 100
+Top-1         : 63.04%
+top5          : 86.88%
+Output        : /home/mazaveri/hpc-prog/Vipul/checkpoints/pretrained_zero_shot/cifar_100/ViT-B-32_openai
+============================================================
+------------------------------------------------------------
+Dataset : eurosat
+------------------------------------------------------------
+[INFO] Loading pretrained ViT-B-32 (openai)...
+============================================================
+Dataset       : eurosat
+Model         : ViT-B-32 (openai)
+Samples       : 4139
+Classes       : 10
+Top-1         : 27.35%
+top5          : 77.34%
+Output        : /home/mazaveri/hpc-prog/Vipul/checkpoints/pretrained_zero_shot/eurosat/ViT-B-32_openai
+============================================================
+------------------------------------------------------------
+Dataset : flower_102
+------------------------------------------------------------
+[INFO] Loading pretrained ViT-B-32 (openai)...
+============================================================
+Dataset       : flower_102
+Model         : ViT-B-32 (openai)
+Samples       : 2457
+Classes       : 102
+Top-1         : 1.30%
+top5          : 8.42%
+Output        : /home/mazaveri/hpc-prog/Vipul/checkpoints/pretrained_zero_shot/flower_102/ViT-B-32_openai
+============================================================
+------------------------------------------------------------
+Dataset : food_101
+------------------------------------------------------------
+[INFO] Loading pretrained ViT-B-32 (openai)...
+============================================================
+Dataset       : food_101
+Model         : ViT-B-32 (openai)
+Samples       : 25250
+Classes       : 101
+Top-1         : 80.01%
+top5          : 96.22%
+Output        : /home/mazaveri/hpc-prog/Vipul/checkpoints/pretrained_zero_shot/food_101/ViT-B-32_openai
+============================================================
+------------------------------------------------------------
+Dataset : caltech_101
+------------------------------------------------------------
+[INFO] Loading pretrained ViT-B-32 (openai)...
+============================================================
+Dataset       : caltech_101
+Model         : ViT-B-32 (openai)
+Samples       : 2792
+Classes       : 102
+Top-1         : 80.27%
+top5          : 95.92%
+Output        : /home/mazaveri/hpc-prog/Vipul/checkpoints/pretrained_zero_shot/caltech_101/ViT-B-32_openai
+============================================================
+============================================================
+Pretrained Zeroshot Evaluation Completed Successfully!
+============================================================
+===========================================================
+Job Finished
+Job ID    : 29471
+Node      : node2
+Date      : Fri Aug 14 05:17:00 PM IST 2026
+===========================================================

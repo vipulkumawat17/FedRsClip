@@ -1,0 +1,206 @@
+============================================================
+Job Started
+Job ID    : 29416
+Node      : node2
+Date      : Fri Aug 14 01:01:46 PM IST 2026
+Time     : 13:01:46
+============================================================
+
+============================================================
+Python Environment
+============================================================
+Python : /apps/compilers/anaconda3-24.2/bin/python
+Python 3.11.7
+Python executable: /apps/compilers/anaconda3-24.2/bin/python
+Torch: /apps/compilers/anaconda3-24.2/lib/python3.11/site-packages/torch/__init__.py
+Torch version: 2.6.0+cu124
+CUDA: True
+CUDA version: 12.4
+GPU: NVIDIA H100 NVL
+
+Current Directory:
+/home/mazaveri/hpc-prog/Vipul
+============================================================
+Starting CLIP Training...
+============================================================
+==========================
+Dataset: cifar_100
+Type: TorchVision
+Classes: 100
+Train Images: 50000
+Validation Images: 10000
+Training (numerical metrics only)...
+==========================
+/apps/compilers/anaconda3-24.2/bin/python -m clip_implement.train --train-jsonl data/cifar_100/train.jsonl --image-root /home/mazaveri/hpc-prog/Vipul/data/cifar_100/prepared_images --model ViT-B-32 --batch-size 16 --epochs 10 --lr 0.0005 --weight-decay 0.2 --warmup-steps 500 --workers 4 --context-length 76 --precision amp --save-every 1 --save-every-steps 0 --eval-every 1 --output-dir checkpoints/datasets/cifar_100/ViT-B-32 --report-dir checkpoints/datasets/cifar_100/ViT-B-32/reports --val-jsonl data/cifar_100/val.jsonl --classnames data/cifar_100/classnames.txt --template "a photo of {}." --template "an image of {}." --template "a satellite photo of {}."
+[INFO] Dataset size: 50000 samples
+[INFO] Batches per epoch: 3125
+[INFO] Saving checkpoints to: /home/mazaveri/hpc-prog/Vipul/checkpoints/datasets/cifar_100/ViT-B-32
+[INFO] Saving numerical metrics to: /home/mazaveri/hpc-prog/Vipul/checkpoints/datasets/cifar_100/ViT-B-32/reports/metrics.csv
+[INFO] Validation dataset size: 10000 samples
+[INFO] Validation prompts: ['a photo of {}.', 'an image of {}.', 'a satellite photo of {}.']
+[INFO] Saved checkpoint: checkpoints/datasets/cifar_100/ViT-B-32/clip_last.pt
+[EPOCH] 1/10 loss=2.7728 train_i2t=6.67% train_t2i=6.66% val_top1=1.86 val_top5=7.72
+[INFO] Saved checkpoint: checkpoints/datasets/cifar_100/ViT-B-32/clip_last.pt
+[EPOCH] 2/10 loss=2.7377 train_i2t=8.96% train_t2i=8.90% val_top1=1.99 val_top5=7.92
+[INFO] Saved checkpoint: checkpoints/datasets/cifar_100/ViT-B-32/clip_last.pt
+[EPOCH] 3/10 loss=2.7312 train_i2t=9.20% train_t2i=8.96% val_top1=1.94 val_top5=9.44
+[INFO] Saved checkpoint: checkpoints/datasets/cifar_100/ViT-B-32/clip_last.pt
+[EPOCH] 4/10 loss=2.7086 train_i2t=10.10% train_t2i=9.53% val_top1=1.85 val_top5=10.68
+[INFO] Saved checkpoint: checkpoints/datasets/cifar_100/ViT-B-32/clip_last.pt
+[EPOCH] 5/10 loss=2.6897 train_i2t=10.63% train_t2i=10.26% val_top1=2.71 val_top5=11.00
+[INFO] Saved checkpoint: checkpoints/datasets/cifar_100/ViT-B-32/clip_last.pt
+[EPOCH] 6/10 loss=2.6658 train_i2t=11.58% train_t2i=11.36% val_top1=2.78 val_top5=12.08
+[INFO] Saved checkpoint: checkpoints/datasets/cifar_100/ViT-B-32/clip_last.pt
+[EPOCH] 7/10 loss=2.6235 train_i2t=13.00% train_t2i=12.83% val_top1=3.34 val_top5=13.87
+[INFO] Saved checkpoint: checkpoints/datasets/cifar_100/ViT-B-32/clip_last.pt
+[EPOCH] 8/10 loss=2.5568 train_i2t=15.03% train_t2i=15.04% val_top1=4.24 val_top5=16.39
+[INFO] Saved checkpoint: checkpoints/datasets/cifar_100/ViT-B-32/clip_last.pt
+[EPOCH] 9/10 loss=2.4811 train_i2t=17.14% train_t2i=17.30% val_top1=4.55 val_top5=17.44
+[INFO] Saved checkpoint: checkpoints/datasets/cifar_100/ViT-B-32/clip_last.pt
+[EPOCH] 10/10 loss=2.4278 train_i2t=18.63% train_t2i=19.02% val_top1=4.87 val_top5=17.62
+==========================
+Dataset: eurosat
+Type: ImageFolder
+Classes: 10
+Train Images: 19317
+Validation Images: 4139
+Training (numerical metrics only)...
+==========================
+/apps/compilers/anaconda3-24.2/bin/python -m clip_implement.train --train-jsonl data/eurosat/train.jsonl --image-root /home/mazaveri/hpc-prog/Vipul/data/eurosat/rgb_from_allbands --model ViT-B-32 --batch-size 16 --epochs 10 --lr 0.0005 --weight-decay 0.2 --warmup-steps 500 --workers 4 --context-length 76 --precision amp --save-every 1 --save-every-steps 0 --eval-every 1 --output-dir checkpoints/datasets/eurosat/ViT-B-32 --report-dir checkpoints/datasets/eurosat/ViT-B-32/reports --val-jsonl data/eurosat/val.jsonl --classnames data/eurosat/classnames.txt --template "a photo of {}." --template "an image of {}." --template "a satellite photo of {}."
+[INFO] Dataset size: 19317 samples
+[INFO] Batches per epoch: 1207
+[INFO] Saving checkpoints to: /home/mazaveri/hpc-prog/Vipul/checkpoints/datasets/eurosat/ViT-B-32
+[INFO] Saving numerical metrics to: /home/mazaveri/hpc-prog/Vipul/checkpoints/datasets/eurosat/ViT-B-32/reports/metrics.csv
+[INFO] Validation dataset size: 4139 samples
+[INFO] Validation prompts: ['a photo of {}.', 'an image of {}.', 'a satellite photo of {}.']
+[INFO] Saved checkpoint: checkpoints/datasets/eurosat/ViT-B-32/clip_last.pt
+[EPOCH] 1/10 loss=2.3221 train_i2t=19.34% train_t2i=21.31% val_top1=33.92 val_top5=83.33
+[INFO] Saved checkpoint: checkpoints/datasets/eurosat/ViT-B-32/clip_last.pt
+[EPOCH] 2/10 loss=2.1797 train_i2t=22.10% train_t2i=24.41% val_top1=42.79 val_top5=90.82
+[INFO] Saved checkpoint: checkpoints/datasets/eurosat/ViT-B-32/clip_last.pt
+[EPOCH] 3/10 loss=2.1138 train_i2t=23.44% train_t2i=26.41% val_top1=44.21 val_top5=92.51
+[INFO] Saved checkpoint: checkpoints/datasets/eurosat/ViT-B-32/clip_last.pt
+[EPOCH] 4/10 loss=2.0687 train_i2t=24.42% train_t2i=27.41% val_top1=44.09 val_top5=91.91
+[INFO] Saved checkpoint: checkpoints/datasets/eurosat/ViT-B-32/clip_last.pt
+[EPOCH] 5/10 loss=2.0270 train_i2t=25.14% train_t2i=28.45% val_top1=48.88 val_top5=93.24
+[INFO] Saved checkpoint: checkpoints/datasets/eurosat/ViT-B-32/clip_last.pt
+[EPOCH] 6/10 loss=1.9150 train_i2t=27.59% train_t2i=31.15% val_top1=51.51 val_top5=95.29
+[INFO] Saved checkpoint: checkpoints/datasets/eurosat/ViT-B-32/clip_last.pt
+[EPOCH] 7/10 loss=1.8684 train_i2t=28.53% train_t2i=32.08% val_top1=54.14 val_top5=95.22
+[INFO] Saved checkpoint: checkpoints/datasets/eurosat/ViT-B-32/clip_last.pt
+[EPOCH] 8/10 loss=1.8193 train_i2t=30.16% train_t2i=33.67% val_top1=55.01 val_top5=95.51
+[INFO] Saved checkpoint: checkpoints/datasets/eurosat/ViT-B-32/clip_last.pt
+[EPOCH] 9/10 loss=1.7748 train_i2t=30.59% train_t2i=34.09% val_top1=56.39 val_top5=95.92
+[INFO] Saved checkpoint: checkpoints/datasets/eurosat/ViT-B-32/clip_last.pt
+[EPOCH] 10/10 loss=1.7602 train_i2t=31.62% train_t2i=34.76% val_top1=56.73 val_top5=96.09
+==========================
+Dataset: flower_102
+Type: TorchVision
+Classes: 102
+Train Images: 5732
+Validation Images: 2457
+Training (numerical metrics only)...
+==========================
+/apps/compilers/anaconda3-24.2/bin/python -m clip_implement.train --train-jsonl data/flower_102/train.jsonl --image-root /home/mazaveri/hpc-prog/Vipul/data/flower_102/raw/jpg --model ViT-B-32 --batch-size 16 --epochs 10 --lr 0.0005 --weight-decay 0.2 --warmup-steps 500 --workers 4 --context-length 76 --precision amp --save-every 1 --save-every-steps 0 --eval-every 1 --output-dir checkpoints/datasets/flower_102/ViT-B-32 --report-dir checkpoints/datasets/flower_102/ViT-B-32/reports --val-jsonl data/flower_102/val.jsonl --classnames data/flower_102/classnames.txt --template "a photo of {}." --template "an image of {}." --template "a satellite photo of {}."
+[INFO] Dataset size: 5732 samples
+[INFO] Batches per epoch: 358
+[INFO] Saving checkpoints to: /home/mazaveri/hpc-prog/Vipul/checkpoints/datasets/flower_102/ViT-B-32
+[INFO] Saving numerical metrics to: /home/mazaveri/hpc-prog/Vipul/checkpoints/datasets/flower_102/ViT-B-32/reports/metrics.csv
+[INFO] Validation dataset size: 2457 samples
+[INFO] Validation prompts: ['a photo of {}.', 'an image of {}.', 'a satellite photo of {}.']
+[INFO] Saved checkpoint: checkpoints/datasets/flower_102/ViT-B-32/clip_last.pt
+[EPOCH] 1/10 loss=2.6090 train_i2t=12.53% train_t2i=11.82% val_top1=1.14 val_top5=4.60
+[INFO] Saved checkpoint: checkpoints/datasets/flower_102/ViT-B-32/clip_last.pt
+[EPOCH] 2/10 loss=2.5401 train_i2t=13.23% train_t2i=13.39% val_top1=0.37 val_top5=3.99
+[INFO] Saved checkpoint: checkpoints/datasets/flower_102/ViT-B-32/clip_last.pt
+[EPOCH] 3/10 loss=2.4525 train_i2t=14.47% train_t2i=14.73% val_top1=0.73 val_top5=3.70
+[INFO] Saved checkpoint: checkpoints/datasets/flower_102/ViT-B-32/clip_last.pt
+[EPOCH] 4/10 loss=2.4365 train_i2t=15.61% train_t2i=15.10% val_top1=2.85 val_top5=7.45
+[INFO] Saved checkpoint: checkpoints/datasets/flower_102/ViT-B-32/clip_last.pt
+[EPOCH] 5/10 loss=2.3491 train_i2t=17.02% train_t2i=16.78% val_top1=1.02 val_top5=4.27
+[INFO] Saved checkpoint: checkpoints/datasets/flower_102/ViT-B-32/clip_last.pt
+[EPOCH] 6/10 loss=2.2196 train_i2t=21.07% train_t2i=21.28% val_top1=0.37 val_top5=4.07
+[INFO] Saved checkpoint: checkpoints/datasets/flower_102/ViT-B-32/clip_last.pt
+[EPOCH] 7/10 loss=2.0961 train_i2t=26.31% train_t2i=26.55% val_top1=0.53 val_top5=4.92
+[INFO] Saved checkpoint: checkpoints/datasets/flower_102/ViT-B-32/clip_last.pt
+[EPOCH] 8/10 loss=1.9801 train_i2t=29.26% train_t2i=29.26% val_top1=0.69 val_top5=3.87
+[INFO] Saved checkpoint: checkpoints/datasets/flower_102/ViT-B-32/clip_last.pt
+[EPOCH] 9/10 loss=1.8766 train_i2t=32.82% train_t2i=33.26% val_top1=0.45 val_top5=4.92
+[INFO] Saved checkpoint: checkpoints/datasets/flower_102/ViT-B-32/clip_last.pt
+[EPOCH] 10/10 loss=1.8491 train_i2t=34.24% train_t2i=34.38% val_top1=0.49 val_top5=4.84
+==========================
+Dataset: food_101
+Type: TorchVision
+Classes: 101
+Train Images: 75750
+Validation Images: 25250
+Training (numerical metrics only)...
+==========================
+/apps/compilers/anaconda3-24.2/bin/python -m clip_implement.train --train-jsonl data/food_101/train.jsonl --image-root /home/mazaveri/hpc-prog/Vipul/data/food_101/raw/images --model ViT-B-32 --batch-size 16 --epochs 10 --lr 0.0005 --weight-decay 0.2 --warmup-steps 500 --workers 4 --context-length 76 --precision amp --save-every 1 --save-every-steps 0 --eval-every 1 --output-dir checkpoints/datasets/food_101/ViT-B-32 --report-dir checkpoints/datasets/food_101/ViT-B-32/reports --val-jsonl data/food_101/val.jsonl --classnames data/food_101/classnames.txt --template "a photo of {}." --template "an image of {}." --template "a satellite photo of {}."
+[INFO] Dataset size: 75750 samples
+[INFO] Batches per epoch: 4734
+[INFO] Saving checkpoints to: /home/mazaveri/hpc-prog/Vipul/checkpoints/datasets/food_101/ViT-B-32
+[INFO] Saving numerical metrics to: /home/mazaveri/hpc-prog/Vipul/checkpoints/datasets/food_101/ViT-B-32/reports/metrics.csv
+[INFO] Validation dataset size: 25250 samples
+[INFO] Validation prompts: ['a photo of {}.', 'an image of {}.', 'a satellite photo of {}.']
+[INFO] Saved checkpoint: checkpoints/datasets/food_101/ViT-B-32/clip_last.pt
+[EPOCH] 1/10 loss=2.7779 train_i2t=6.30% train_t2i=6.40% val_top1=1.21 val_top5=5.88
+[INFO] Saved checkpoint: checkpoints/datasets/food_101/ViT-B-32/clip_last.pt
+[EPOCH] 2/10 loss=2.7762 train_i2t=6.89% train_t2i=6.99% val_top1=1.29 val_top5=6.03
+[INFO] Saved checkpoint: checkpoints/datasets/food_101/ViT-B-32/clip_last.pt
+[EPOCH] 3/10 loss=2.7616 train_i2t=7.58% train_t2i=7.79% val_top1=1.49 val_top5=6.67
+[INFO] Saved checkpoint: checkpoints/datasets/food_101/ViT-B-32/clip_last.pt
+[EPOCH] 4/10 loss=2.7513 train_i2t=8.03% train_t2i=8.18% val_top1=1.35 val_top5=7.05
+[INFO] Saved checkpoint: checkpoints/datasets/food_101/ViT-B-32/clip_last.pt
+[EPOCH] 5/10 loss=2.7426 train_i2t=8.28% train_t2i=8.45% val_top1=1.68 val_top5=7.43
+[INFO] Saved checkpoint: checkpoints/datasets/food_101/ViT-B-32/clip_last.pt
+[EPOCH] 6/10 loss=2.7211 train_i2t=9.29% train_t2i=9.24% val_top1=1.74 val_top5=8.08
+[INFO] Saved checkpoint: checkpoints/datasets/food_101/ViT-B-32/clip_last.pt
+[EPOCH] 7/10 loss=2.6924 train_i2t=10.52% train_t2i=10.41% val_top1=2.32 val_top5=10.65
+[INFO] Saved checkpoint: checkpoints/datasets/food_101/ViT-B-32/clip_last.pt
+[EPOCH] 8/10 loss=2.6585 train_i2t=12.14% train_t2i=11.44% val_top1=3.09 val_top5=12.29
+[INFO] Saved checkpoint: checkpoints/datasets/food_101/ViT-B-32/clip_last.pt
+[EPOCH] 9/10 loss=2.6161 train_i2t=13.31% train_t2i=13.03% val_top1=3.35 val_top5=13.30
+[INFO] Saved checkpoint: checkpoints/datasets/food_101/ViT-B-32/clip_last.pt
+[EPOCH] 10/10 loss=2.5874 train_i2t=14.19% train_t2i=13.84% val_top1=3.51 val_top5=13.53
+==========================
+Dataset: caltech_101
+Type: TorchVision
+Classes: 102
+Train Images: 6352
+Validation Images: 2792
+Training (numerical metrics only)...
+==========================
+/apps/compilers/anaconda3-24.2/bin/python -m clip_implement.train --train-jsonl data/caltech_101/train.jsonl --image-root /home/mazaveri/hpc-prog/Vipul/data/caltech_101/raw/caltech-101 --model ViT-B-32 --batch-size 16 --epochs 10 --lr 0.0005 --weight-decay 0.2 --warmup-steps 500 --workers 4 --context-length 76 --precision amp --save-every 1 --save-every-steps 0 --eval-every 1 --output-dir checkpoints/datasets/caltech_101/ViT-B-32 --report-dir checkpoints/datasets/caltech_101/ViT-B-32/reports --val-jsonl data/caltech_101/val.jsonl --classnames data/caltech_101/classnames.txt --template "a photo of {}." --template "an image of {}." --template "a satellite photo of {}."
+[INFO] Dataset size: 6352 samples
+[INFO] Batches per epoch: 397
+[INFO] Saving checkpoints to: /home/mazaveri/hpc-prog/Vipul/checkpoints/datasets/caltech_101/ViT-B-32
+[INFO] Saving numerical metrics to: /home/mazaveri/hpc-prog/Vipul/checkpoints/datasets/caltech_101/ViT-B-32/reports/metrics.csv
+[INFO] Validation dataset size: 2792 samples
+[INFO] Validation prompts: ['a photo of {}.', 'an image of {}.', 'a satellite photo of {}.']
+[INFO] Saved checkpoint: checkpoints/datasets/caltech_101/ViT-B-32/clip_last.pt
+[EPOCH] 1/10 loss=2.7505 train_i2t=9.12% train_t2i=8.20% val_top1=6.66 val_top5=21.38
+[INFO] Saved checkpoint: checkpoints/datasets/caltech_101/ViT-B-32/clip_last.pt
+[EPOCH] 2/10 loss=2.7721 train_i2t=6.39% train_t2i=6.68% val_top1=0.61 val_top5=4.80
+[INFO] Saved checkpoint: checkpoints/datasets/caltech_101/ViT-B-32/clip_last.pt
+[EPOCH] 3/10 loss=2.7958 train_i2t=6.22% train_t2i=6.50% val_top1=0.68 val_top5=3.01
+[INFO] Saved checkpoint: checkpoints/datasets/caltech_101/ViT-B-32/clip_last.pt
+[EPOCH] 4/10 loss=2.7811 train_i2t=6.56% train_t2i=6.19% val_top1=0.57 val_top5=15.29
+[INFO] Saved checkpoint: checkpoints/datasets/caltech_101/ViT-B-32/clip_last.pt
+[EPOCH] 5/10 loss=2.7734 train_i2t=6.17% train_t2i=6.14% val_top1=3.65 val_top5=10.49
+[INFO] Saved checkpoint: checkpoints/datasets/caltech_101/ViT-B-32/clip_last.pt
+[EPOCH] 6/10 loss=2.7440 train_i2t=8.63% train_t2i=8.55% val_top1=10.10 val_top5=18.52
+[INFO] Saved checkpoint: checkpoints/datasets/caltech_101/ViT-B-32/clip_last.pt
+[EPOCH] 7/10 loss=2.6264 train_i2t=12.25% train_t2i=11.76% val_top1=10.28 val_top5=18.80
+[INFO] Saved checkpoint: checkpoints/datasets/caltech_101/ViT-B-32/clip_last.pt
+[EPOCH] 8/10 loss=2.5151 train_i2t=13.96% train_t2i=14.26% val_top1=12.36 val_top5=23.21
+[INFO] Saved checkpoint: checkpoints/datasets/caltech_101/ViT-B-32/clip_last.pt
+[EPOCH] 9/10 loss=2.4224 train_i2t=15.93% train_t2i=16.11% val_top1=12.68 val_top5=28.72
+[INFO] Saved checkpoint: checkpoints/datasets/caltech_101/ViT-B-32/clip_last.pt
+[EPOCH] 10/10 loss=2.3855 train_i2t=16.48% train_t2i=16.26% val_top1=13.00 val_top5=24.14
+===========================================================
+Job Finished
+Job ID    : 29416
+Node      : node2
+Date      : 15:31:45
+===========================================================

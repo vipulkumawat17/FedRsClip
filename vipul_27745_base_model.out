@@ -1,0 +1,51 @@
+================================================================
+  JOB STARTED
+  Job ID   : 27745
+  Node     : node2
+  Time     : 2026-07-12 11:41:41
+================================================================
+[OK] Virtual env activated: /home/mazaveri/.conda/envs/fedrsclip/bin/python
+[OK] Pip    : pip 26.1.2 from /home/mazaveri/.conda/envs/fedrsclip/lib/python3.10/site-packages/pip (python 3.10)
+[OK] Working directory: /home/mazaveri/hpc-prog/Vipul
+
+[CHECK] GPU Status:
+NVIDIA H100 NVL, 95830 MiB, 95306 MiB
+
+  PyTorch version : 2.13.0+cu130
+  CUDA available  : True
+  GPU             : NVIDIA H100 NVL
+
+============================================================
+Starting CLIP Training...
+============================================================
+[INFO] Dataset size: 1470 samples
+[INFO] Batches per epoch: 91
+[INFO] Saving checkpoints to: /home/mazaveri/hpc-prog/Vipul/checkpoints/uc_merced
+[INFO] Saved checkpoint: checkpoints/uc_merced/clip_last.pt
+[INFO] Saved checkpoint: checkpoints/uc_merced/clip_last.pt
+[INFO] Saved checkpoint: checkpoints/uc_merced/clip_last.pt
+[INFO] Saved checkpoint: checkpoints/uc_merced/clip_last.pt
+[INFO] Saved checkpoint: checkpoints/uc_merced/clip_last.pt
+[INFO] Saved checkpoint: checkpoints/uc_merced/clip_last.pt
+[INFO] Saved checkpoint: checkpoints/uc_merced/clip_last.pt
+[INFO] Saved checkpoint: checkpoints/uc_merced/clip_last.pt
+[INFO] Saved checkpoint: checkpoints/uc_merced/clip_last.pt
+[INFO] Saved checkpoint: checkpoints/uc_merced/clip_last.pt
+
+============================================================
+Training Completed Successfully!
+Finished at: Sun Jul 12 11:44:32 AM IST 2026
+============================================================
+
+============================================================
+Zero shot started!
+============================================================
+dataset: ImageFolder
+samples: 2100
+top1: 25.67
+top5: 64.19
+
+============================================================
+Zero shot Completed Successfully!
+Finished at: Sun Jul 12 11:44:40 AM IST 2026
+============================================================

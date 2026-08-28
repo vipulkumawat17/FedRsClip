@@ -1,0 +1,19 @@
+============================================================
+Job Started
+Job ID    : 29470
+Node      : node2
+Date      : Fri Aug 14 05:10:53 PM IST 2026
+Time     : 17:10:53
+============================================================
+
+============================================================
+Python Environment
+============================================================
+Python : /apps/compilers/anaconda3-24.2/bin/python
+Python 3.11.7
+Python executable: /apps/compilers/anaconda3-24.2/bin/python
+Torch: /apps/compilers/anaconda3-24.2/lib/python3.11/site-packages/torch/__init__.py
+Torch version: 2.6.0+cu124
+CUDA: True
+CUDA version: 12.4
+GPU: NVIDIA H100 NVL

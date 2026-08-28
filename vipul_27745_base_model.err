@@ -1,0 +1,4 @@
+/home/mazaveri/hpc-prog/Vipul/clip_implement/train.py:104: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = torch.cuda.amp.GradScaler(enabled=(args.precision == "amp" and device == "cuda"))
+/home/mazaveri/hpc-prog/Vipul/clip_implement/train.py:127: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(enabled=(args.precision == "amp" and device == "cuda")):

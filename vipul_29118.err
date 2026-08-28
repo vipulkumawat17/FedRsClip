@@ -1,0 +1,85 @@
+Traceback (most recent call last):
+  File "/home/mazaveri/hpc-prog/Vipul/scripts/run_dataset_experiment.py", line 14, in <module>
+    from clip_implement.dataset_factory import DEFAULT_TEMPLATES, PrepareConfig, PreparedDataset, prepare_dataset_source, slugify
+  File "/home/mazaveri/hpc-prog/Vipul/clip_implement/__init__.py", line 2, in <module>
+    from .model import CLIP, build_model, clip_loss
+  File "/home/mazaveri/hpc-prog/Vipul/clip_implement/model.py", line 6, in <module>
+    import torch
+  File "/home/mazaveri/.local/lib/python3.11/site-packages/torch/__init__.py", line 236, in <module>
+    _load_global_deps()
+  File "/home/mazaveri/.local/lib/python3.11/site-packages/torch/__init__.py", line 195, in _load_global_deps
+    raise err
+  File "/home/mazaveri/.local/lib/python3.11/site-packages/torch/__init__.py", line 176, in _load_global_deps
+    ctypes.CDLL(lib_path, mode=ctypes.RTLD_GLOBAL)
+  File "/apps/compilers/anaconda3-24.2/lib/python3.11/ctypes/__init__.py", line 376, in __init__
+    self._handle = _dlopen(self._name, mode)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: /home/mazaveri/.local/lib/python3.11/site-packages/torch/lib/libtorch_global_deps.so: cannot open shared object file: No such file or directory
+Traceback (most recent call last):
+  File "/home/mazaveri/hpc-prog/Vipul/scripts/run_dataset_experiment.py", line 14, in <module>
+    from clip_implement.dataset_factory import DEFAULT_TEMPLATES, PrepareConfig, PreparedDataset, prepare_dataset_source, slugify
+  File "/home/mazaveri/hpc-prog/Vipul/clip_implement/__init__.py", line 2, in <module>
+    from .model import CLIP, build_model, clip_loss
+  File "/home/mazaveri/hpc-prog/Vipul/clip_implement/model.py", line 6, in <module>
+    import torch
+  File "/home/mazaveri/.local/lib/python3.11/site-packages/torch/__init__.py", line 236, in <module>
+    _load_global_deps()
+  File "/home/mazaveri/.local/lib/python3.11/site-packages/torch/__init__.py", line 195, in _load_global_deps
+    raise err
+  File "/home/mazaveri/.local/lib/python3.11/site-packages/torch/__init__.py", line 176, in _load_global_deps
+    ctypes.CDLL(lib_path, mode=ctypes.RTLD_GLOBAL)
+  File "/apps/compilers/anaconda3-24.2/lib/python3.11/ctypes/__init__.py", line 376, in __init__
+    self._handle = _dlopen(self._name, mode)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: /home/mazaveri/.local/lib/python3.11/site-packages/torch/lib/libtorch_global_deps.so: cannot open shared object file: No such file or directory
+Traceback (most recent call last):
+  File "/home/mazaveri/hpc-prog/Vipul/scripts/run_dataset_experiment.py", line 14, in <module>
+    from clip_implement.dataset_factory import DEFAULT_TEMPLATES, PrepareConfig, PreparedDataset, prepare_dataset_source, slugify
+  File "/home/mazaveri/hpc-prog/Vipul/clip_implement/__init__.py", line 2, in <module>
+    from .model import CLIP, build_model, clip_loss
+  File "/home/mazaveri/hpc-prog/Vipul/clip_implement/model.py", line 6, in <module>
+    import torch
+  File "/home/mazaveri/.local/lib/python3.11/site-packages/torch/__init__.py", line 236, in <module>
+    _load_global_deps()
+  File "/home/mazaveri/.local/lib/python3.11/site-packages/torch/__init__.py", line 195, in _load_global_deps
+    raise err
+  File "/home/mazaveri/.local/lib/python3.11/site-packages/torch/__init__.py", line 176, in _load_global_deps
+    ctypes.CDLL(lib_path, mode=ctypes.RTLD_GLOBAL)
+  File "/apps/compilers/anaconda3-24.2/lib/python3.11/ctypes/__init__.py", line 376, in __init__
+    self._handle = _dlopen(self._name, mode)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: /home/mazaveri/.local/lib/python3.11/site-packages/torch/lib/libtorch_global_deps.so: cannot open shared object file: No such file or directory
+Traceback (most recent call last):
+  File "/home/mazaveri/hpc-prog/Vipul/scripts/run_dataset_experiment.py", line 14, in <module>
+    from clip_implement.dataset_factory import DEFAULT_TEMPLATES, PrepareConfig, PreparedDataset, prepare_dataset_source, slugify
+  File "/home/mazaveri/hpc-prog/Vipul/clip_implement/__init__.py", line 2, in <module>
+    from .model import CLIP, build_model, clip_loss
+  File "/home/mazaveri/hpc-prog/Vipul/clip_implement/model.py", line 6, in <module>
+    import torch
+  File "/home/mazaveri/.local/lib/python3.11/site-packages/torch/__init__.py", line 236, in <module>
+    _load_global_deps()
+  File "/home/mazaveri/.local/lib/python3.11/site-packages/torch/__init__.py", line 195, in _load_global_deps
+    raise err
+  File "/home/mazaveri/.local/lib/python3.11/site-packages/torch/__init__.py", line 176, in _load_global_deps
+    ctypes.CDLL(lib_path, mode=ctypes.RTLD_GLOBAL)
+  File "/apps/compilers/anaconda3-24.2/lib/python3.11/ctypes/__init__.py", line 376, in __init__
+    self._handle = _dlopen(self._name, mode)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: /home/mazaveri/.local/lib/python3.11/site-packages/torch/lib/libtorch_global_deps.so: cannot open shared object file: No such file or directory
+Traceback (most recent call last):
+  File "/home/mazaveri/hpc-prog/Vipul/scripts/run_dataset_experiment.py", line 14, in <module>
+    from clip_implement.dataset_factory import DEFAULT_TEMPLATES, PrepareConfig, PreparedDataset, prepare_dataset_source, slugify
+  File "/home/mazaveri/hpc-prog/Vipul/clip_implement/__init__.py", line 2, in <module>
+    from .model import CLIP, build_model, clip_loss
+  File "/home/mazaveri/hpc-prog/Vipul/clip_implement/model.py", line 6, in <module>
+    import torch
+  File "/home/mazaveri/.local/lib/python3.11/site-packages/torch/__init__.py", line 236, in <module>
+    _load_global_deps()
+  File "/home/mazaveri/.local/lib/python3.11/site-packages/torch/__init__.py", line 195, in _load_global_deps
+    raise err
+  File "/home/mazaveri/.local/lib/python3.11/site-packages/torch/__init__.py", line 176, in _load_global_deps
+    ctypes.CDLL(lib_path, mode=ctypes.RTLD_GLOBAL)
+  File "/apps/compilers/anaconda3-24.2/lib/python3.11/ctypes/__init__.py", line 376, in __init__
+    self._handle = _dlopen(self._name, mode)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: /home/mazaveri/.local/lib/python3.11/site-packages/torch/lib/libtorch_global_deps.so: cannot open shared object file: No such file or directory

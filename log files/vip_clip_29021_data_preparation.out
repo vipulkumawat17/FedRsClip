@@ -1,0 +1,79 @@
+================================================================
+  JOB STARTED
+  Job ID   : 29021
+  Node     : node2
+  Time     : 2026-08-08 17:27:39
+================================================================
+[OK] Virtual env activated: /home/mazaveri/.conda/envs/fedrsclip/bin/python
+[OK] Pip    : pip 26.1.2 from /home/mazaveri/.conda/envs/fedrsclip/lib/python3.10/site-packages/pip (python 3.10)
+[OK] Working directory: /home/mazaveri/hpc-prog/Vipul
+
+[CHECK] GPU Status:
+NVIDIA H100 NVL, 95830 MiB, 38418 MiB
+
+  PyTorch version : 2.13.0+cu130
+  CUDA available  : True
+  GPU             : NVIDIA H100 NVL
+============================================================
+dataset Preparing
+===========================================================
+======================================
+Preparing cifar-100.zip
+======================================
+[EXTRACT] data/cifar-100.zip -> data/cifar_100/raw
+[WARNING] Unsupported dataset cifar-100: Dataset not found or corrupted. You can use download=True to download it
+[FAILED] cifar-100.zip
+======================================
+Preparing EuroSAT.zip
+======================================
+[EXTRACT] data/EuroSAT.zip -> data/eurosat/raw
+==========================
+Dataset: eurosat
+Type: ImageFolder
+Classes: 11
+Train Images: 38217
+Validation Images: 8189
+Training...
+==========================
+[PREPARED] eurosat: train=data/eurosat/train.jsonl image_root=data/eurosat/raw
+======================================
+Preparing flower-102.zip
+======================================
+[EXTRACT] data/flower-102.zip -> data/flower_102/raw
+[WARNING] Unsupported dataset flower-102: Dataset not found or corrupted. You can use download=True to download it
+[FAILED] flower-102.zip
+======================================
+Preparing food-101.zip
+======================================
+[EXTRACT] data/food-101.zip -> data/food_101/raw
+[WARNING] Unsupported dataset food-101: Dataset not found. You can use download=True to download it
+[FAILED] food-101.zip
+======================================
+Preparing stl10.zip
+======================================
+[EXTRACT] data/stl10.zip -> data/stl10/raw
+[WARNING] Unsupported dataset stl10: Dataset not found or corrupted. You can use download=True to download it
+[FAILED] stl10.zip
+===========================================================
+Dataset Prepared
+===========================================================
+============================================================
+Starting CLIP Training...
+============================================================
+============================================================
+Training Completed Successfully!
+Finished at: Sat Aug  8 05:37:57 PM IST 2026
+============================================================
+============================================
+Zero-shot started
+=============================================
+============================================================
+Zero shot Completed Successfully!
+Finished at: Sat Aug  8 05:37:57 PM IST 2026
+============================================================
+============================================================
+  JOB COMPLETED
+  Job ID   : 29021
+  Node     : node2
+  Time     : 2026-08-08 17:37:57
+============================================================

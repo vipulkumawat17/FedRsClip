@@ -1,0 +1,48 @@
+============================================================
+Job Started
+Job ID    : 29492
+Node      : node2
+Date      : Fri Aug 14 11:49:24 PM IST 2026
+Time     : 23:49:24
+============================================================
+
+============================================================
+Python Environment
+============================================================
+Python : /home/mazaveri/.conda/envs/fedrsclip/bin/python
+Python 3.10.20
+Python executable: /home/mazaveri/.conda/envs/fedrsclip/bin/python
+Torch: /home/mazaveri/.conda/envs/fedrsclip/lib/python3.10/site-packages/torch/__init__.py
+Torch version: 2.13.0+cu130
+CUDA: True
+CUDA version: 13.0
+GPU: NVIDIA H100 NVL
+open_clip version: 3.3.0
+
+Current Directory:
+/home/mazaveri/hpc-prog/Vipul
+============================================================
+Starting Pretrained Zeroshot Evaluation...
+============================================================
+------------------------------------------------------------
+Dataset : flower_102
+------------------------------------------------------------
+[INFO] Loading pretrained ViT-B-32 (openai)...
+============================================================
+Dataset       : flower_102
+Model         : ViT-B-32 (openai)
+Samples       : 2457
+Classes       : 102
+Top-1         : 60.85%
+top5          : 80.95%
+Output        : /home/mazaveri/hpc-prog/Vipul/checkpoints/pretrained_zero_shot/flower_102/ViT-B-32_openai
+============================================================
+============================================================
+Pretrained Zeroshot Evaluation Completed Successfully!
+============================================================
+===========================================================
+Job Finished
+Job ID    : 29492
+Node      : node2
+Date      : Fri Aug 14 11:49:39 PM IST 2026
+===========================================================

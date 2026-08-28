@@ -1,0 +1,91 @@
+============================================================
+Job Started
+Job ID    : 29115
+Node      : node2
+Date      : Mon Aug 10 11:43:13 AM IST 2026
+Time     : 11:43:13
+============================================================
+
+Python : /home/mazaveri/.conda/envs/fedrsclip/bin/python
+Python 3.10.20
+============================================================
+PyTorch Version : 2.13.0+cu130
+CUDA Available  : True
+GPU             : NVIDIA H100 NVL
+CUDA Version    : 13.0
+============================================================
+
+Current Directory:
+/home/mazaveri/hpc-prog/Vipul
+
+============================================================
+Starting CLIP Training...
+============================================================
+[INFO] Dataset size: 1470 samples
+[INFO] Batches per epoch: 91
+[INFO] Saving checkpoints to: /home/mazaveri/hpc-prog/Vipul/checkpoints/uc_merced
+[INFO] Saving epoch reports to: /home/mazaveri/hpc-prog/Vipul/checkpoints/uc_merced/reports
+[INFO] Validation dataset size: 315 samples
+[INFO] Validation prompts: ['a satellite photo of {}.', 'an aerial image of {}.', 'a remote sensing image of {}.']
+[INFO] Saved checkpoint: checkpoints/uc_merced/clip_last.pt
+[EPOCH] 1/10 loss=2.7087 train_i2t=11.81% train_t2i=10.30% val_top1=11.75 val_top5=48.25
+[INFO] Saved checkpoint: checkpoints/uc_merced/clip_last.pt
+[EPOCH] 2/10 loss=2.4413 train_i2t=18.13% train_t2i=19.02% val_top1=17.14 val_top5=56.83
+[INFO] Saved checkpoint: checkpoints/uc_merced/clip_last.pt
+[EPOCH] 3/10 loss=2.4012 train_i2t=20.19% train_t2i=18.54% val_top1=23.17 val_top5=59.37
+[INFO] Saved checkpoint: checkpoints/uc_merced/clip_last.pt
+[EPOCH] 4/10 loss=2.4286 train_i2t=19.23% train_t2i=16.90% val_top1=12.70 val_top5=49.52
+[INFO] Saved checkpoint: checkpoints/uc_merced/clip_last.pt
+[EPOCH] 5/10 loss=2.3960 train_i2t=17.93% train_t2i=19.64% val_top1=18.41 val_top5=46.03
+[INFO] Saved checkpoint: checkpoints/uc_merced/clip_last.pt
+[EPOCH] 6/10 loss=2.4213 train_i2t=17.51% train_t2i=17.45% val_top1=19.05 val_top5=52.70
+[INFO] Saved checkpoint: checkpoints/uc_merced/clip_last.pt
+[EPOCH] 7/10 loss=2.3308 train_i2t=18.82% train_t2i=21.02% val_top1=19.37 val_top5=54.60
+[INFO] Saved checkpoint: checkpoints/uc_merced/clip_last.pt
+[EPOCH] 8/10 loss=2.2178 train_i2t=23.15% train_t2i=23.97% val_top1=21.90 val_top5=63.17
+[INFO] Saved checkpoint: checkpoints/uc_merced/clip_last.pt
+[EPOCH] 9/10 loss=2.0902 train_i2t=27.40% train_t2i=27.06% val_top1=26.98 val_top5=71.11
+[INFO] Saved checkpoint: checkpoints/uc_merced/clip_last.pt
+[EPOCH] 10/10 loss=1.9665 train_i2t=29.46% train_t2i=29.46% val_top1=27.94 val_top5=72.70
+
+============================================================
+Training Completed Successfully!
+Finished at: Mon Aug 10 11:43:16 AM IST 2026
+============================================================
+============================================================
+Starting Zeroshot Evaluation...
+============================================================
+dataset: ImageFolder
+samples: 2100
+top1: 29.90
+top5: 71.14
+============================================================
+Zeroshot Evaluation Completed Successfully!
+============================================================
+============================================================
+starting generate research figures...
+============================================================
+Saved research figures to: /home/mazaveri/hpc-prog/Vipul/checkpoints/uc_merced/research_figures/airplane38
+===========================================================
+Completed generate research figures successfully!
+============================================================
+===========================================================
+Starting CLip_Dashboard Generation...
+============================================================
+Saved dashboard page: /home/mazaveri/hpc-prog/Vipul/checkpoints/uc_merced/dashboards/airplane38_clip_dashboard_page1_encoders.png
+Saved dashboard page: /home/mazaveri/hpc-prog/Vipul/checkpoints/uc_merced/dashboards/airplane38_clip_dashboard_page2_decision.png
+============================================================
+CLip_Dashboard Generation Completed Successfully!
+============================================================
+============================================================
+Starting CLip_Dashboard Generation for all classes...
+============================================================
+/home/mazaveri/hpc-prog/Vipul/checkpoints/uc_merced/evaluation_dashboard/final_model_evaluation_dashboard_overview.png
+/home/mazaveri/hpc-prog/Vipul/checkpoints/uc_merced/evaluation_dashboard/final_model_evaluation_training_curves.png
+/home/mazaveri/hpc-prog/Vipul/checkpoints/uc_merced/evaluation_dashboard/final_model_evaluation_zero_shot_grid.png
+===========================================================
+Job Finished
+Job ID    : 29115
+Node      : node2
+Date      : 11:43:49
+===========================================================

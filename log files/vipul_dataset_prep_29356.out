@@ -1,0 +1,100 @@
+============================================================
+Job Started
+Job ID    : 29356
+Node      : node2
+Date      : Thu Aug 13 01:28:28 PM IST 2026
+Time     : 13:28:28
+============================================================
+
+============================================================
+Python Environment
+============================================================
+Python : /apps/compilers/anaconda3-24.2/bin/python
+Python 3.11.7
+Python executable: /apps/compilers/anaconda3-24.2/bin/python
+Torch: /apps/compilers/anaconda3-24.2/lib/python3.11/site-packages/torch/__init__.py
+Torch version: 2.6.0+cu124
+CUDA: True
+CUDA version: 12.4
+GPU: NVIDIA H100 NVL
+
+Current Directory:
+/home/mazaveri/hpc-prog/Vipul
+Dataset Preparation Started...
+======================================
+Preparing cifar-100.zip
+======================================
+[EXTRACT] data/cifar-100.zip -> data/cifar_100/raw
+==========================
+Dataset: cifar_100
+Type: TorchVisionLocal
+Classes: 100
+Train Images: 50000
+Validation Images: 10000
+Training...
+==========================
+[PREPARED] cifar_100: train=data/cifar_100/train.jsonl image_root=data/cifar_100/prepared_images
+======================================
+Preparing EuroSAT.zip
+======================================
+[EXTRACT] data/EuroSAT.zip -> data/eurosat/raw
+[CONVERT] Using existing RGB conversion at data/eurosat/rgb_from_allbands
+==========================
+Dataset: eurosat
+Type: ImageFolder
+Classes: 10
+Train Images: 19317
+Validation Images: 4139
+Training...
+==========================
+[PREPARED] eurosat: train=data/eurosat/train.jsonl image_root=data/eurosat/rgb_from_allbands
+======================================
+Preparing flower-102.zip
+======================================
+Dataset: flower_102
+Type: TorchVision
+Classes: 102
+Train Images: 5732
+Validation Images: 2457
+Training...D
+==========================
+[PREPARED] flower_102: train=data/flower_102/train.jsonl image_root=/home/mazaveri/hpc-prog/Vipul/data/flower_102/raw/jpg
+======================================
+Preparing food-101.zip
+======================================
+[EXTRACT] data/food-101.zip -> data/food_101/raw
+==========================
+Dataset: food101
+Type: TorchVisionLocal
+Classes: 101
+Train Images: 75750
+Validation Images: 25250
+Training...
+==========================
+[PREPARED] food101: train=data/food_101/train.jsonl image_root=data/food_101/raw/images
+======================================
+Preparing caltech-101.zip
+======================================
+[EXTRACT] data/caltech-101.zip -> data/caltech_101/raw
+[CALTECH101] Dataset root: data/caltech_101/raw/caltech-101
+[CALTECH101] Classes found: 102
+[WARNING] Expected 101 Caltech-101 classes, but found 102
+[CALTECH101] Prepared 6352 train / 2792 validation images
+==========================
+Dataset: caltech101
+Type: ImageFolderLocal
+Classes: 102
+Train Images: 6352
+Validation Images: 2792
+Training...
+==========================
+[PREPARED] caltech101: train=data/caltech_101/train.jsonl image_root=data/caltech_101/raw/caltech-101
+= ===========================================================
+Dataset Preparation Completed Successfully!
+============================================================
+===========================================================
+Job Finished
+Job ID    : 29356
+Node      : node2
+Date      : 13:35:17
+===========================================================

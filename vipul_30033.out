@@ -1,0 +1,47 @@
+============================================================
+Job Started
+Job ID    : 30033
+Node      : node2
+Date      : Thu Aug 27 04:18:23 PM IST 2026
+Time     : 16:18:23
+============================================================
+
+============================================================
+Python Environment
+============================================================
+Python : /home/mazaveri/.conda/envs/fedrsclip/bin/python
+Python 3.10.20
+Python executable: /home/mazaveri/.conda/envs/fedrsclip/bin/python
+Torch: /home/mazaveri/.conda/envs/fedrsclip/lib/python3.10/site-packages/torch/__init__.py
+Torch version: 2.13.0+cu130
+CUDA: True
+CUDA version: 13.0
+GPU: NVIDIA H100 NVL
+open_clip version: 3.3.0
+
+Current Directory:
+/home/mazaveri/hpc-prog/Vipul
+Dataset Preparation Started...
+= ===========================================================
+Dataset Preparation Completed Successfully!
+============================================================
+============================================================
+Starting Pretrained Zeroshot Evaluation...
+============================================================
+------------------------------------------------------------
+Dataset : cifar_100
+------------------------------------------------------------
+[INFO] Loading pretrained ViT-B-32 (openai)...
+============================================================
+Dataset       : cifar_100
+Model         : ViT-B-32 (openai)
+Samples       : 10000
+Classes       : 100
+Top-1         : 63.04%
+top5          : 86.88%
+Output        : /home/mazaveri/hpc-prog/Vipul/checkpoints/pretrained_zero_shot/cifar_100/ViT-B-32_openai
+============================================================
+------------------------------------------------------------
+Dataset : eurosat
+------------------------------------------------------------
+[INFO] Loading pretrained ViT-B-32 (openai)...

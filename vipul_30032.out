@@ -1,0 +1,100 @@
+============================================================
+Job Started
+Job ID    : 30032
+Node      : node2
+Date      : Thu Aug 27 04:03:50 PM IST 2026
+Time     : 16:03:50
+============================================================
+
+============================================================
+Python Environment
+============================================================
+Python : /home/mazaveri/.conda/envs/fedrsclip/bin/python
+Python 3.10.20
+Python executable: /home/mazaveri/.conda/envs/fedrsclip/bin/python
+Torch: /home/mazaveri/.conda/envs/fedrsclip/lib/python3.10/site-packages/torch/__init__.py
+Torch version: 2.13.0+cu130
+CUDA: True
+CUDA version: 13.0
+GPU: NVIDIA H100 NVL
+open_clip version: 3.3.0
+
+Current Directory:
+/home/mazaveri/hpc-prog/Vipul
+Dataset Preparation Started...
+======================================
+Preparing cifar-100.zip
+======================================
+[EXTRACT] data/cifar-100.zip -> data/cifar_100/raw
+==========================
+Dataset: cifar_100
+Type: TorchVisionLocal
+Classes: 100
+Train Images: 50000
+Validation Images: 10000
+==========================
+[PREPARED] cifar_100: train=data/cifar_100/train.jsonl image_root=data/cifar_100/prepared_images
+======================================
+Preparing EuroSAT.zip
+======================================
+[EXTRACT] data/EuroSAT.zip -> data/eurosat/raw
+[CONVERT] Using existing RGB conversion at data/eurosat/rgb_from_allbands
+==========================
+Dataset: eurosat
+Type: ImageFolder
+Classes: 10
+Train Images: 9417
+Validation Images: 4139
+==========================
+[PREPARED] eurosat: train=data/eurosat/train.jsonl image_root=/home/mazaveri/hpc-prog/Vipul/data/eurosat/rgb_from_allbands
+======================================
+Preparing flower-102.zip
+======================================
+[EXTRACT] data/flower-102.zip -> data/flower_102/raw
+==========================
+Dataset: flowers_102
+Type: TorchVisionLocal
+Classes: 102
+Train Images: 5732
+Validation Images: 2442
+==========================
+[PREPARED] flowers_102: train=data/flower_102/train.jsonl image_root=data/flower_102/raw/jpg
+======================================
+Preparing food-101.zip
+======================================
+[EXTRACT] data/food-101.zip -> data/food_101/raw
+==========================
+Dataset: food101
+Type: TorchVisionLocal
+Classes: 101
+Train Images: 75750
+Validation Images: 25250
+==========================
+[PREPARED] food101: train=data/food_101/train.jsonl image_root=data/food_101/raw/images
+======================================
+Preparing caltech-101.zip
+======================================
+[EXTRACT] data/caltech-101.zip -> data/caltech_101/raw
+[CALTECH101] Could not find 101 class directories under data/caltech_101/raw
+[WARNING] Unsupported dataset caltech-101: Local dataset preparation failed for 'caltech_101'. Expected a supported local dataset under data/caltech_101/raw.
+[FAILED] caltech-101.zip
+============================================================
+Starting Pretrained Zeroshot Evaluation...
+============================================================
+------------------------------------------------------------
+Dataset : cifar_100
+------------------------------------------------------------
+[INFO] Loading pretrained ViT-B-32 (openai)...
+============================================================
+Dataset       : cifar_100
+Model         : ViT-B-32 (openai)
+Samples       : 10000
+Classes       : 100
+Top-1         : 63.04%
+top5          : 86.88%
+Output        : /home/mazaveri/hpc-prog/Vipul/checkpoints/pretrained_zero_shot/cifar_100/ViT-B-32_openai
+============================================================
+------------------------------------------------------------
+Dataset : eurosat
+------------------------------------------------------------
+[INFO] Loading pretrained ViT-B-32 (openai)...

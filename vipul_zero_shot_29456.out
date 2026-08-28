@@ -1,0 +1,94 @@
+============================================================
+Job Started
+Job ID    : 29456
+Node      : node2
+Date      : Fri Aug 14 04:15:14 PM IST 2026
+Time     : 16:15:14
+============================================================
+
+============================================================
+Python Environment
+============================================================
+Python : /apps/compilers/anaconda3-24.2/bin/python
+Python 3.11.7
+Python executable: /apps/compilers/anaconda3-24.2/bin/python
+Torch: /apps/compilers/anaconda3-24.2/lib/python3.11/site-packages/torch/__init__.py
+Torch version: 2.6.0+cu124
+CUDA: True
+CUDA version: 12.4
+GPU: NVIDIA H100 NVL
+
+Current Directory:
+/home/mazaveri/hpc-prog/Vipul
+============================================================
+Starting Zeroshot Evaluation...
+============================================================
+------------------------------------------------------------
+Dataset : cifar_100
+------------------------------------------------------------
+============================================================
+Dataset       : cifar_100
+Checkpoint    : checkpoints/datasets/cifar_100/ViT-B-32/clip_last.pt
+Samples       : 10000
+Classes       : 100
+Top-1         : 2.24%
+top5          : 8.79%
+Output        : /home/mazaveri/hpc-prog/Vipul/checkpoints/datasets/cifar_100/ViT-B-32/zero_shot
+============================================================
+------------------------------------------------------------
+Dataset : eurosat
+------------------------------------------------------------
+============================================================
+Dataset       : eurosat
+Checkpoint    : checkpoints/datasets/eurosat/ViT-B-32/clip_last.pt
+Samples       : 4139
+Classes       : 10
+Top-1         : 37.42%
+top5          : 86.57%
+Output        : /home/mazaveri/hpc-prog/Vipul/checkpoints/datasets/eurosat/ViT-B-32/zero_shot
+============================================================
+------------------------------------------------------------
+Dataset : flower_102
+------------------------------------------------------------
+============================================================
+Dataset       : flower_102
+Checkpoint    : checkpoints/datasets/flower_102/ViT-B-32/clip_last.pt
+Samples       : 2457
+Classes       : 102
+Top-1         : 0.28%
+top5          : 4.48%
+Output        : /home/mazaveri/hpc-prog/Vipul/checkpoints/datasets/flower_102/ViT-B-32/zero_shot
+============================================================
+------------------------------------------------------------
+Dataset : food_101
+------------------------------------------------------------
+============================================================
+Dataset       : food_101
+Checkpoint    : checkpoints/datasets/food_101/ViT-B-32/clip_last.pt
+Samples       : 25250
+Classes       : 101
+Top-1         : 1.74%
+top5          : 8.21%
+Output        : /home/mazaveri/hpc-prog/Vipul/checkpoints/datasets/food_101/ViT-B-32/zero_shot
+============================================================
+------------------------------------------------------------
+Dataset : caltech_101
+------------------------------------------------------------
+============================================================
+Dataset       : caltech_101
+Checkpoint    : checkpoints/datasets/caltech_101/ViT-B-32/clip_last.pt
+Samples       : 2792
+Classes       : 102
+Top-1         : 0.61%
+top5          : 3.15%
+Output        : /home/mazaveri/hpc-prog/Vipul/checkpoints/datasets/caltech_101/ViT-B-32/zero_shot
+============================================================
+============================================================
+Zeroshot Evaluation Completed Successfully!
+============================================================
+===========================================================
+Job Finished
+Job ID    : 29456
+Node      : node2
+Date      : 
+===========================================================
