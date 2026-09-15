@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=vipul
+#SBATCH --job-name=vipul-viT-B-16_caltech_101
 #SBATCH --partition=gpu
 #SBATCH --output=%x_%j.out
 #SBATCH --error=%x_%j.err
@@ -69,8 +69,8 @@ PROJECT_DIR="$HOME/hpc-prog/Vipul"
 
 cd "$PROJECT_DIR"
 
-echo ""
-echo "Current Directory:"
+# echo ""
+# echo "Current Directory:"
 pwd
 
 # --------------------------------------------------
@@ -81,7 +81,7 @@ pwd
 #     exit 1
 # fi
 
-echo "Dataset Preparation Started..."
+# echo "Dataset Preparation Started..."
 
 # DATASETS=(
 #     "cifar-100.zip"
@@ -138,9 +138,9 @@ echo "Dataset Preparation Started..."
 #     --prepare-only \
 #     --force-extract \
 #     --force-prepare
-echo "= ==========================================================="
-echo "Dataset Preparation Completed Successfully!"
-echo "============================================================"
+# echo "= ==========================================================="
+# echo "Dataset Preparation Completed Successfully!"
+# echo "============================================================"
 
 # echo ""
 # echo "============================================================"
@@ -189,67 +189,69 @@ echo "============================================================"
 echo "Starting Pretrained Zeroshot Evaluation..."
 echo "============================================================"
 
-echo "------------------------------------------------------------"
-echo "Dataset : cifar_100"
-echo "------------------------------------------------------------"
-python -m clip_implement.pretrained_zero_shot \
-    --model ViT-B-32 \
-    --pretrained openai \
-    --dataset cifar_100 \
-    --eval-jsonl data/cifar_100/val.jsonl \
-    --image-root /home/mazaveri/hpc-prog/Vipul/data/cifar_100/prepared_images
+# echo "------------------------------------------------------------"
+# echo "Dataset : cifar_100"
+# echo "------------------------------------------------------------"
+# python -m clip_implement.pretrained_zero_shot \
+#     --model ViT-B-16 \
+#     --pretrained openai \
+#     --dataset cifar_100 \
+#     --eval-jsonl data/cifar_100/val.jsonl \
+#     --image-root /home/mazaveri/hpc-prog/Vipul/data/cifar_100/prepared_images
 
-echo "------------------------------------------------------------"
-echo "Dataset : eurosat"
-echo "------------------------------------------------------------"
+# echo "------------------------------------------------------------"
+# echo "Dataset : eurosat"
+# echo "------------------------------------------------------------"
 
-python -m clip_implement.pretrained_zero_shot \
-    --model ViT-B-32 \
-    --pretrained openai \
-    --dataset eurosat \
-    --eval-jsonl data/eurosat/val.jsonl \
-    --image-root /home/mazaveri/hpc-prog/Vipul/data/eurosat/raw
+# python -m clip_implement.pretrained_zero_shot \
+#     --model ViT-B-16 \
+#     --pretrained openai \
+#     --dataset eurosat \
+#     --eval-jsonl data/eurosat/val.jsonl \
+#     --image-root /home/mazaveri/hpc-prog/Vipul/data/eurosat/rgb_from_allbands \
+#     --classnames /home/mazaveri/hpc-prog/Vipul/data/eurosat/classnames.txt \
+#     --output-dir checkpoints/pretrained_zero_shot/eurosat/ViT-B-16_openai
 
-echo "------------------------------------------------------------"
-echo "Dataset : flower_102"
-echo "------------------------------------------------------------"
+# echo "------------------------------------------------------------"
+# echo "Dataset : flower_102"
+# echo "------------------------------------------------------------"
 
-python -m clip_implement.pretrained_zero_shot \
-    --model ViT-B-32 \
-    --pretrained openai \
-    --dataset flower_102 \
-    --eval-jsonl data/flower_102/val.jsonl \
-    --image-root /home/mazaveri/hpc-prog/Vipul/data/flower_102/raw/jpg
+# python -m clip_implement.pretrained_zero_shot \
+#     --model ViT-B-16 \
+#     --pretrained openai \
+#     --dataset flower_102 \
+#     --eval-jsonl data/flower_102/val.jsonl \
+#     --image-root /home/mazaveri/hpc-prog/Vipul/data/flower_102/raw/jpg
 
-echo "------------------------------------------------------------"
-echo "Dataset : food_101"
-echo "------------------------------------------------------------"
+# echo "------------------------------------------------------------"
+# echo "Dataset : food_101"
+# echo "------------------------------------------------------------"
 
-python -m clip_implement.pretrained_zero_shot \
-    --model ViT-B-32 \
-    --pretrained openai \
-    --dataset food_101 \
-    --eval-jsonl data/food_101/val.jsonl \
-    --image-root /home/mazaveri/hpc-prog/Vipul/data/food_101/raw/images
+# python -m clip_implement.pretrained_zero_shot \
+#     --model ViT-B-16 \
+#     --pretrained openai \
+#     --dataset food_101 \
+#     --eval-jsonl data/food_101/val.jsonl \
+#     --image-root /home/mazaveri/hpc-prog/Vipul/data/food_101/raw/images
 
 echo "------------------------------------------------------------"
 echo "Dataset : caltech_101"
 echo "------------------------------------------------------------"
 
 python -m clip_implement.pretrained_zero_shot \
-    --model ViT-B-32 \
+    --model ViT-B-16 \
     --pretrained openai \
     --dataset caltech_101 \
     --eval-jsonl data/caltech_101/val.jsonl \
-    --image-root /home/mazaveri/hpc-prog/Vipul/data/caltech_101/raw/caltech-101
+    --image-root /home/mazaveri/hpc-prog/Vipul/data/caltech_101/raw/caltech-101/101_ObjectCategories
 
 echo "============================================================"
 echo "Pretrained Zeroshot Evaluation Completed Successfully!"
 echo "============================================================"
 
-# echo "============================================================"
-# echo "starting generate research figures..."
-# echo "============================================================"
+echo "============================================================"
+echo "starting generate research figures..."
+echo "============================================================"
 
 # python scripts/generate_research_figure.py \
 #   --checkpoint checkpoints/uc_merced/clip_last.pt \
@@ -284,9 +286,9 @@ echo "============================================================"
 # echo "CLip_Dashboard Generation Completed Successfully!"
 # echo "============================================================"
 
-echo "============================================================"
-echo "Starting CLip_Evaluation_Dashboard Generation for all classes..."
-echo "============================================================"
+# echo "============================================================"
+# echo "Starting CLip_Evaluation_Dashboard Generation for all classes..."
+# echo "============================================================"
 
 # # python scripts/generate_evaluation_dashboard.py \
 # #   --metrics checkpoints/uc_merced/reports/metrics.csv \
@@ -296,11 +298,11 @@ echo "============================================================"
 # #   --output-dir checkpoints/uc_merced/evaluation_dashboard
 
  python scripts/generate_evaluation_dashboard.py --skip-trained
- python scripts/generate_evaluation_dashboard.py --skip-pretrained
+#  python scripts/generate_evaluation_dashboard.py --skip-pretrained
 
-echo "============================================================"
-echo "CLip_Dashboard Generation for all classes Completed Successfully!"
-echo "============================================================"
+# echo "============================================================"
+# echo "CLip_Dashboard Generation for all classes Completed Successfully!"
+# echo "============================================================"
 
 echo "==========================================================="
 echo "Job Finished"

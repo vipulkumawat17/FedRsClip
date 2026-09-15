@@ -1,0 +1,2 @@
+/home/mazaveri/.conda/envs/fedrsclip/lib/python3.10/site-packages/open_clip/factory.py:450: UserWarning: QuickGELU mismatch between final model config (quick_gelu=False) and pretrained tag 'openai' (quick_gelu=True).
+  warnings.warn(
