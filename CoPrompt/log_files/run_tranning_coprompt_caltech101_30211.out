@@ -1,0 +1,563 @@
+Using DATA root: /home/mazaveri/hpc-prog/Vipul/data
+Dataset config:  configs/datasets/caltech101.yaml
+Load Epochs: 8
+Setting fixed seed: 1
+***************
+** Arguments **
+***************
+backbone: 
+config_file: configs/trainers/coprompt.yaml
+dataset_config_file: configs/datasets/caltech101.yaml
+eval_only: False
+head: 
+load_epoch: None
+model_dir: 
+no_train: False
+opts: ['DATASET.NUM_SHOTS', '16', 'DATASET.SUBSAMPLE_CLASSES', 'base']
+output_dir: output/CoPrompt/train_base/caltech101/shots_16/CoPrompt/coprompt/seed1
+pre_train_exp_name: 
+resume: 
+root: /home/mazaveri/hpc-prog/Vipul/data
+seed: 1
+source_domains: None
+target_domains: None
+trainer: CoPrompt
+transforms: None
+************
+** Config **
+************
+DATALOADER:
+  K_TRANSFORMS: 2
+  NUM_WORKERS: 8
+  RETURN_IMG0: False
+  TEST:
+    BATCH_SIZE: 100
+    SAMPLER: SequentialSampler
+  TRAIN_U:
+    BATCH_SIZE: 32
+    N_DOMAIN: 0
+    N_INS: 16
+    SAME_AS_X: True
+    SAMPLER: RandomSampler
+  TRAIN_X:
+    BATCH_SIZE: 4
+    N_DOMAIN: 0
+    N_INS: 16
+    SAMPLER: RandomSampler
+DATASET:
+  ALL_AS_UNLABELED: False
+  CIFAR_C_LEVEL: 1
+  CIFAR_C_TYPE: 
+  NAME: PreparedCaltech101
+  NUM_LABELED: -1
+  NUM_SHOTS: 16
+  ROOT: /home/mazaveri/hpc-prog/Vipul/data
+  SOURCE_DOMAINS: ()
+  STL10_FOLD: -1
+  SUBSAMPLE_CLASSES: base
+  TARGET_DOMAINS: ()
+  VAL_PERCENT: 0.1
+INPUT:
+  COLORJITTER_B: 0.4
+  COLORJITTER_C: 0.4
+  COLORJITTER_H: 0.1
+  COLORJITTER_S: 0.4
+  CROP_PADDING: 4
+  CUTOUT_LEN: 16
+  CUTOUT_N: 1
+  GB_K: 21
+  GB_P: 0.5
+  GN_MEAN: 0.0
+  GN_STD: 0.15
+  INTERPOLATION: bicubic
+  NO_TRANSFORM: False
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+  RANDAUGMENT_M: 10
+  RANDAUGMENT_N: 2
+  RGS_P: 0.2
+  RRCROP_SCALE: (0.08, 1.0)
+  SIZE: (224, 224)
+  TRANSFORMS: ('randaugment', 'normalize')
+MODEL:
+  BACKBONE:
+    NAME: ViT-B/16
+    PRETRAINED: True
+  HEAD:
+    ACTIVATION: relu
+    BN: True
+    DROPOUT: 0.0
+    HIDDEN_LAYERS: ()
+    NAME: 
+  INIT_WEIGHTS: 
+OPTIM:
+  ADAM_BETA1: 0.9
+  ADAM_BETA2: 0.999
+  BASE_LR_MULT: 0.1
+  GAMMA: 0.1
+  LR: 0.0035
+  LR_SCHEDULER: cosine
+  MAX_EPOCH: 8
+  MOMENTUM: 0.9
+  NAME: sgd
+  NEW_LAYERS: ()
+  RMSPROP_ALPHA: 0.99
+  SGD_DAMPNING: 0
+  SGD_NESTEROV: False
+  STAGED_LR: False
+  STEPSIZE: (-1,)
+  WARMUP_CONS_LR: 1e-05
+  WARMUP_EPOCH: 1
+  WARMUP_MIN_LR: 1e-05
+  WARMUP_RECOUNT: True
+  WARMUP_TYPE: constant
+  WEIGHT_DECAY: 0.0005
+OUTPUT_DIR: output/CoPrompt/train_base/caltech101/shots_16/CoPrompt/coprompt/seed1
+RESUME: 
+SEED: 1
+TEST:
+  COMPUTE_CMAT: False
+  EVALUATOR: Classification
+  FINAL_MODEL: last_step
+  NO_TEST: False
+  PER_CLASS_RESULT: False
+  SPLIT: test
+TRAIN:
+  CHECKPOINT_FREQ: 0
+  COUNT_ITER: train_x
+  PRINT_FREQ: 20
+TRAINER:
+  CDAC:
+    CLASS_LR_MULTI: 10
+    P_THRESH: 0.95
+    RAMPUP_COEF: 30
+    RAMPUP_ITRS: 1000
+    STRONG_TRANSFORMS: ()
+    TOPK_MATCH: 5
+  CROSSGRAD:
+    ALPHA_D: 0.5
+    ALPHA_F: 0.5
+    EPS_D: 1.0
+    EPS_F: 1.0
+  CoPrompt:
+    CTX_INIT: a photo of a
+    N_CTX: 4
+    PREC: fp16
+    PROMPT_DEPTH: 12
+  DAEL:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 0.5
+  DAELDG:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 0.5
+  DDAIG:
+    ALPHA: 0.5
+    CLAMP: False
+    CLAMP_MAX: 1.0
+    CLAMP_MIN: -1.0
+    G_ARCH: 
+    LMDA: 0.3
+    WARMUP: 0
+  DISTILL: cosine
+  DOMAINMIX:
+    ALPHA: 1.0
+    BETA: 1.0
+    TYPE: crossdomain
+  ENTMIN:
+    LMDA: 0.001
+  FIXMATCH:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 1.0
+  M3SDA:
+    LMDA: 0.5
+    N_STEP_F: 4
+  MCD:
+    N_STEP_F: 4
+  MEANTEACHER:
+    EMA_ALPHA: 0.999
+    RAMPUP: 5
+    WEIGHT_U: 1.0
+  MIXMATCH:
+    MIXUP_BETA: 0.75
+    RAMPUP: 20000
+    TEMP: 2.0
+    WEIGHT_U: 100.0
+  MME:
+    LMDA: 0.1
+  NAME: CoPrompt
+  SE:
+    CONF_THRE: 0.95
+    EMA_ALPHA: 0.999
+    RAMPUP: 300
+  W: 4.0
+USE_CUDA: True
+VERBOSE: True
+VERSION: 1
+Collecting env info ...
+Loading trainer: CoPrompt
+Loading dataset: PreparedCaltech101
+Loading preprocessed few-shot data from /home/mazaveri/hpc-prog/Vipul/data/caltech_101/split_fewshot/shot_16-seed_1.pkl
+SUBSAMPLE BASE CLASSES!
+Building transform_train
++ resize to 224x224
++ randaugment (n=2, m=10)
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+Building transform_test
++ resize the smaller edge to 224
++ 224x224 center crop
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+---------  ------------------
+Dataset    PreparedCaltech101
+# classes  51
+# train_x  816
+# val      204
+# test     821
+---------  ------------------
+Loading CLIP (backbone: ViT-B/16)
+Loading original CLIP for distillation
+
+Getting textual features as CLIP's classifier.
+Building custom CLIP
+CoPrompt design: Multi-modal Prompt Learning
+Initial context: "a photo of a"
+Number of CoPrompt context words (tokens): 4
+Prompts: ['a photo of a Faces.', 'a photo of a Faces easy.', 'a photo of a Leopards.', 'a photo of a Motorbikes.', 'a photo of a accordion.', 'a photo of a airplanes.', 'a photo of a anchor.', 'a photo of a ant.', 'a photo of a barrel.', 'a photo of a bass.', 'a photo of a beaver.', 'a photo of a binocular.', 'a photo of a bonsai.', 'a photo of a brain.', 'a photo of a brontosaurus.', 'a photo of a buddha.', 'a photo of a butterfly.', 'a photo of a camera.', 'a photo of a cannon.', 'a photo of a car side.', 'a photo of a ceiling fan.', 'a photo of a cellphone.', 'a photo of a chair.', 'a photo of a chandelier.', 'a photo of a cougar body.', 'a photo of a cougar face.', 'a photo of a crab.', 'a photo of a crayfish.', 'a photo of a crocodile.', 'a photo of a crocodile head.', 'a photo of a cup.', 'a photo of a dalmatian.', 'a photo of a dollar bill.', 'a photo of a dolphin.', 'a photo of a dragonfly.', 'a photo of a electric guitar.', 'a photo of a elephant.', 'a photo of a emu.', 'a photo of a euphonium.', 'a photo of a ewer.', 'a photo of a ferry.', 'a photo of a flamingo.', 'a photo of a flamingo head.', 'a photo of a garfield.', 'a photo of a gerenuk.', 'a photo of a gramophone.', 'a photo of a grand piano.', 'a photo of a hawksbill.', 'a photo of a headphone.', 'a photo of a hedgehog.', 'a photo of a helicopter.']
+Turning off gradients in both the image and the text encoder
+Parameters to be updated: {'prompt_learner.compound_prompt_projections.6.weight', 'prompt_learner.proj.weight', 'prompt_learner.compound_prompts_text.5', 'prompt_learner.compound_prompts_text.3', 'prompt_learner.compound_prompt_projections.9.bias', 'prompt_learner.compound_prompt_projections.7.weight', 'prompt_learner.compound_prompts_text.8', 'prompt_learner.compound_prompt_projections.10.bias', 'prompt_learner.compound_prompts_text.0', 'prompt_learner.compound_prompt_projections.2.bias', 'prompt_learner.compound_prompt_projections.1.bias', 'prompt_learner.proj.bias', 'adapter_image.fc.0.weight', 'prompt_learner.compound_prompt_projections.1.weight', 'prompt_learner.compound_prompt_projections.4.bias', 'prompt_learner.compound_prompt_projections.5.bias', 'prompt_learner.compound_prompt_projections.4.weight', 'prompt_learner.compound_prompt_projections.5.weight', 'prompt_learner.compound_prompt_projections.9.weight', 'prompt_learner.compound_prompt_projections.10.weight', 'prompt_learner.ctx', 'prompt_learner.compound_prompt_projections.0.weight', 'prompt_learner.compound_prompt_projections.6.bias', 'prompt_learner.compound_prompt_projections.8.weight', 'prompt_learner.compound_prompts_text.2', 'prompt_learner.compound_prompt_projections.0.bias', 'prompt_learner.compound_prompts_text.1', 'adapter_text.fc.0.weight', 'prompt_learner.compound_prompt_projections.7.bias', 'prompt_learner.compound_prompt_projections.3.weight', 'prompt_learner.compound_prompt_projections.3.bias', 'prompt_learner.compound_prompts_text.4', 'prompt_learner.compound_prompts_text.10', 'prompt_learner.compound_prompts_text.6', 'adapter_text.fc.2.weight', 'adapter_image.fc.2.weight', 'prompt_learner.compound_prompts_text.9', 'prompt_learner.compound_prompt_projections.2.weight', 'prompt_learner.compound_prompt_projections.8.bias', 'prompt_learner.compound_prompts_text.7'}
+Loading evaluator: Classification
+No checkpoint found, train from scratch
+Initialize tensorboard (log_dir=output/CoPrompt/train_base/caltech101/shots_16/CoPrompt/coprompt/seed1/tensorboard)
+epoch [1/8] batch [20/204] time 0.059 (0.117) data 0.000 (0.015) loss 1.5742 (2.0417) lr 1.0000e-05 eta 0:03:08
+epoch [1/8] batch [40/204] time 0.061 (0.088) data 0.000 (0.008) loss 1.1670 (1.8180) lr 1.0000e-05 eta 0:02:20
+epoch [1/8] batch [60/204] time 0.066 (0.078) data 0.000 (0.005) loss 1.2607 (1.8105) lr 1.0000e-05 eta 0:02:02
+epoch [1/8] batch [80/204] time 0.063 (0.073) data 0.000 (0.004) loss 1.8340 (1.7695) lr 1.0000e-05 eta 0:01:53
+epoch [1/8] batch [100/204] time 0.061 (0.070) data 0.000 (0.003) loss 2.6562 (1.7635) lr 1.0000e-05 eta 0:01:47
+epoch [1/8] batch [120/204] time 0.059 (0.068) data 0.000 (0.003) loss 2.3906 (1.7486) lr 1.0000e-05 eta 0:01:42
+epoch [1/8] batch [140/204] time 0.051 (0.066) data 0.000 (0.002) loss 1.9463 (1.7441) lr 1.0000e-05 eta 0:01:39
+epoch [1/8] batch [160/204] time 0.055 (0.065) data 0.000 (0.002) loss 1.3164 (1.7168) lr 1.0000e-05 eta 0:01:36
+epoch [1/8] batch [180/204] time 0.059 (0.064) data 0.000 (0.002) loss 1.7246 (1.7140) lr 1.0000e-05 eta 0:01:33
+epoch [1/8] batch [200/204] time 0.060 (0.063) data 0.000 (0.002) loss 1.6992 (1.7036) lr 1.0000e-05 eta 0:01:30
+epoch [2/8] batch [20/204] time 0.058 (0.069) data 0.000 (0.014) loss 1.6895 (1.3855) lr 3.5000e-03 eta 0:01:37
+epoch [2/8] batch [40/204] time 0.054 (0.063) data 0.000 (0.007) loss 1.1357 (1.3021) lr 3.5000e-03 eta 0:01:27
+epoch [2/8] batch [60/204] time 0.059 (0.061) data 0.000 (0.005) loss 1.2686 (1.2212) lr 3.5000e-03 eta 0:01:22
+epoch [2/8] batch [80/204] time 0.054 (0.060) data 0.000 (0.004) loss 1.3789 (1.2131) lr 3.5000e-03 eta 0:01:20
+epoch [2/8] batch [100/204] time 0.062 (0.059) data 0.000 (0.003) loss 3.0078 (1.2443) lr 3.5000e-03 eta 0:01:18
+epoch [2/8] batch [120/204] time 0.063 (0.059) data 0.000 (0.002) loss 0.8105 (1.2385) lr 3.5000e-03 eta 0:01:16
+epoch [2/8] batch [140/204] time 0.054 (0.059) data 0.000 (0.002) loss 0.9727 (1.2253) lr 3.5000e-03 eta 0:01:16
+epoch [2/8] batch [160/204] time 0.058 (0.059) data 0.000 (0.002) loss 1.0488 (1.2122) lr 3.5000e-03 eta 0:01:14
+epoch [2/8] batch [180/204] time 0.062 (0.059) data 0.000 (0.002) loss 1.1152 (1.2029) lr 3.5000e-03 eta 0:01:13
+epoch [2/8] batch [200/204] time 0.051 (0.059) data 0.000 (0.001) loss 1.2471 (1.1999) lr 3.5000e-03 eta 0:01:12
+epoch [3/8] batch [20/204] time 0.049 (0.068) data 0.000 (0.013) loss 0.9058 (1.1935) lr 3.3668e-03 eta 0:01:21
+epoch [3/8] batch [40/204] time 0.061 (0.062) data 0.000 (0.006) loss 1.0371 (1.0711) lr 3.3668e-03 eta 0:01:13
+epoch [3/8] batch [60/204] time 0.065 (0.060) data 0.000 (0.004) loss 0.8916 (1.0427) lr 3.3668e-03 eta 0:01:09
+epoch [3/8] batch [80/204] time 0.050 (0.058) data 0.000 (0.003) loss 0.9199 (1.0469) lr 3.3668e-03 eta 0:01:06
+epoch [3/8] batch [100/204] time 0.049 (0.058) data 0.000 (0.003) loss 0.9204 (1.0230) lr 3.3668e-03 eta 0:01:05
+epoch [3/8] batch [120/204] time 0.046 (0.058) data 0.000 (0.002) loss 1.2080 (1.0206) lr 3.3668e-03 eta 0:01:03
+epoch [3/8] batch [140/204] time 0.064 (0.057) data 0.000 (0.002) loss 0.8721 (1.0198) lr 3.3668e-03 eta 0:01:02
+epoch [3/8] batch [160/204] time 0.046 (0.057) data 0.000 (0.002) loss 1.2471 (1.0427) lr 3.3668e-03 eta 0:01:00
+epoch [3/8] batch [180/204] time 0.048 (0.057) data 0.000 (0.002) loss 0.9980 (1.0455) lr 3.3668e-03 eta 0:00:59
+epoch [3/8] batch [200/204] time 0.047 (0.056) data 0.000 (0.001) loss 0.4600 (1.0526) lr 3.3668e-03 eta 0:00:57
+epoch [4/8] batch [20/204] time 0.050 (0.068) data 0.000 (0.012) loss 0.7080 (1.0734) lr 2.9874e-03 eta 0:01:07
+epoch [4/8] batch [40/204] time 0.051 (0.060) data 0.000 (0.006) loss 0.8242 (1.0133) lr 2.9874e-03 eta 0:00:58
+epoch [4/8] batch [60/204] time 0.052 (0.058) data 0.000 (0.004) loss 1.4590 (1.0424) lr 2.9874e-03 eta 0:00:55
+epoch [4/8] batch [80/204] time 0.047 (0.057) data 0.000 (0.003) loss 0.7241 (1.0151) lr 2.9874e-03 eta 0:00:53
+epoch [4/8] batch [100/204] time 0.052 (0.056) data 0.000 (0.003) loss 2.1699 (1.0077) lr 2.9874e-03 eta 0:00:51
+epoch [4/8] batch [120/204] time 0.054 (0.056) data 0.000 (0.002) loss 1.4688 (1.0077) lr 2.9874e-03 eta 0:00:50
+epoch [4/8] batch [140/204] time 0.054 (0.056) data 0.000 (0.002) loss 0.9634 (0.9929) lr 2.9874e-03 eta 0:00:49
+epoch [4/8] batch [160/204] time 0.054 (0.056) data 0.000 (0.002) loss 2.0859 (0.9991) lr 2.9874e-03 eta 0:00:48
+epoch [4/8] batch [180/204] time 0.051 (0.056) data 0.000 (0.001) loss 1.0029 (0.9887) lr 2.9874e-03 eta 0:00:47
+epoch [4/8] batch [200/204] time 0.062 (0.056) data 0.000 (0.001) loss 0.7979 (0.9947) lr 2.9874e-03 eta 0:00:45
+epoch [5/8] batch [20/204] time 0.050 (0.067) data 0.000 (0.013) loss 0.7051 (0.8844) lr 2.4197e-03 eta 0:00:53
+epoch [5/8] batch [40/204] time 0.054 (0.060) data 0.000 (0.007) loss 0.9419 (1.0018) lr 2.4197e-03 eta 0:00:46
+epoch [5/8] batch [60/204] time 0.051 (0.058) data 0.000 (0.004) loss 0.6699 (0.9942) lr 2.4197e-03 eta 0:00:43
+epoch [5/8] batch [80/204] time 0.051 (0.057) data 0.000 (0.003) loss 0.6587 (0.9999) lr 2.4197e-03 eta 0:00:41
+epoch [5/8] batch [100/204] time 0.065 (0.056) data 0.000 (0.003) loss 0.7861 (0.9940) lr 2.4197e-03 eta 0:00:39
+epoch [5/8] batch [120/204] time 0.047 (0.055) data 0.000 (0.002) loss 0.8281 (0.9880) lr 2.4197e-03 eta 0:00:38
+epoch [5/8] batch [140/204] time 0.051 (0.055) data 0.000 (0.002) loss 1.0000 (0.9898) lr 2.4197e-03 eta 0:00:36
+epoch [5/8] batch [160/204] time 0.055 (0.054) data 0.000 (0.002) loss 1.7891 (1.0096) lr 2.4197e-03 eta 0:00:35
+epoch [5/8] batch [180/204] time 0.050 (0.054) data 0.000 (0.002) loss 0.6143 (0.9997) lr 2.4197e-03 eta 0:00:34
+epoch [5/8] batch [200/204] time 0.046 (0.054) data 0.000 (0.001) loss 0.7739 (1.0147) lr 2.4197e-03 eta 0:00:33
+epoch [6/8] batch [20/204] time 0.063 (0.071) data 0.000 (0.012) loss 1.0010 (0.8609) lr 1.7500e-03 eta 0:00:41
+epoch [6/8] batch [40/204] time 0.059 (0.065) data 0.000 (0.006) loss 0.5503 (0.9053) lr 1.7500e-03 eta 0:00:36
+epoch [6/8] batch [60/204] time 0.054 (0.062) data 0.000 (0.004) loss 0.6294 (0.9046) lr 1.7500e-03 eta 0:00:34
+epoch [6/8] batch [80/204] time 0.057 (0.061) data 0.000 (0.003) loss 0.8799 (0.9094) lr 1.7500e-03 eta 0:00:32
+epoch [6/8] batch [100/204] time 0.057 (0.060) data 0.000 (0.002) loss 0.6577 (0.9077) lr 1.7500e-03 eta 0:00:30
+epoch [6/8] batch [120/204] time 0.056 (0.060) data 0.000 (0.002) loss 2.3887 (0.9177) lr 1.7500e-03 eta 0:00:29
+epoch [6/8] batch [140/204] time 0.057 (0.059) data 0.000 (0.002) loss 1.3457 (0.9153) lr 1.7500e-03 eta 0:00:27
+epoch [6/8] batch [160/204] time 0.064 (0.059) data 0.000 (0.002) loss 0.8018 (0.9125) lr 1.7500e-03 eta 0:00:26
+epoch [6/8] batch [180/204] time 0.063 (0.059) data 0.000 (0.001) loss 1.1523 (0.9130) lr 1.7500e-03 eta 0:00:25
+epoch [6/8] batch [200/204] time 0.052 (0.059) data 0.000 (0.001) loss 1.4453 (0.9085) lr 1.7500e-03 eta 0:00:24
+epoch [7/8] batch [20/204] time 0.070 (0.068) data 0.002 (0.012) loss 0.4980 (0.8660) lr 1.0803e-03 eta 0:00:26
+epoch [7/8] batch [40/204] time 0.056 (0.062) data 0.000 (0.006) loss 0.9155 (0.9552) lr 1.0803e-03 eta 0:00:22
+epoch [7/8] batch [60/204] time 0.057 (0.060) data 0.000 (0.004) loss 0.9121 (0.9303) lr 1.0803e-03 eta 0:00:20
+epoch [7/8] batch [80/204] time 0.055 (0.060) data 0.000 (0.003) loss 1.0146 (0.9102) lr 1.0803e-03 eta 0:00:19
+epoch [7/8] batch [100/204] time 0.061 (0.059) data 0.000 (0.002) loss 1.1387 (0.9237) lr 1.0803e-03 eta 0:00:18
+epoch [7/8] batch [120/204] time 0.056 (0.059) data 0.000 (0.002) loss 1.0654 (0.9061) lr 1.0803e-03 eta 0:00:16
+epoch [7/8] batch [140/204] time 0.068 (0.059) data 0.000 (0.002) loss 0.9844 (0.9126) lr 1.0803e-03 eta 0:00:15
+epoch [7/8] batch [160/204] time 0.062 (0.058) data 0.000 (0.002) loss 0.6431 (0.9178) lr 1.0803e-03 eta 0:00:14
+epoch [7/8] batch [180/204] time 0.058 (0.058) data 0.000 (0.001) loss 1.6719 (0.9255) lr 1.0803e-03 eta 0:00:13
+epoch [7/8] batch [200/204] time 0.051 (0.058) data 0.000 (0.001) loss 0.7075 (0.9352) lr 1.0803e-03 eta 0:00:12
+epoch [8/8] batch [20/204] time 0.059 (0.069) data 0.000 (0.013) loss 0.7798 (0.8914) lr 5.1256e-04 eta 0:00:12
+epoch [8/8] batch [40/204] time 0.053 (0.063) data 0.000 (0.006) loss 1.1660 (0.9118) lr 5.1256e-04 eta 0:00:10
+epoch [8/8] batch [60/204] time 0.052 (0.061) data 0.000 (0.004) loss 0.8887 (0.8963) lr 5.1256e-04 eta 0:00:08
+epoch [8/8] batch [80/204] time 0.060 (0.060) data 0.000 (0.003) loss 1.2969 (0.8801) lr 5.1256e-04 eta 0:00:07
+epoch [8/8] batch [100/204] time 0.052 (0.059) data 0.000 (0.003) loss 0.4939 (0.8887) lr 5.1256e-04 eta 0:00:06
+epoch [8/8] batch [120/204] time 0.055 (0.059) data 0.000 (0.002) loss 0.8784 (0.8952) lr 5.1256e-04 eta 0:00:04
+epoch [8/8] batch [140/204] time 0.056 (0.058) data 0.000 (0.002) loss 0.7007 (0.8933) lr 5.1256e-04 eta 0:00:03
+epoch [8/8] batch [160/204] time 0.061 (0.058) data 0.000 (0.002) loss 1.0967 (0.9086) lr 5.1256e-04 eta 0:00:02
+epoch [8/8] batch [180/204] time 0.054 (0.058) data 0.000 (0.002) loss 1.1016 (0.9174) lr 5.1256e-04 eta 0:00:01
+epoch [8/8] batch [200/204] time 0.063 (0.058) data 0.000 (0.001) loss 0.8086 (0.9140) lr 5.1256e-04 eta 0:00:00
+Checkpoint saved to output/CoPrompt/train_base/caltech101/shots_16/CoPrompt/coprompt/seed1/MultiModalPromptLearner/model.pth.tar-8
+Finish training
+Deploy the last-epoch model
+Evaluate on the *test* set
+=> result
+* total: 821
+* correct: 764
+* accuracy: 93.1%
+* error: 6.9%
+* macro_f1: 97.4%
+Elapsed: 0:01:39
+Runing the first phase job and save the output to output/CoPrompt/test_new/caltech101/shots_16/CoPrompt/coprompt/seed1
+Setting fixed seed: 1
+***************
+** Arguments **
+***************
+backbone: 
+config_file: configs/trainers/coprompt.yaml
+dataset_config_file: configs/datasets/caltech101.yaml
+eval_only: True
+head: 
+load_epoch: 8
+model_dir: output/CoPrompt/train_base/caltech101/shots_16/CoPrompt/coprompt/seed1
+no_train: False
+opts: ['DATASET.NUM_SHOTS', '16', 'DATASET.SUBSAMPLE_CLASSES', 'new']
+output_dir: output/CoPrompt/test_new/caltech101/shots_16/CoPrompt/coprompt/seed1
+pre_train_exp_name: 
+resume: 
+root: /home/mazaveri/hpc-prog/Vipul/data
+seed: 1
+source_domains: None
+target_domains: None
+trainer: CoPrompt
+transforms: None
+************
+** Config **
+************
+DATALOADER:
+  K_TRANSFORMS: 2
+  NUM_WORKERS: 8
+  RETURN_IMG0: False
+  TEST:
+    BATCH_SIZE: 100
+    SAMPLER: SequentialSampler
+  TRAIN_U:
+    BATCH_SIZE: 32
+    N_DOMAIN: 0
+    N_INS: 16
+    SAME_AS_X: True
+    SAMPLER: RandomSampler
+  TRAIN_X:
+    BATCH_SIZE: 4
+    N_DOMAIN: 0
+    N_INS: 16
+    SAMPLER: RandomSampler
+DATASET:
+  ALL_AS_UNLABELED: False
+  CIFAR_C_LEVEL: 1
+  CIFAR_C_TYPE: 
+  NAME: PreparedCaltech101
+  NUM_LABELED: -1
+  NUM_SHOTS: 16
+  ROOT: /home/mazaveri/hpc-prog/Vipul/data
+  SOURCE_DOMAINS: ()
+  STL10_FOLD: -1
+  SUBSAMPLE_CLASSES: new
+  TARGET_DOMAINS: ()
+  VAL_PERCENT: 0.1
+INPUT:
+  COLORJITTER_B: 0.4
+  COLORJITTER_C: 0.4
+  COLORJITTER_H: 0.1
+  COLORJITTER_S: 0.4
+  CROP_PADDING: 4
+  CUTOUT_LEN: 16
+  CUTOUT_N: 1
+  GB_K: 21
+  GB_P: 0.5
+  GN_MEAN: 0.0
+  GN_STD: 0.15
+  INTERPOLATION: bicubic
+  NO_TRANSFORM: False
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+  RANDAUGMENT_M: 10
+  RANDAUGMENT_N: 2
+  RGS_P: 0.2
+  RRCROP_SCALE: (0.08, 1.0)
+  SIZE: (224, 224)
+  TRANSFORMS: ('randaugment', 'normalize')
+MODEL:
+  BACKBONE:
+    NAME: ViT-B/16
+    PRETRAINED: True
+  HEAD:
+    ACTIVATION: relu
+    BN: True
+    DROPOUT: 0.0
+    HIDDEN_LAYERS: ()
+    NAME: 
+  INIT_WEIGHTS: 
+OPTIM:
+  ADAM_BETA1: 0.9
+  ADAM_BETA2: 0.999
+  BASE_LR_MULT: 0.1
+  GAMMA: 0.1
+  LR: 0.0035
+  LR_SCHEDULER: cosine
+  MAX_EPOCH: 8
+  MOMENTUM: 0.9
+  NAME: sgd
+  NEW_LAYERS: ()
+  RMSPROP_ALPHA: 0.99
+  SGD_DAMPNING: 0
+  SGD_NESTEROV: False
+  STAGED_LR: False
+  STEPSIZE: (-1,)
+  WARMUP_CONS_LR: 1e-05
+  WARMUP_EPOCH: 1
+  WARMUP_MIN_LR: 1e-05
+  WARMUP_RECOUNT: True
+  WARMUP_TYPE: constant
+  WEIGHT_DECAY: 0.0005
+OUTPUT_DIR: output/CoPrompt/test_new/caltech101/shots_16/CoPrompt/coprompt/seed1
+RESUME: 
+SEED: 1
+TEST:
+  COMPUTE_CMAT: False
+  EVALUATOR: Classification
+  FINAL_MODEL: last_step
+  NO_TEST: False
+  PER_CLASS_RESULT: False
+  SPLIT: test
+TRAIN:
+  CHECKPOINT_FREQ: 0
+  COUNT_ITER: train_x
+  PRINT_FREQ: 20
+TRAINER:
+  CDAC:
+    CLASS_LR_MULTI: 10
+    P_THRESH: 0.95
+    RAMPUP_COEF: 30
+    RAMPUP_ITRS: 1000
+    STRONG_TRANSFORMS: ()
+    TOPK_MATCH: 5
+  CROSSGRAD:
+    ALPHA_D: 0.5
+    ALPHA_F: 0.5
+    EPS_D: 1.0
+    EPS_F: 1.0
+  CoPrompt:
+    CTX_INIT: a photo of a
+    N_CTX: 4
+    PREC: fp16
+    PROMPT_DEPTH: 12
+  DAEL:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 0.5
+  DAELDG:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 0.5
+  DDAIG:
+    ALPHA: 0.5
+    CLAMP: False
+    CLAMP_MAX: 1.0
+    CLAMP_MIN: -1.0
+    G_ARCH: 
+    LMDA: 0.3
+    WARMUP: 0
+  DISTILL: cosine
+  DOMAINMIX:
+    ALPHA: 1.0
+    BETA: 1.0
+    TYPE: crossdomain
+  ENTMIN:
+    LMDA: 0.001
+  FIXMATCH:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 1.0
+  M3SDA:
+    LMDA: 0.5
+    N_STEP_F: 4
+  MCD:
+    N_STEP_F: 4
+  MEANTEACHER:
+    EMA_ALPHA: 0.999
+    RAMPUP: 5
+    WEIGHT_U: 1.0
+  MIXMATCH:
+    MIXUP_BETA: 0.75
+    RAMPUP: 20000
+    TEMP: 2.0
+    WEIGHT_U: 100.0
+  MME:
+    LMDA: 0.1
+  NAME: CoPrompt
+  SE:
+    CONF_THRE: 0.95
+    EMA_ALPHA: 0.999
+    RAMPUP: 300
+  W: 4.0
+USE_CUDA: True
+VERBOSE: True
+VERSION: 1
+Collecting env info ...
+Loading trainer: CoPrompt
+Loading dataset: PreparedCaltech101
+Loading preprocessed few-shot data from /home/mazaveri/hpc-prog/Vipul/data/caltech_101/split_fewshot/shot_16-seed_1.pkl
+SUBSAMPLE NEW CLASSES!
+Building transform_train
++ resize to 224x224
++ randaugment (n=2, m=10)
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+Building transform_test
++ resize the smaller edge to 224
++ 224x224 center crop
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+---------  ------------------
+Dataset    PreparedCaltech101
+# classes  50
+# train_x  800
+# val      200
+# test     435
+---------  ------------------
+Loading CLIP (backbone: ViT-B/16)
+Loading original CLIP for distillation
+
+Getting textual features as CLIP's classifier.
+Building custom CLIP
+CoPrompt design: Multi-modal Prompt Learning
+Initial context: "a photo of a"
+Number of CoPrompt context words (tokens): 4
+Prompts: ['a photo of a ibis.', 'a photo of a inline skate.', 'a photo of a joshua tree.', 'a photo of a kangaroo.', 'a photo of a ketch.', 'a photo of a lamp.', 'a photo of a laptop.', 'a photo of a llama.', 'a photo of a lobster.', 'a photo of a lotus.', 'a photo of a mandolin.', 'a photo of a mayfly.', 'a photo of a menorah.', 'a photo of a metronome.', 'a photo of a minaret.', 'a photo of a nautilus.', 'a photo of a octopus.', 'a photo of a okapi.', 'a photo of a pagoda.', 'a photo of a panda.', 'a photo of a pigeon.', 'a photo of a pizza.', 'a photo of a platypus.', 'a photo of a pyramid.', 'a photo of a revolver.', 'a photo of a rhino.', 'a photo of a rooster.', 'a photo of a saxophone.', 'a photo of a schooner.', 'a photo of a scissors.', 'a photo of a scorpion.', 'a photo of a sea horse.', 'a photo of a snoopy.', 'a photo of a soccer ball.', 'a photo of a stapler.', 'a photo of a starfish.', 'a photo of a stegosaurus.', 'a photo of a stop sign.', 'a photo of a strawberry.', 'a photo of a sunflower.', 'a photo of a tick.', 'a photo of a trilobite.', 'a photo of a umbrella.', 'a photo of a watch.', 'a photo of a water lilly.', 'a photo of a wheelchair.', 'a photo of a wild cat.', 'a photo of a windsor chair.', 'a photo of a wrench.', 'a photo of a yin yang.']
+Turning off gradients in both the image and the text encoder
+Parameters to be updated: {'prompt_learner.compound_prompt_projections.0.weight', 'prompt_learner.compound_prompts_text.4', 'prompt_learner.compound_prompt_projections.6.bias', 'prompt_learner.proj.weight', 'prompt_learner.compound_prompt_projections.8.weight', 'prompt_learner.compound_prompts_text.9', 'prompt_learner.compound_prompts_text.2', 'prompt_learner.compound_prompt_projections.0.bias', 'prompt_learner.compound_prompts_text.8', 'prompt_learner.proj.bias', 'prompt_learner.compound_prompt_projections.9.weight', 'adapter_image.fc.2.weight', 'prompt_learner.compound_prompt_projections.4.weight', 'prompt_learner.compound_prompts_text.3', 'prompt_learner.compound_prompts_text.10', 'adapter_text.fc.2.weight', 'prompt_learner.compound_prompt_projections.3.bias', 'adapter_text.fc.0.weight', 'prompt_learner.compound_prompts_text.0', 'prompt_learner.ctx', 'prompt_learner.compound_prompts_text.1', 'prompt_learner.compound_prompts_text.6', 'prompt_learner.compound_prompt_projections.5.bias', 'adapter_image.fc.0.weight', 'prompt_learner.compound_prompt_projections.1.bias', 'prompt_learner.compound_prompt_projections.2.weight', 'prompt_learner.compound_prompt_projections.1.weight', 'prompt_learner.compound_prompt_projections.8.bias', 'prompt_learner.compound_prompt_projections.5.weight', 'prompt_learner.compound_prompt_projections.3.weight', 'prompt_learner.compound_prompt_projections.7.bias', 'prompt_learner.compound_prompt_projections.10.weight', 'prompt_learner.compound_prompt_projections.10.bias', 'prompt_learner.compound_prompt_projections.4.bias', 'prompt_learner.compound_prompts_text.5', 'prompt_learner.compound_prompt_projections.7.weight', 'prompt_learner.compound_prompts_text.7', 'prompt_learner.compound_prompt_projections.2.bias', 'prompt_learner.compound_prompt_projections.6.weight', 'prompt_learner.compound_prompt_projections.9.bias'}
+Loading evaluator: Classification
+Loading weights to MultiModalPromptLearner from "output/CoPrompt/train_base/caltech101/shots_16/CoPrompt/coprompt/seed1/MultiModalPromptLearner/model.pth.tar-8" (epoch = 8)
+Evaluate on the *test* set
+=> result
+* total: 435
+* correct: 414
+* accuracy: 95.2%
+* error: 4.8%
+* macro_f1: 95.3%

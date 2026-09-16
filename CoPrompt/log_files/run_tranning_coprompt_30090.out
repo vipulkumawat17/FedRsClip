@@ -1,0 +1,536 @@
+Using DATA root: /home/mazaveri/hpc-prog/Vipul/data
+Dataset config:  configs/datasets/food101.yaml
+102:        checkpoint = torch.load(fpath, map_location=map_location, weights_only=False)
+107:        checkpoint = torch.load(
+Runing the first phase job and save the output to output/CoPrompt/test_new/food101/shots_16/CoPrompt/coprompt/seed1
+Setting fixed seed: 1
+***************
+** Arguments **
+***************
+backbone: 
+config_file: configs/trainers/coprompt.yaml
+dataset_config_file: configs/datasets/food101.yaml
+eval_only: True
+head: 
+load_epoch: 5
+model_dir: output/CoPrompt/train_base/food101/shots_16/CoPrompt/coprompt/seed1
+no_train: False
+opts: ['DATASET.NUM_SHOTS', '16', 'DATASET.SUBSAMPLE_CLASSES', 'new']
+output_dir: output/CoPrompt/test_new/food101/shots_16/CoPrompt/coprompt/seed1
+pre_train_exp_name: 
+resume: 
+root: /home/mazaveri/hpc-prog/Vipul/data
+seed: 1
+source_domains: None
+target_domains: None
+trainer: CoPrompt
+transforms: None
+************
+** Config **
+************
+DATALOADER:
+  K_TRANSFORMS: 2
+  NUM_WORKERS: 8
+  RETURN_IMG0: False
+  TEST:
+    BATCH_SIZE: 100
+    SAMPLER: SequentialSampler
+  TRAIN_U:
+    BATCH_SIZE: 32
+    N_DOMAIN: 0
+    N_INS: 16
+    SAME_AS_X: True
+    SAMPLER: RandomSampler
+  TRAIN_X:
+    BATCH_SIZE: 4
+    N_DOMAIN: 0
+    N_INS: 16
+    SAMPLER: RandomSampler
+DATASET:
+  ALL_AS_UNLABELED: False
+  CIFAR_C_LEVEL: 1
+  CIFAR_C_TYPE: 
+  NAME: PreparedFood101
+  NUM_LABELED: -1
+  NUM_SHOTS: 16
+  ROOT: /home/mazaveri/hpc-prog/Vipul/data
+  SOURCE_DOMAINS: ()
+  STL10_FOLD: -1
+  SUBSAMPLE_CLASSES: base
+  TARGET_DOMAINS: ()
+  VAL_PERCENT: 0.1
+INPUT:
+  COLORJITTER_B: 0.4
+  COLORJITTER_C: 0.4
+  COLORJITTER_H: 0.1
+  COLORJITTER_S: 0.4
+  CROP_PADDING: 4
+  CUTOUT_LEN: 16
+  CUTOUT_N: 1
+  GB_K: 21
+  GB_P: 0.5
+  GN_MEAN: 0.0
+  GN_STD: 0.15
+  INTERPOLATION: bicubic
+  NO_TRANSFORM: False
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+  RANDAUGMENT_M: 10
+  RANDAUGMENT_N: 2
+  RGS_P: 0.2
+  RRCROP_SCALE: (0.08, 1.0)
+  SIZE: (224, 224)
+  TRANSFORMS: ('randaugment', 'normalize')
+MODEL:
+  BACKBONE:
+    NAME: ViT-B/16
+    PRETRAINED: True
+  HEAD:
+    ACTIVATION: relu
+    BN: True
+    DROPOUT: 0.0
+    HIDDEN_LAYERS: ()
+    NAME: 
+  INIT_WEIGHTS: 
+OPTIM:
+  ADAM_BETA1: 0.9
+  ADAM_BETA2: 0.999
+  BASE_LR_MULT: 0.1
+  GAMMA: 0.1
+  LR: 0.0035
+  LR_SCHEDULER: cosine
+  MAX_EPOCH: 5
+  MOMENTUM: 0.9
+  NAME: sgd
+  NEW_LAYERS: ()
+  RMSPROP_ALPHA: 0.99
+  SGD_DAMPNING: 0
+  SGD_NESTEROV: False
+  STAGED_LR: False
+  STEPSIZE: (-1,)
+  WARMUP_CONS_LR: 1e-05
+  WARMUP_EPOCH: 1
+  WARMUP_MIN_LR: 1e-05
+  WARMUP_RECOUNT: True
+  WARMUP_TYPE: constant
+  WEIGHT_DECAY: 0.0005
+OUTPUT_DIR: output/CoPrompt/train_base/food101/shots_16/CoPrompt/coprompt/seed1
+RESUME: 
+SEED: 1
+TEST:
+  COMPUTE_CMAT: False
+  EVALUATOR: Classification
+  FINAL_MODEL: last_step
+  NO_TEST: False
+  PER_CLASS_RESULT: False
+  SPLIT: test
+TRAIN:
+  CHECKPOINT_FREQ: 0
+  COUNT_ITER: train_x
+  PRINT_FREQ: 20
+TRAINER:
+  CDAC:
+    CLASS_LR_MULTI: 10
+    P_THRESH: 0.95
+    RAMPUP_COEF: 30
+    RAMPUP_ITRS: 1000
+    STRONG_TRANSFORMS: ()
+    TOPK_MATCH: 5
+  CROSSGRAD:
+    ALPHA_D: 0.5
+    ALPHA_F: 0.5
+    EPS_D: 1.0
+    EPS_F: 1.0
+  CoPrompt:
+    CTX_INIT: a photo of a
+    N_CTX: 4
+    PREC: fp16
+    PROMPT_DEPTH: 9
+  DAEL:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 0.5
+  DAELDG:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 0.5
+  DDAIG:
+    ALPHA: 0.5
+    CLAMP: False
+    CLAMP_MAX: 1.0
+    CLAMP_MIN: -1.0
+    G_ARCH: 
+    LMDA: 0.3
+    WARMUP: 0
+  DISTILL: cosine
+  DOMAINMIX:
+    ALPHA: 1.0
+    BETA: 1.0
+    TYPE: crossdomain
+  ENTMIN:
+    LMDA: 0.001
+  FIXMATCH:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 1.0
+  M3SDA:
+    LMDA: 0.5
+    N_STEP_F: 4
+  MCD:
+    N_STEP_F: 4
+  MEANTEACHER:
+    EMA_ALPHA: 0.999
+    RAMPUP: 5
+    WEIGHT_U: 1.0
+  MIXMATCH:
+    MIXUP_BETA: 0.75
+    RAMPUP: 20000
+    TEMP: 2.0
+    WEIGHT_U: 100.0
+  MME:
+    LMDA: 0.1
+  NAME: CoPrompt
+  SE:
+    CONF_THRE: 0.95
+    EMA_ALPHA: 0.999
+    RAMPUP: 300
+  W: 0.5
+USE_CUDA: True
+VERBOSE: True
+VERSION: 1
+Collecting env info ...
+Loading trainer: CoPrompt
+Loading dataset: PreparedFood101
+Loading preprocessed few-shot data from /home/mazaveri/hpc-prog/Vipul/data/food_101/split_fewshot/shot_16-seed_1.pkl
+SUBSAMPLE BASE CLASSES!
+Building transform_train
++ resize to 224x224
++ randaugment (n=2, m=10)
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+Building transform_test
++ resize the smaller edge to 224
++ 224x224 center crop
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+---------  ---------------
+Dataset    PreparedFood101
+# classes  51
+# train_x  816
+# val      204
+# test     12,750
+---------  ---------------
+Loading CLIP (backbone: ViT-B/16)
+Loading original CLIP for distillation
+
+Getting textual features as CLIP's classifier.
+Building custom CLIP
+CoPrompt design: Multi-modal Prompt Learning
+Initial context: "a photo of a"
+Number of CoPrompt context words (tokens): 4
+Prompts: ['a photo of apple pie, a type of food.', 'a photo of baby back ribs, a type of food.', 'a photo of baklava, a type of food.', 'a photo of beef carpaccio, a type of food.', 'a photo of beef tartare, a type of food.', 'a photo of beet salad, a type of food.', 'a photo of beignets, a type of food.', 'a photo of bibimbap, a type of food.', 'a photo of bread pudding, a type of food.', 'a photo of breakfast burrito, a type of food.', 'a photo of bruschetta, a type of food.', 'a photo of caesar salad, a type of food.', 'a photo of cannoli, a type of food.', 'a photo of caprese salad, a type of food.', 'a photo of carrot cake, a type of food.', 'a photo of ceviche, a type of food.', 'a photo of cheesecake, a type of food.', 'a photo of cheese plate, a type of food.', 'a photo of chicken curry, a type of food.', 'a photo of chicken quesadilla, a type of food.', 'a photo of chicken wings, a type of food.', 'a photo of chocolate cake, a type of food.', 'a photo of chocolate mousse, a type of food.', 'a photo of churros, a type of food.', 'a photo of clam chowder, a type of food.', 'a photo of club sandwich, a type of food.', 'a photo of crab cakes, a type of food.', 'a photo of creme brulee, a type of food.', 'a photo of croque madame, a type of food.', 'a photo of cup cakes, a type of food.', 'a photo of deviled eggs, a type of food.', 'a photo of donuts, a type of food.', 'a photo of dumplings, a type of food.', 'a photo of edamame, a type of food.', 'a photo of eggs benedict, a type of food.', 'a photo of escargots, a type of food.', 'a photo of falafel, a type of food.', 'a photo of filet mignon, a type of food.', 'a photo of fish and chips, a type of food.', 'a photo of foie gras, a type of food.', 'a photo of french fries, a type of food.', 'a photo of french onion soup, a type of food.', 'a photo of french toast, a type of food.', 'a photo of fried calamari, a type of food.', 'a photo of fried rice, a type of food.', 'a photo of frozen yogurt, a type of food.', 'a photo of garlic bread, a type of food.', 'a photo of gnocchi, a type of food.', 'a photo of greek salad, a type of food.', 'a photo of grilled cheese sandwich, a type of food.', 'a photo of grilled salmon, a type of food.']
+Turning off gradients in both the image and the text encoder
+Parameters to be updated: {'prompt_learner.compound_prompts_text.7', 'prompt_learner.compound_prompt_projections.3.bias', 'prompt_learner.compound_prompts_text.4', 'prompt_learner.compound_prompts_text.2', 'adapter_image.fc.2.weight', 'prompt_learner.compound_prompt_projections.6.bias', 'prompt_learner.compound_prompts_text.0', 'adapter_image.fc.0.weight', 'prompt_learner.compound_prompts_text.3', 'prompt_learner.compound_prompts_text.5', 'prompt_learner.compound_prompt_projections.2.bias', 'prompt_learner.ctx', 'prompt_learner.compound_prompt_projections.5.weight', 'prompt_learner.compound_prompt_projections.1.bias', 'adapter_text.fc.0.weight', 'prompt_learner.compound_prompt_projections.7.weight', 'adapter_text.fc.2.weight', 'prompt_learner.compound_prompt_projections.4.bias', 'prompt_learner.compound_prompt_projections.1.weight', 'prompt_learner.proj.bias', 'prompt_learner.compound_prompt_projections.3.weight', 'prompt_learner.proj.weight', 'prompt_learner.compound_prompt_projections.0.weight', 'prompt_learner.compound_prompt_projections.0.bias', 'prompt_learner.compound_prompt_projections.5.bias', 'prompt_learner.compound_prompts_text.1', 'prompt_learner.compound_prompt_projections.6.weight', 'prompt_learner.compound_prompts_text.6', 'prompt_learner.compound_prompt_projections.2.weight', 'prompt_learner.compound_prompt_projections.4.weight', 'prompt_learner.compound_prompt_projections.7.bias'}
+Loading evaluator: Classification
+No checkpoint found, train from scratch
+Initialize tensorboard (log_dir=output/CoPrompt/train_base/food101/shots_16/CoPrompt/coprompt/seed1/tensorboard)
+epoch [1/5] batch [20/204] time 0.038 (0.195) data 0.000 (0.016) loss 0.8184 (1.7148) lr 1.0000e-05 eta 0:03:14
+epoch [1/5] batch [40/204] time 0.046 (0.118) data 0.000 (0.008) loss 0.9355 (1.6096) lr 1.0000e-05 eta 0:01:55
+epoch [1/5] batch [60/204] time 0.042 (0.093) data 0.000 (0.005) loss 1.8760 (1.6385) lr 1.0000e-05 eta 0:01:29
+epoch [1/5] batch [80/204] time 0.035 (0.081) data 0.000 (0.004) loss 1.5527 (1.6789) lr 1.0000e-05 eta 0:01:15
+epoch [1/5] batch [100/204] time 0.034 (0.074) data 0.000 (0.003) loss 0.3818 (1.7098) lr 1.0000e-05 eta 0:01:07
+epoch [1/5] batch [120/204] time 0.042 (0.069) data 0.000 (0.003) loss 0.3618 (1.6931) lr 1.0000e-05 eta 0:01:02
+epoch [1/5] batch [140/204] time 0.035 (0.066) data 0.000 (0.002) loss 1.3740 (1.6669) lr 1.0000e-05 eta 0:00:57
+epoch [1/5] batch [160/204] time 0.045 (0.063) data 0.000 (0.002) loss 1.8457 (1.6202) lr 1.0000e-05 eta 0:00:54
+epoch [1/5] batch [180/204] time 0.045 (0.061) data 0.000 (0.002) loss 1.0352 (1.6343) lr 1.0000e-05 eta 0:00:51
+epoch [1/5] batch [200/204] time 0.042 (0.059) data 0.000 (0.002) loss 0.5527 (1.6140) lr 1.0000e-05 eta 0:00:48
+epoch [2/5] batch [20/204] time 0.040 (0.056) data 0.000 (0.014) loss 2.6660 (1.5165) lr 3.5000e-03 eta 0:00:44
+epoch [2/5] batch [40/204] time 0.047 (0.049) data 0.000 (0.007) loss 1.9854 (1.6220) lr 3.5000e-03 eta 0:00:38
+epoch [2/5] batch [60/204] time 0.050 (0.047) data 0.000 (0.005) loss 0.3545 (1.6672) lr 3.5000e-03 eta 0:00:35
+epoch [2/5] batch [80/204] time 0.044 (0.046) data 0.000 (0.004) loss 1.7676 (1.6425) lr 3.5000e-03 eta 0:00:34
+epoch [2/5] batch [100/204] time 0.038 (0.046) data 0.000 (0.003) loss 0.7324 (1.5717) lr 3.5000e-03 eta 0:00:33
+epoch [2/5] batch [120/204] time 0.038 (0.045) data 0.000 (0.002) loss 1.8936 (1.5383) lr 3.5000e-03 eta 0:00:31
+epoch [2/5] batch [140/204] time 0.039 (0.045) data 0.000 (0.002) loss 0.7822 (1.5049) lr 3.5000e-03 eta 0:00:30
+epoch [2/5] batch [160/204] time 0.035 (0.045) data 0.000 (0.002) loss 0.5830 (1.4545) lr 3.5000e-03 eta 0:00:29
+epoch [2/5] batch [180/204] time 0.049 (0.044) data 0.000 (0.002) loss 1.4639 (1.4707) lr 3.5000e-03 eta 0:00:28
+epoch [2/5] batch [200/204] time 0.034 (0.043) data 0.000 (0.002) loss 2.8008 (1.4407) lr 3.5000e-03 eta 0:00:26
+epoch [3/5] batch [20/204] time 0.045 (0.060) data 0.000 (0.014) loss 0.5391 (1.1589) lr 3.1658e-03 eta 0:00:35
+epoch [3/5] batch [40/204] time 0.051 (0.052) data 0.000 (0.007) loss 1.4814 (1.1763) lr 3.1658e-03 eta 0:00:29
+epoch [3/5] batch [60/204] time 0.046 (0.049) data 0.000 (0.005) loss 2.8984 (1.1627) lr 3.1658e-03 eta 0:00:27
+epoch [3/5] batch [80/204] time 0.041 (0.047) data 0.000 (0.004) loss 1.0918 (1.1442) lr 3.1658e-03 eta 0:00:24
+epoch [3/5] batch [100/204] time 0.042 (0.045) data 0.000 (0.003) loss 1.7412 (1.1094) lr 3.1658e-03 eta 0:00:23
+epoch [3/5] batch [120/204] time 0.039 (0.044) data 0.000 (0.003) loss 0.3513 (1.0742) lr 3.1658e-03 eta 0:00:21
+epoch [3/5] batch [140/204] time 0.049 (0.044) data 0.000 (0.002) loss 0.5728 (1.0637) lr 3.1658e-03 eta 0:00:20
+epoch [3/5] batch [160/204] time 0.036 (0.043) data 0.000 (0.002) loss 1.1260 (1.0764) lr 3.1658e-03 eta 0:00:19
+epoch [3/5] batch [180/204] time 0.039 (0.043) data 0.000 (0.002) loss 1.0615 (1.0610) lr 3.1658e-03 eta 0:00:18
+epoch [3/5] batch [200/204] time 0.032 (0.042) data 0.000 (0.002) loss 0.8447 (1.0474) lr 3.1658e-03 eta 0:00:17
+epoch [4/5] batch [20/204] time 0.038 (0.055) data 0.000 (0.013) loss 0.2910 (0.8558) lr 2.2908e-03 eta 0:00:21
+epoch [4/5] batch [40/204] time 0.035 (0.048) data 0.000 (0.007) loss 0.9443 (0.8223) lr 2.2908e-03 eta 0:00:17
+epoch [4/5] batch [60/204] time 0.046 (0.046) data 0.000 (0.004) loss 1.1035 (0.8361) lr 2.2908e-03 eta 0:00:16
+epoch [4/5] batch [80/204] time 0.039 (0.046) data 0.000 (0.003) loss 0.3647 (0.9116) lr 2.2908e-03 eta 0:00:15
+epoch [4/5] batch [100/204] time 0.042 (0.046) data 0.000 (0.003) loss 3.2852 (0.9590) lr 2.2908e-03 eta 0:00:14
+epoch [4/5] batch [120/204] time 0.050 (0.046) data 0.000 (0.002) loss 1.2695 (0.9719) lr 2.2908e-03 eta 0:00:13
+epoch [4/5] batch [140/204] time 0.051 (0.046) data 0.000 (0.002) loss 2.7168 (0.9689) lr 2.2908e-03 eta 0:00:12
+epoch [4/5] batch [160/204] time 0.044 (0.045) data 0.000 (0.002) loss 0.8442 (0.9766) lr 2.2908e-03 eta 0:00:11
+epoch [4/5] batch [180/204] time 0.042 (0.044) data 0.000 (0.002) loss 0.5371 (0.9473) lr 2.2908e-03 eta 0:00:10
+epoch [4/5] batch [200/204] time 0.034 (0.044) data 0.000 (0.001) loss 0.8135 (0.9444) lr 2.2908e-03 eta 0:00:09
+epoch [5/5] batch [20/204] time 0.050 (0.059) data 0.000 (0.015) loss 0.1877 (0.8402) lr 1.2092e-03 eta 0:00:10
+epoch [5/5] batch [40/204] time 0.050 (0.053) data 0.000 (0.008) loss 0.5518 (0.8865) lr 1.2092e-03 eta 0:00:08
+epoch [5/5] batch [60/204] time 0.048 (0.051) data 0.000 (0.005) loss 0.3501 (0.9372) lr 1.2092e-03 eta 0:00:07
+epoch [5/5] batch [80/204] time 0.056 (0.050) data 0.000 (0.004) loss 0.5229 (0.9528) lr 1.2092e-03 eta 0:00:06
+epoch [5/5] batch [100/204] time 0.044 (0.049) data 0.000 (0.003) loss 0.7168 (0.9143) lr 1.2092e-03 eta 0:00:05
+epoch [5/5] batch [120/204] time 0.051 (0.049) data 0.000 (0.003) loss 1.8457 (0.9432) lr 1.2092e-03 eta 0:00:04
+epoch [5/5] batch [140/204] time 0.046 (0.048) data 0.000 (0.002) loss 0.5962 (0.9375) lr 1.2092e-03 eta 0:00:03
+epoch [5/5] batch [160/204] time 0.045 (0.048) data 0.000 (0.002) loss 0.4636 (0.9409) lr 1.2092e-03 eta 0:00:02
+epoch [5/5] batch [180/204] time 0.045 (0.048) data 0.000 (0.002) loss 0.2776 (0.9513) lr 1.2092e-03 eta 0:00:01
+epoch [5/5] batch [200/204] time 0.036 (0.047) data 0.000 (0.002) loss 0.6655 (0.9319) lr 1.2092e-03 eta 0:00:00
+Checkpoint saved to output/CoPrompt/train_base/food101/shots_16/CoPrompt/coprompt/seed1/MultiModalPromptLearner/model.pth.tar-5
+Finish training
+Deploy the last-epoch model
+Evaluate on the *test* set
+=> result
+* total: 12,750
+* correct: 11,808
+* accuracy: 92.6%
+* error: 7.4%
+* macro_f1: 92.6%
+Elapsed: 0:01:02
+Runing the first phase job and save the output to output/CoPrompt/test_new/food101/shots_16/CoPrompt/coprompt/seed1
+Setting fixed seed: 1
+***************
+** Arguments **
+***************
+backbone: 
+config_file: configs/trainers/coprompt.yaml
+dataset_config_file: configs/datasets/food101.yaml
+eval_only: True
+head: 
+load_epoch: 8
+model_dir: output/CoPrompt/train_base/food101/shots_16/CoPrompt/coprompt/seed1
+no_train: False
+opts: ['DATASET.NUM_SHOTS', '16', 'DATASET.SUBSAMPLE_CLASSES', 'new']
+output_dir: output/CoPrompt/test_new/food101/shots_16/CoPrompt/coprompt/seed1
+pre_train_exp_name: 
+resume: 
+root: /home/mazaveri/hpc-prog/Vipul/data
+seed: 1
+source_domains: None
+target_domains: None
+trainer: CoPrompt
+transforms: None
+************
+** Config **
+************
+DATALOADER:
+  K_TRANSFORMS: 2
+  NUM_WORKERS: 8
+  RETURN_IMG0: False
+  TEST:
+    BATCH_SIZE: 100
+    SAMPLER: SequentialSampler
+  TRAIN_U:
+    BATCH_SIZE: 32
+    N_DOMAIN: 0
+    N_INS: 16
+    SAME_AS_X: True
+    SAMPLER: RandomSampler
+  TRAIN_X:
+    BATCH_SIZE: 4
+    N_DOMAIN: 0
+    N_INS: 16
+    SAMPLER: RandomSampler
+DATASET:
+  ALL_AS_UNLABELED: False
+  CIFAR_C_LEVEL: 1
+  CIFAR_C_TYPE: 
+  NAME: PreparedFood101
+  NUM_LABELED: -1
+  NUM_SHOTS: 16
+  ROOT: /home/mazaveri/hpc-prog/Vipul/data
+  SOURCE_DOMAINS: ()
+  STL10_FOLD: -1
+  SUBSAMPLE_CLASSES: new
+  TARGET_DOMAINS: ()
+  VAL_PERCENT: 0.1
+INPUT:
+  COLORJITTER_B: 0.4
+  COLORJITTER_C: 0.4
+  COLORJITTER_H: 0.1
+  COLORJITTER_S: 0.4
+  CROP_PADDING: 4
+  CUTOUT_LEN: 16
+  CUTOUT_N: 1
+  GB_K: 21
+  GB_P: 0.5
+  GN_MEAN: 0.0
+  GN_STD: 0.15
+  INTERPOLATION: bicubic
+  NO_TRANSFORM: False
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+  RANDAUGMENT_M: 10
+  RANDAUGMENT_N: 2
+  RGS_P: 0.2
+  RRCROP_SCALE: (0.08, 1.0)
+  SIZE: (224, 224)
+  TRANSFORMS: ('randaugment', 'normalize')
+MODEL:
+  BACKBONE:
+    NAME: ViT-B/16
+    PRETRAINED: True
+  HEAD:
+    ACTIVATION: relu
+    BN: True
+    DROPOUT: 0.0
+    HIDDEN_LAYERS: ()
+    NAME: 
+  INIT_WEIGHTS: 
+OPTIM:
+  ADAM_BETA1: 0.9
+  ADAM_BETA2: 0.999
+  BASE_LR_MULT: 0.1
+  GAMMA: 0.1
+  LR: 0.0035
+  LR_SCHEDULER: cosine
+  MAX_EPOCH: 5
+  MOMENTUM: 0.9
+  NAME: sgd
+  NEW_LAYERS: ()
+  RMSPROP_ALPHA: 0.99
+  SGD_DAMPNING: 0
+  SGD_NESTEROV: False
+  STAGED_LR: False
+  STEPSIZE: (-1,)
+  WARMUP_CONS_LR: 1e-05
+  WARMUP_EPOCH: 1
+  WARMUP_MIN_LR: 1e-05
+  WARMUP_RECOUNT: True
+  WARMUP_TYPE: constant
+  WEIGHT_DECAY: 0.0005
+OUTPUT_DIR: output/CoPrompt/test_new/food101/shots_16/CoPrompt/coprompt/seed1
+RESUME: 
+SEED: 1
+TEST:
+  COMPUTE_CMAT: False
+  EVALUATOR: Classification
+  FINAL_MODEL: last_step
+  NO_TEST: False
+  PER_CLASS_RESULT: False
+  SPLIT: test
+TRAIN:
+  CHECKPOINT_FREQ: 0
+  COUNT_ITER: train_x
+  PRINT_FREQ: 20
+TRAINER:
+  CDAC:
+    CLASS_LR_MULTI: 10
+    P_THRESH: 0.95
+    RAMPUP_COEF: 30
+    RAMPUP_ITRS: 1000
+    STRONG_TRANSFORMS: ()
+    TOPK_MATCH: 5
+  CROSSGRAD:
+    ALPHA_D: 0.5
+    ALPHA_F: 0.5
+    EPS_D: 1.0
+    EPS_F: 1.0
+  CoPrompt:
+    CTX_INIT: a photo of a
+    N_CTX: 4
+    PREC: fp16
+    PROMPT_DEPTH: 9
+  DAEL:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 0.5
+  DAELDG:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 0.5
+  DDAIG:
+    ALPHA: 0.5
+    CLAMP: False
+    CLAMP_MAX: 1.0
+    CLAMP_MIN: -1.0
+    G_ARCH: 
+    LMDA: 0.3
+    WARMUP: 0
+  DISTILL: cosine
+  DOMAINMIX:
+    ALPHA: 1.0
+    BETA: 1.0
+    TYPE: crossdomain
+  ENTMIN:
+    LMDA: 0.001
+  FIXMATCH:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 1.0
+  M3SDA:
+    LMDA: 0.5
+    N_STEP_F: 4
+  MCD:
+    N_STEP_F: 4
+  MEANTEACHER:
+    EMA_ALPHA: 0.999
+    RAMPUP: 5
+    WEIGHT_U: 1.0
+  MIXMATCH:
+    MIXUP_BETA: 0.75
+    RAMPUP: 20000
+    TEMP: 2.0
+    WEIGHT_U: 100.0
+  MME:
+    LMDA: 0.1
+  NAME: CoPrompt
+  SE:
+    CONF_THRE: 0.95
+    EMA_ALPHA: 0.999
+    RAMPUP: 300
+  W: 0.5
+USE_CUDA: True
+VERBOSE: True
+VERSION: 1
+Collecting env info ...
+Loading trainer: CoPrompt
+Loading dataset: PreparedFood101
+Loading preprocessed few-shot data from /home/mazaveri/hpc-prog/Vipul/data/food_101/split_fewshot/shot_16-seed_1.pkl
+SUBSAMPLE NEW CLASSES!
+Building transform_train
++ resize to 224x224
++ randaugment (n=2, m=10)
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+Building transform_test
++ resize the smaller edge to 224
++ 224x224 center crop
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+---------  ---------------
+Dataset    PreparedFood101
+# classes  50
+# train_x  800
+# val      200
+# test     12,500
+---------  ---------------
+Loading CLIP (backbone: ViT-B/16)
+Loading original CLIP for distillation
+
+Getting textual features as CLIP's classifier.
+Building custom CLIP
+CoPrompt design: Multi-modal Prompt Learning
+Initial context: "a photo of a"
+Number of CoPrompt context words (tokens): 4
+Prompts: ['a photo of guacamole, a type of food.', 'a photo of gyoza, a type of food.', 'a photo of hamburger, a type of food.', 'a photo of hot and sour soup, a type of food.', 'a photo of hot dog, a type of food.', 'a photo of huevos rancheros, a type of food.', 'a photo of hummus, a type of food.', 'a photo of ice cream, a type of food.', 'a photo of lasagna, a type of food.', 'a photo of lobster bisque, a type of food.', 'a photo of lobster roll sandwich, a type of food.', 'a photo of macaroni and cheese, a type of food.', 'a photo of macarons, a type of food.', 'a photo of miso soup, a type of food.', 'a photo of mussels, a type of food.', 'a photo of nachos, a type of food.', 'a photo of omelette, a type of food.', 'a photo of onion rings, a type of food.', 'a photo of oysters, a type of food.', 'a photo of pad thai, a type of food.', 'a photo of paella, a type of food.', 'a photo of pancakes, a type of food.', 'a photo of panna cotta, a type of food.', 'a photo of peking duck, a type of food.', 'a photo of pho, a type of food.', 'a photo of pizza, a type of food.', 'a photo of pork chop, a type of food.', 'a photo of poutine, a type of food.', 'a photo of prime rib, a type of food.', 'a photo of pulled pork sandwich, a type of food.', 'a photo of ramen, a type of food.', 'a photo of ravioli, a type of food.', 'a photo of red velvet cake, a type of food.', 'a photo of risotto, a type of food.', 'a photo of samosa, a type of food.', 'a photo of sashimi, a type of food.', 'a photo of scallops, a type of food.', 'a photo of seaweed salad, a type of food.', 'a photo of shrimp and grits, a type of food.', 'a photo of spaghetti bolognese, a type of food.', 'a photo of spaghetti carbonara, a type of food.', 'a photo of spring rolls, a type of food.', 'a photo of steak, a type of food.', 'a photo of strawberry shortcake, a type of food.', 'a photo of sushi, a type of food.', 'a photo of tacos, a type of food.', 'a photo of takoyaki, a type of food.', 'a photo of tiramisu, a type of food.', 'a photo of tuna tartare, a type of food.', 'a photo of waffles, a type of food.']
+Turning off gradients in both the image and the text encoder
+Parameters to be updated: {'prompt_learner.compound_prompts_text.0', 'prompt_learner.compound_prompts_text.3', 'prompt_learner.compound_prompt_projections.1.bias', 'prompt_learner.compound_prompt_projections.6.weight', 'adapter_image.fc.2.weight', 'prompt_learner.compound_prompt_projections.5.bias', 'prompt_learner.compound_prompt_projections.0.bias', 'prompt_learner.compound_prompt_projections.7.weight', 'prompt_learner.compound_prompt_projections.7.bias', 'prompt_learner.proj.weight', 'prompt_learner.compound_prompt_projections.3.weight', 'prompt_learner.compound_prompt_projections.3.bias', 'prompt_learner.compound_prompts_text.6', 'prompt_learner.compound_prompt_projections.2.weight', 'prompt_learner.proj.bias', 'prompt_learner.compound_prompt_projections.1.weight', 'prompt_learner.compound_prompt_projections.6.bias', 'adapter_image.fc.0.weight', 'prompt_learner.compound_prompts_text.5', 'prompt_learner.compound_prompts_text.2', 'prompt_learner.compound_prompt_projections.0.weight', 'prompt_learner.compound_prompt_projections.2.bias', 'prompt_learner.compound_prompt_projections.4.weight', 'prompt_learner.compound_prompt_projections.4.bias', 'adapter_text.fc.2.weight', 'prompt_learner.compound_prompts_text.7', 'prompt_learner.ctx', 'prompt_learner.compound_prompts_text.4', 'prompt_learner.compound_prompt_projections.5.weight', 'prompt_learner.compound_prompts_text.1', 'adapter_text.fc.0.weight'}
+Loading evaluator: Classification
+
+Loading weights to MultiModalPromptLearner from "output/CoPrompt/train_base/food101/shots_16/CoPrompt/coprompt/seed1/MultiModalPromptLearner/model.pth.tar-5" (epoch = 5)
+Evaluate on the *test* set
+=> result
+* total: 12,500
+* correct: 11,700
+* accuracy: 93.6%
+* error: 6.4%
+* macro_f1: 93.6%

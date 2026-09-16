@@ -1,0 +1,493 @@
+Using DATA root: /home/mazaveri/hpc-prog/Vipul/data
+Dataset config:  configs/datasets/eurosat.yaml
+Load Epochs: 8
+Setting fixed seed: 1
+***************
+** Arguments **
+***************
+backbone: 
+config_file: configs/trainers/coprompt.yaml
+dataset_config_file: configs/datasets/eurosat.yaml
+eval_only: False
+head: 
+load_epoch: None
+model_dir: 
+no_train: False
+opts: ['DATASET.NUM_SHOTS', '16', 'DATASET.SUBSAMPLE_CLASSES', 'base']
+output_dir: output/CoPrompt/train_base/eurosat/shots_16/CoPrompt/coprompt/seed1
+pre_train_exp_name: 
+resume: 
+root: /home/mazaveri/hpc-prog/Vipul/data
+seed: 1
+source_domains: None
+target_domains: None
+trainer: CoPrompt
+transforms: None
+************
+** Config **
+************
+DATALOADER:
+  K_TRANSFORMS: 2
+  NUM_WORKERS: 8
+  RETURN_IMG0: False
+  TEST:
+    BATCH_SIZE: 100
+    SAMPLER: SequentialSampler
+  TRAIN_U:
+    BATCH_SIZE: 32
+    N_DOMAIN: 0
+    N_INS: 16
+    SAME_AS_X: True
+    SAMPLER: RandomSampler
+  TRAIN_X:
+    BATCH_SIZE: 4
+    N_DOMAIN: 0
+    N_INS: 16
+    SAMPLER: RandomSampler
+DATASET:
+  ALL_AS_UNLABELED: False
+  CIFAR_C_LEVEL: 1
+  CIFAR_C_TYPE: 
+  NAME: PreparedEuroSAT
+  NUM_LABELED: -1
+  NUM_SHOTS: 16
+  ROOT: /home/mazaveri/hpc-prog/Vipul/data
+  SOURCE_DOMAINS: ()
+  STL10_FOLD: -1
+  SUBSAMPLE_CLASSES: base
+  TARGET_DOMAINS: ()
+  VAL_PERCENT: 0.1
+INPUT:
+  COLORJITTER_B: 0.4
+  COLORJITTER_C: 0.4
+  COLORJITTER_H: 0.1
+  COLORJITTER_S: 0.4
+  CROP_PADDING: 4
+  CUTOUT_LEN: 16
+  CUTOUT_N: 1
+  GB_K: 21
+  GB_P: 0.5
+  GN_MEAN: 0.0
+  GN_STD: 0.15
+  INTERPOLATION: bicubic
+  NO_TRANSFORM: False
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+  RANDAUGMENT_M: 10
+  RANDAUGMENT_N: 2
+  RGS_P: 0.2
+  RRCROP_SCALE: (0.08, 1.0)
+  SIZE: (224, 224)
+  TRANSFORMS: ('randaugment', 'normalize')
+MODEL:
+  BACKBONE:
+    NAME: ViT-B/16
+    PRETRAINED: True
+  HEAD:
+    ACTIVATION: relu
+    BN: True
+    DROPOUT: 0.0
+    HIDDEN_LAYERS: ()
+    NAME: 
+  INIT_WEIGHTS: 
+OPTIM:
+  ADAM_BETA1: 0.9
+  ADAM_BETA2: 0.999
+  BASE_LR_MULT: 0.1
+  GAMMA: 0.1
+  LR: 0.0035
+  LR_SCHEDULER: cosine
+  MAX_EPOCH: 8
+  MOMENTUM: 0.9
+  NAME: sgd
+  NEW_LAYERS: ()
+  RMSPROP_ALPHA: 0.99
+  SGD_DAMPNING: 0
+  SGD_NESTEROV: False
+  STAGED_LR: False
+  STEPSIZE: (-1,)
+  WARMUP_CONS_LR: 1e-05
+  WARMUP_EPOCH: 1
+  WARMUP_MIN_LR: 1e-05
+  WARMUP_RECOUNT: True
+  WARMUP_TYPE: constant
+  WEIGHT_DECAY: 0.0005
+OUTPUT_DIR: output/CoPrompt/train_base/eurosat/shots_16/CoPrompt/coprompt/seed1
+RESUME: 
+SEED: 1
+TEST:
+  COMPUTE_CMAT: False
+  EVALUATOR: Classification
+  FINAL_MODEL: last_step
+  NO_TEST: False
+  PER_CLASS_RESULT: False
+  SPLIT: test
+TRAIN:
+  CHECKPOINT_FREQ: 0
+  COUNT_ITER: train_x
+  PRINT_FREQ: 20
+TRAINER:
+  CDAC:
+    CLASS_LR_MULTI: 10
+    P_THRESH: 0.95
+    RAMPUP_COEF: 30
+    RAMPUP_ITRS: 1000
+    STRONG_TRANSFORMS: ()
+    TOPK_MATCH: 5
+  CROSSGRAD:
+    ALPHA_D: 0.5
+    ALPHA_F: 0.5
+    EPS_D: 1.0
+    EPS_F: 1.0
+  CoPrompt:
+    CTX_INIT: a photo of a
+    N_CTX: 2
+    PREC: fp16
+    PROMPT_DEPTH: 12
+  DAEL:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 0.5
+  DAELDG:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 0.5
+  DDAIG:
+    ALPHA: 0.5
+    CLAMP: False
+    CLAMP_MAX: 1.0
+    CLAMP_MIN: -1.0
+    G_ARCH: 
+    LMDA: 0.3
+    WARMUP: 0
+  DISTILL: cosine
+  DOMAINMIX:
+    ALPHA: 1.0
+    BETA: 1.0
+    TYPE: crossdomain
+  ENTMIN:
+    LMDA: 0.001
+  FIXMATCH:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 1.0
+  M3SDA:
+    LMDA: 0.5
+    N_STEP_F: 4
+  MCD:
+    N_STEP_F: 4
+  MEANTEACHER:
+    EMA_ALPHA: 0.999
+    RAMPUP: 5
+    WEIGHT_U: 1.0
+  MIXMATCH:
+    MIXUP_BETA: 0.75
+    RAMPUP: 20000
+    TEMP: 2.0
+    WEIGHT_U: 100.0
+  MME:
+    LMDA: 0.1
+  NAME: CoPrompt
+  SE:
+    CONF_THRE: 0.95
+    EMA_ALPHA: 0.999
+    RAMPUP: 300
+  W: 0.1
+USE_CUDA: True
+VERBOSE: True
+VERSION: 1
+Collecting env info ...
+Loading trainer: CoPrompt
+Loading dataset: PreparedEuroSAT
+Creating a 16-shot dataset
+Creating a 4-shot dataset
+Saving preprocessed few-shot data to /home/mazaveri/hpc-prog/Vipul/data/eurosat/split_fewshot/shot_16-seed_1.pkl
+SUBSAMPLE BASE CLASSES!
+Building transform_train
++ resize to 224x224
++ randaugment (n=2, m=10)
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+Building transform_test
++ resize the smaller edge to 224
++ 224x224 center crop
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+---------  ---------------
+Dataset    PreparedEuroSAT
+# classes  5
+# train_x  80
+# val      20
+# test     2,100
+---------  ---------------
+Loading CLIP (backbone: ViT-B/16)
+Loading original CLIP for distillation
+
+Getting textual features as CLIP's classifier.
+Building custom CLIP
+CoPrompt design: Multi-modal Prompt Learning
+Initial context: "a photo of a"
+Number of CoPrompt context words (tokens): 2
+Prompts: ['a centered satellite photo of AnnualCrop.', 'a centered satellite photo of Forest.', 'a centered satellite photo of HerbaceousVegetation.', 'a centered satellite photo of Highway.', 'a centered satellite photo of Industrial.']
+Turning off gradients in both the image and the text encoder
+Parameters to be updated: {'prompt_learner.compound_prompt_projections.1.bias', 'prompt_learner.compound_prompt_projections.0.weight', 'prompt_learner.compound_prompt_projections.10.bias', 'adapter_image.fc.0.weight', 'prompt_learner.compound_prompt_projections.5.bias', 'prompt_learner.compound_prompts_text.7', 'prompt_learner.ctx', 'prompt_learner.compound_prompt_projections.6.bias', 'adapter_text.fc.0.weight', 'prompt_learner.compound_prompt_projections.3.bias', 'prompt_learner.compound_prompts_text.0', 'prompt_learner.compound_prompts_text.3', 'prompt_learner.compound_prompt_projections.9.bias', 'prompt_learner.compound_prompt_projections.8.weight', 'prompt_learner.compound_prompts_text.4', 'prompt_learner.proj.weight', 'prompt_learner.compound_prompt_projections.5.weight', 'prompt_learner.compound_prompts_text.8', 'prompt_learner.compound_prompts_text.2', 'prompt_learner.compound_prompt_projections.6.weight', 'prompt_learner.proj.bias', 'prompt_learner.compound_prompt_projections.3.weight', 'prompt_learner.compound_prompt_projections.8.bias', 'prompt_learner.compound_prompt_projections.7.bias', 'prompt_learner.compound_prompt_projections.1.weight', 'adapter_text.fc.2.weight', 'prompt_learner.compound_prompts_text.5', 'prompt_learner.compound_prompts_text.10', 'prompt_learner.compound_prompt_projections.10.weight', 'prompt_learner.compound_prompt_projections.0.bias', 'prompt_learner.compound_prompts_text.6', 'prompt_learner.compound_prompt_projections.2.weight', 'adapter_image.fc.2.weight', 'prompt_learner.compound_prompt_projections.4.weight', 'prompt_learner.compound_prompt_projections.2.bias', 'prompt_learner.compound_prompt_projections.4.bias', 'prompt_learner.compound_prompt_projections.9.weight', 'prompt_learner.compound_prompts_text.9', 'prompt_learner.compound_prompt_projections.7.weight', 'prompt_learner.compound_prompts_text.1'}
+Loading evaluator: Classification
+No checkpoint found, train from scratch
+Initialize tensorboard (log_dir=output/CoPrompt/train_base/eurosat/shots_16/CoPrompt/coprompt/seed1/tensorboard)
+epoch [1/8] batch [20/20] time 0.044 (0.104) data 0.000 (0.016) loss 1.7188 (1.3716) lr 3.5000e-03 eta 0:00:14
+epoch [2/8] batch [20/20] time 0.049 (0.068) data 0.000 (0.019) loss 1.6973 (1.6832) lr 3.3668e-03 eta 0:00:08
+epoch [3/8] batch [20/20] time 0.044 (0.062) data 0.000 (0.020) loss 1.7471 (1.5078) lr 2.9874e-03 eta 0:00:06
+epoch [4/8] batch [20/20] time 0.049 (0.069) data 0.000 (0.020) loss 0.6304 (1.0151) lr 2.4197e-03 eta 0:00:05
+epoch [5/8] batch [20/20] time 0.051 (0.072) data 0.000 (0.023) loss 0.5317 (0.6087) lr 1.7500e-03 eta 0:00:04
+epoch [6/8] batch [20/20] time 0.039 (0.062) data 0.000 (0.017) loss 0.2126 (0.4803) lr 1.0803e-03 eta 0:00:02
+epoch [7/8] batch [20/20] time 0.044 (0.064) data 0.000 (0.018) loss 0.4019 (0.3729) lr 5.1256e-04 eta 0:00:01
+epoch [8/8] batch [20/20] time 0.039 (0.059) data 0.000 (0.019) loss 0.2812 (0.2966) lr 1.3321e-04 eta 0:00:00
+Checkpoint saved to output/CoPrompt/train_base/eurosat/shots_16/CoPrompt/coprompt/seed1/MultiModalPromptLearner/model.pth.tar-8
+Finish training
+Deploy the last-epoch model
+Evaluate on the *test* set
+=> result
+* total: 2,100
+* correct: 1,926
+* accuracy: 91.7%
+* error: 8.3%
+* macro_f1: 91.9%
+Elapsed: 0:00:17
+Runing the first phase job and save the output to output/CoPrompt/test_new/eurosat/shots_16/CoPrompt/coprompt/seed1
+Setting fixed seed: 1
+***************
+** Arguments **
+***************
+backbone: 
+config_file: configs/trainers/coprompt.yaml
+dataset_config_file: configs/datasets/eurosat.yaml
+eval_only: True
+head: 
+load_epoch: 8
+model_dir: output/CoPrompt/train_base/eurosat/shots_16/CoPrompt/coprompt/seed1
+no_train: False
+opts: ['DATASET.NUM_SHOTS', '16', 'DATASET.SUBSAMPLE_CLASSES', 'new']
+output_dir: output/CoPrompt/test_new/eurosat/shots_16/CoPrompt/coprompt/seed1
+pre_train_exp_name: 
+resume: 
+root: /home/mazaveri/hpc-prog/Vipul/data
+seed: 1
+source_domains: None
+target_domains: None
+trainer: CoPrompt
+transforms: None
+************
+** Config **
+************
+DATALOADER:
+  K_TRANSFORMS: 2
+  NUM_WORKERS: 8
+  RETURN_IMG0: False
+  TEST:
+    BATCH_SIZE: 100
+    SAMPLER: SequentialSampler
+  TRAIN_U:
+    BATCH_SIZE: 32
+    N_DOMAIN: 0
+    N_INS: 16
+    SAME_AS_X: True
+    SAMPLER: RandomSampler
+  TRAIN_X:
+    BATCH_SIZE: 4
+    N_DOMAIN: 0
+    N_INS: 16
+    SAMPLER: RandomSampler
+DATASET:
+  ALL_AS_UNLABELED: False
+  CIFAR_C_LEVEL: 1
+  CIFAR_C_TYPE: 
+  NAME: PreparedEuroSAT
+  NUM_LABELED: -1
+  NUM_SHOTS: 16
+  ROOT: /home/mazaveri/hpc-prog/Vipul/data
+  SOURCE_DOMAINS: ()
+  STL10_FOLD: -1
+  SUBSAMPLE_CLASSES: new
+  TARGET_DOMAINS: ()
+  VAL_PERCENT: 0.1
+INPUT:
+  COLORJITTER_B: 0.4
+  COLORJITTER_C: 0.4
+  COLORJITTER_H: 0.1
+  COLORJITTER_S: 0.4
+  CROP_PADDING: 4
+  CUTOUT_LEN: 16
+  CUTOUT_N: 1
+  GB_K: 21
+  GB_P: 0.5
+  GN_MEAN: 0.0
+  GN_STD: 0.15
+  INTERPOLATION: bicubic
+  NO_TRANSFORM: False
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+  RANDAUGMENT_M: 10
+  RANDAUGMENT_N: 2
+  RGS_P: 0.2
+  RRCROP_SCALE: (0.08, 1.0)
+  SIZE: (224, 224)
+  TRANSFORMS: ('randaugment', 'normalize')
+MODEL:
+  BACKBONE:
+    NAME: ViT-B/16
+    PRETRAINED: True
+  HEAD:
+    ACTIVATION: relu
+    BN: True
+    DROPOUT: 0.0
+    HIDDEN_LAYERS: ()
+    NAME: 
+  INIT_WEIGHTS: 
+OPTIM:
+  ADAM_BETA1: 0.9
+  ADAM_BETA2: 0.999
+  BASE_LR_MULT: 0.1
+  GAMMA: 0.1
+  LR: 0.0035
+  LR_SCHEDULER: cosine
+  MAX_EPOCH: 8
+  MOMENTUM: 0.9
+  NAME: sgd
+  NEW_LAYERS: ()
+  RMSPROP_ALPHA: 0.99
+  SGD_DAMPNING: 0
+  SGD_NESTEROV: False
+  STAGED_LR: False
+  STEPSIZE: (-1,)
+  WARMUP_CONS_LR: 1e-05
+  WARMUP_EPOCH: 1
+  WARMUP_MIN_LR: 1e-05
+  WARMUP_RECOUNT: True
+  WARMUP_TYPE: constant
+  WEIGHT_DECAY: 0.0005
+OUTPUT_DIR: output/CoPrompt/test_new/eurosat/shots_16/CoPrompt/coprompt/seed1
+RESUME: 
+SEED: 1
+TEST:
+  COMPUTE_CMAT: False
+  EVALUATOR: Classification
+  FINAL_MODEL: last_step
+  NO_TEST: False
+  PER_CLASS_RESULT: False
+  SPLIT: test
+TRAIN:
+  CHECKPOINT_FREQ: 0
+  COUNT_ITER: train_x
+  PRINT_FREQ: 20
+TRAINER:
+  CDAC:
+    CLASS_LR_MULTI: 10
+    P_THRESH: 0.95
+    RAMPUP_COEF: 30
+    RAMPUP_ITRS: 1000
+    STRONG_TRANSFORMS: ()
+    TOPK_MATCH: 5
+  CROSSGRAD:
+    ALPHA_D: 0.5
+    ALPHA_F: 0.5
+    EPS_D: 1.0
+    EPS_F: 1.0
+  CoPrompt:
+    CTX_INIT: a photo of a
+    N_CTX: 2
+    PREC: fp16
+    PROMPT_DEPTH: 12
+  DAEL:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 0.5
+  DAELDG:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 0.5
+  DDAIG:
+    ALPHA: 0.5
+    CLAMP: False
+    CLAMP_MAX: 1.0
+    CLAMP_MIN: -1.0
+    G_ARCH: 
+    LMDA: 0.3
+    WARMUP: 0
+  DISTILL: cosine
+  DOMAINMIX:
+    ALPHA: 1.0
+    BETA: 1.0
+    TYPE: crossdomain
+  ENTMIN:
+    LMDA: 0.001
+  FIXMATCH:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 1.0
+  M3SDA:
+    LMDA: 0.5
+    N_STEP_F: 4
+  MCD:
+    N_STEP_F: 4
+  MEANTEACHER:
+    EMA_ALPHA: 0.999
+    RAMPUP: 5
+    WEIGHT_U: 1.0
+  MIXMATCH:
+    MIXUP_BETA: 0.75
+    RAMPUP: 20000
+    TEMP: 2.0
+    WEIGHT_U: 100.0
+  MME:
+    LMDA: 0.1
+  NAME: CoPrompt
+  SE:
+    CONF_THRE: 0.95
+    EMA_ALPHA: 0.999
+    RAMPUP: 300
+  W: 0.1
+USE_CUDA: True
+VERBOSE: True
+VERSION: 1
+Collecting env info ...
+Loading trainer: CoPrompt
+Loading dataset: PreparedEuroSAT
+Loading preprocessed few-shot data from /home/mazaveri/hpc-prog/Vipul/data/eurosat/split_fewshot/shot_16-seed_1.pkl
+SUBSAMPLE NEW CLASSES!
+Building transform_train
++ resize to 224x224
++ randaugment (n=2, m=10)
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+Building transform_test
++ resize the smaller edge to 224
++ 224x224 center crop
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+---------  ---------------
+Dataset    PreparedEuroSAT
+# classes  5
+# train_x  80
+# val      20
+# test     2,041
+---------  ---------------
+Loading CLIP (backbone: ViT-B/16)
+Loading original CLIP for distillation
+
+Getting textual features as CLIP's classifier.
+Building custom CLIP
+CoPrompt design: Multi-modal Prompt Learning
+Initial context: "a photo of a"
+Number of CoPrompt context words (tokens): 2
+Prompts: ['a centered satellite photo of Pasture.', 'a centered satellite photo of PermanentCrop.', 'a centered satellite photo of Residential.', 'a centered satellite photo of River.', 'a centered satellite photo of SeaLake.']
+Turning off gradients in both the image and the text encoder
+Parameters to be updated: {'prompt_learner.compound_prompts_text.9', 'prompt_learner.compound_prompts_text.10', 'prompt_learner.compound_prompt_projections.1.bias', 'prompt_learner.compound_prompts_text.0', 'prompt_learner.compound_prompt_projections.0.bias', 'prompt_learner.compound_prompts_text.3', 'prompt_learner.ctx', 'prompt_learner.compound_prompts_text.2', 'prompt_learner.compound_prompt_projections.9.bias', 'prompt_learner.compound_prompt_projections.8.bias', 'prompt_learner.compound_prompts_text.8', 'prompt_learner.compound_prompts_text.1', 'prompt_learner.compound_prompt_projections.0.weight', 'prompt_learner.compound_prompt_projections.4.bias', 'prompt_learner.compound_prompt_projections.4.weight', 'prompt_learner.compound_prompt_projections.5.bias', 'prompt_learner.compound_prompt_projections.6.weight', 'prompt_learner.compound_prompts_text.6', 'prompt_learner.compound_prompt_projections.8.weight', 'adapter_text.fc.2.weight', 'prompt_learner.compound_prompt_projections.9.weight', 'prompt_learner.compound_prompt_projections.10.bias', 'prompt_learner.compound_prompt_projections.10.weight', 'prompt_learner.compound_prompt_projections.3.bias', 'prompt_learner.proj.weight', 'prompt_learner.compound_prompt_projections.2.weight', 'prompt_learner.compound_prompts_text.5', 'prompt_learner.compound_prompt_projections.5.weight', 'prompt_learner.proj.bias', 'prompt_learner.compound_prompt_projections.2.bias', 'prompt_learner.compound_prompt_projections.1.weight', 'prompt_learner.compound_prompts_text.7', 'prompt_learner.compound_prompts_text.4', 'prompt_learner.compound_prompt_projections.7.bias', 'adapter_image.fc.0.weight', 'prompt_learner.compound_prompt_projections.6.bias', 'prompt_learner.compound_prompt_projections.3.weight', 'prompt_learner.compound_prompt_projections.7.weight', 'adapter_image.fc.2.weight', 'adapter_text.fc.0.weight'}
+Loading evaluator: Classification
+Loading weights to MultiModalPromptLearner from "output/CoPrompt/train_base/eurosat/shots_16/CoPrompt/coprompt/seed1/MultiModalPromptLearner/model.pth.tar-8" (epoch = 8)
+Evaluate on the *test* set
+=> result
+* total: 2,041
+* correct: 814
+* accuracy: 39.9%
+* error: 60.1%
+* macro_f1: 34.7%

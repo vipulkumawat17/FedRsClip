@@ -1,0 +1,23 @@
+============================================================
+Job Started
+Job ID    : 30401
+Node      : node2
+Date      : Thu Sep  3 10:16:41 AM IST 2026
+Time     : 10:16:41
+============================================================
+============================================================
+Run Co-prompt vs Pretrained CLIP comparison
+============================================================
+Wrote checkpoints/CoPrompt_comparison_results/Vit-B-16_vs_Vit-B-16/coprompt_base_novel_results.csv
+Wrote checkpoints/CoPrompt_comparison_results/Vit-B-16_vs_Vit-B-16/zero_shot_vs_coprompt.csv
+Wrote checkpoints/CoPrompt_comparison_results/Vit-B-16_vs_Vit-B-16/zero_shot_vs_coprompt.png
+--------------------------------------------------
+Run Co-prompt vs Pretrained CLIP comparison finished
+--------------------------------------------------
+============================================================
+Job Finished
+Job ID    : 30401
+Node      : node2
+Date      : Thu Sep  3 10:16:42 AM IST 2026
+Time      : 10:16:42
+============================================================

@@ -1,0 +1,523 @@
+Using DATA root: /home/mazaveri/hpc-prog/Vipul/data
+Dataset config:  configs/datasets/flowers102.yaml
+Load Epochs: 8
+Setting fixed seed: 1
+***************
+** Arguments **
+***************
+backbone: 
+config_file: configs/trainers/coprompt.yaml
+dataset_config_file: configs/datasets/flowers102.yaml
+eval_only: False
+head: 
+load_epoch: None
+model_dir: 
+no_train: False
+opts: ['DATASET.NUM_SHOTS', '16', 'DATASET.SUBSAMPLE_CLASSES', 'base']
+output_dir: output/CoPrompt/train_base/flowers102/shots_16/CoPrompt/coprompt/seed1
+pre_train_exp_name: 
+resume: 
+root: /home/mazaveri/hpc-prog/Vipul/data
+seed: 1
+source_domains: None
+target_domains: None
+trainer: CoPrompt
+transforms: None
+************
+** Config **
+************
+DATALOADER:
+  K_TRANSFORMS: 2
+  NUM_WORKERS: 8
+  RETURN_IMG0: False
+  TEST:
+    BATCH_SIZE: 100
+    SAMPLER: SequentialSampler
+  TRAIN_U:
+    BATCH_SIZE: 32
+    N_DOMAIN: 0
+    N_INS: 16
+    SAME_AS_X: True
+    SAMPLER: RandomSampler
+  TRAIN_X:
+    BATCH_SIZE: 4
+    N_DOMAIN: 0
+    N_INS: 16
+    SAMPLER: RandomSampler
+DATASET:
+  ALL_AS_UNLABELED: False
+  CIFAR_C_LEVEL: 1
+  CIFAR_C_TYPE: 
+  NAME: PreparedFlowers102
+  NUM_LABELED: -1
+  NUM_SHOTS: 16
+  ROOT: /home/mazaveri/hpc-prog/Vipul/data
+  SOURCE_DOMAINS: ()
+  STL10_FOLD: -1
+  SUBSAMPLE_CLASSES: base
+  TARGET_DOMAINS: ()
+  VAL_PERCENT: 0.1
+INPUT:
+  COLORJITTER_B: 0.4
+  COLORJITTER_C: 0.4
+  COLORJITTER_H: 0.1
+  COLORJITTER_S: 0.4
+  CROP_PADDING: 4
+  CUTOUT_LEN: 16
+  CUTOUT_N: 1
+  GB_K: 21
+  GB_P: 0.5
+  GN_MEAN: 0.0
+  GN_STD: 0.15
+  INTERPOLATION: bicubic
+  NO_TRANSFORM: False
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+  RANDAUGMENT_M: 10
+  RANDAUGMENT_N: 2
+  RGS_P: 0.2
+  RRCROP_SCALE: (0.08, 1.0)
+  SIZE: (224, 224)
+  TRANSFORMS: ('randaugment', 'normalize')
+MODEL:
+  BACKBONE:
+    NAME: ViT-B/16
+    PRETRAINED: True
+  HEAD:
+    ACTIVATION: relu
+    BN: True
+    DROPOUT: 0.0
+    HIDDEN_LAYERS: ()
+    NAME: 
+  INIT_WEIGHTS: 
+OPTIM:
+  ADAM_BETA1: 0.9
+  ADAM_BETA2: 0.999
+  BASE_LR_MULT: 0.1
+  GAMMA: 0.1
+  LR: 0.0035
+  LR_SCHEDULER: cosine
+  MAX_EPOCH: 8
+  MOMENTUM: 0.9
+  NAME: sgd
+  NEW_LAYERS: ()
+  RMSPROP_ALPHA: 0.99
+  SGD_DAMPNING: 0
+  SGD_NESTEROV: False
+  STAGED_LR: False
+  STEPSIZE: (-1,)
+  WARMUP_CONS_LR: 1e-05
+  WARMUP_EPOCH: 1
+  WARMUP_MIN_LR: 1e-05
+  WARMUP_RECOUNT: True
+  WARMUP_TYPE: constant
+  WEIGHT_DECAY: 0.0005
+OUTPUT_DIR: output/CoPrompt/train_base/flowers102/shots_16/CoPrompt/coprompt/seed1
+RESUME: 
+SEED: 1
+TEST:
+  COMPUTE_CMAT: False
+  EVALUATOR: Classification
+  FINAL_MODEL: last_step
+  NO_TEST: False
+  PER_CLASS_RESULT: False
+  SPLIT: test
+TRAIN:
+  CHECKPOINT_FREQ: 0
+  COUNT_ITER: train_x
+  PRINT_FREQ: 20
+TRAINER:
+  CDAC:
+    CLASS_LR_MULTI: 10
+    P_THRESH: 0.95
+    RAMPUP_COEF: 30
+    RAMPUP_ITRS: 1000
+    STRONG_TRANSFORMS: ()
+    TOPK_MATCH: 5
+  CROSSGRAD:
+    ALPHA_D: 0.5
+    ALPHA_F: 0.5
+    EPS_D: 1.0
+    EPS_F: 1.0
+  CoPrompt:
+    CTX_INIT: a photo of a
+    N_CTX: 4
+    PREC: fp16
+    PROMPT_DEPTH: 9
+  DAEL:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 0.5
+  DAELDG:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 0.5
+  DDAIG:
+    ALPHA: 0.5
+    CLAMP: False
+    CLAMP_MAX: 1.0
+    CLAMP_MIN: -1.0
+    G_ARCH: 
+    LMDA: 0.3
+    WARMUP: 0
+  DISTILL: cosine
+  DOMAINMIX:
+    ALPHA: 1.0
+    BETA: 1.0
+    TYPE: crossdomain
+  ENTMIN:
+    LMDA: 0.001
+  FIXMATCH:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 1.0
+  M3SDA:
+    LMDA: 0.5
+    N_STEP_F: 4
+  MCD:
+    N_STEP_F: 4
+  MEANTEACHER:
+    EMA_ALPHA: 0.999
+    RAMPUP: 5
+    WEIGHT_U: 1.0
+  MIXMATCH:
+    MIXUP_BETA: 0.75
+    RAMPUP: 20000
+    TEMP: 2.0
+    WEIGHT_U: 100.0
+  MME:
+    LMDA: 0.1
+  NAME: CoPrompt
+  SE:
+    CONF_THRE: 0.95
+    EMA_ALPHA: 0.999
+    RAMPUP: 300
+  W: 8.0
+USE_CUDA: True
+VERBOSE: True
+VERSION: 1
+Collecting env info ...
+Loading trainer: CoPrompt
+Loading dataset: PreparedFlowers102
+Loading preprocessed few-shot data from /home/mazaveri/hpc-prog/Vipul/data/flower_102/split_fewshot/shot_16-seed_1.pkl
+SUBSAMPLE BASE CLASSES!
+Building transform_train
++ resize to 224x224
++ randaugment (n=2, m=10)
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+Building transform_test
++ resize the smaller edge to 224
++ 224x224 center crop
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+---------  ------------------
+Dataset    PreparedFlowers102
+# classes  29
+# train_x  464
+# val      8
+# test     25
+---------  ------------------
+Loading CLIP (backbone: ViT-B/16)
+Loading original CLIP for distillation
+
+Getting textual features as CLIP's classifier.
+Building custom CLIP
+CoPrompt design: Multi-modal Prompt Learning
+Initial context: "a photo of a"
+Number of CoPrompt context words (tokens): 4
+Prompts: ['a photo of a hard-leaved pocket orchid, a type of flower.', 'a photo of a sweet pea, a type of flower.', 'a photo of a english marigold, a type of flower.', 'a photo of a bird of paradise, a type of flower.', 'a photo of a snapdragon, a type of flower.', "a photo of a colt's foot, a type of flower.", 'a photo of a purple coneflower, a type of flower.', 'a photo of a peruvian lily, a type of flower.', 'a photo of a giant white arum lily, a type of flower.', 'a photo of a pincushion flower, a type of flower.', 'a photo of a fritillary, a type of flower.', 'a photo of a stemless gentian, a type of flower.', 'a photo of a artichoke, a type of flower.', 'a photo of a sweet william, a type of flower.', 'a photo of a garden phlox, a type of flower.', 'a photo of a ruby-lipped cattleya, a type of flower.', 'a photo of a cape flower, a type of flower.', 'a photo of a lenten rose, a type of flower.', 'a photo of a barbeton daisy, a type of flower.', 'a photo of a daffodil, a type of flower.', 'a photo of a sword lily, a type of flower.', 'a photo of a poinsettia, a type of flower.', 'a photo of a wallflower, a type of flower.', 'a photo of a marigold, a type of flower.', 'a photo of a buttercup, a type of flower.', 'a photo of a petunia, a type of flower.', 'a photo of a wild pansy, a type of flower.', 'a photo of a primula, a type of flower.', 'a photo of a sunflower, a type of flower.']
+Turning off gradients in both the image and the text encoder
+Parameters to be updated: {'prompt_learner.proj.bias', 'prompt_learner.compound_prompts_text.0', 'prompt_learner.compound_prompt_projections.1.bias', 'prompt_learner.compound_prompt_projections.2.bias', 'adapter_image.fc.0.weight', 'prompt_learner.compound_prompt_projections.4.bias', 'prompt_learner.compound_prompt_projections.6.bias', 'prompt_learner.compound_prompts_text.5', 'prompt_learner.compound_prompts_text.3', 'prompt_learner.compound_prompts_text.1', 'adapter_text.fc.2.weight', 'prompt_learner.compound_prompt_projections.5.bias', 'prompt_learner.compound_prompt_projections.0.weight', 'adapter_image.fc.2.weight', 'prompt_learner.compound_prompt_projections.2.weight', 'prompt_learner.compound_prompt_projections.3.weight', 'prompt_learner.ctx', 'prompt_learner.compound_prompt_projections.4.weight', 'prompt_learner.compound_prompts_text.7', 'prompt_learner.compound_prompts_text.4', 'prompt_learner.compound_prompts_text.2', 'prompt_learner.compound_prompt_projections.3.bias', 'prompt_learner.compound_prompt_projections.0.bias', 'prompt_learner.compound_prompt_projections.6.weight', 'prompt_learner.compound_prompt_projections.7.bias', 'prompt_learner.compound_prompt_projections.1.weight', 'prompt_learner.compound_prompt_projections.5.weight', 'prompt_learner.compound_prompt_projections.7.weight', 'prompt_learner.proj.weight', 'adapter_text.fc.0.weight', 'prompt_learner.compound_prompts_text.6'}
+Loading evaluator: Classification
+No checkpoint found, train from scratch
+Initialize tensorboard (log_dir=output/CoPrompt/train_base/flowers102/shots_16/CoPrompt/coprompt/seed1/tensorboard)
+epoch [1/8] batch [20/116] time 0.052 (0.113) data 0.000 (0.015) loss 4.7422 (4.6673) lr 1.0000e-05 eta 0:01:42
+epoch [1/8] batch [40/116] time 0.049 (0.083) data 0.000 (0.008) loss 2.6348 (4.2440) lr 1.0000e-05 eta 0:01:13
+epoch [1/8] batch [60/116] time 0.042 (0.071) data 0.000 (0.005) loss 2.6523 (3.9768) lr 1.0000e-05 eta 0:01:02
+epoch [1/8] batch [80/116] time 0.059 (0.066) data 0.000 (0.004) loss 4.2188 (3.9305) lr 1.0000e-05 eta 0:00:56
+epoch [1/8] batch [100/116] time 0.052 (0.063) data 0.000 (0.003) loss 4.3516 (3.8852) lr 1.0000e-05 eta 0:00:52
+epoch [2/8] batch [20/116] time 0.043 (0.063) data 0.000 (0.014) loss 2.3691 (3.4843) lr 3.5000e-03 eta 0:00:50
+epoch [2/8] batch [40/116] time 0.063 (0.058) data 0.000 (0.007) loss 2.3379 (3.2973) lr 3.5000e-03 eta 0:00:44
+epoch [2/8] batch [60/116] time 0.045 (0.055) data 0.000 (0.005) loss 2.8047 (3.1091) lr 3.5000e-03 eta 0:00:41
+epoch [2/8] batch [80/116] time 0.046 (0.055) data 0.000 (0.004) loss 2.6387 (2.9888) lr 3.5000e-03 eta 0:00:39
+epoch [2/8] batch [100/116] time 0.055 (0.053) data 0.000 (0.003) loss 3.3516 (2.9148) lr 3.5000e-03 eta 0:00:38
+epoch [3/8] batch [20/116] time 0.049 (0.067) data 0.000 (0.015) loss 1.9590 (2.2182) lr 3.3668e-03 eta 0:00:45
+epoch [3/8] batch [40/116] time 0.059 (0.060) data 0.000 (0.008) loss 1.2920 (2.3120) lr 3.3668e-03 eta 0:00:39
+epoch [3/8] batch [60/116] time 0.041 (0.057) data 0.000 (0.005) loss 3.1758 (2.4021) lr 3.3668e-03 eta 0:00:36
+epoch [3/8] batch [80/116] time 0.059 (0.056) data 0.000 (0.004) loss 2.1270 (2.3989) lr 3.3668e-03 eta 0:00:34
+epoch [3/8] batch [100/116] time 0.051 (0.055) data 0.000 (0.003) loss 1.6777 (2.3345) lr 3.3668e-03 eta 0:00:32
+epoch [4/8] batch [20/116] time 0.066 (0.067) data 0.000 (0.014) loss 1.2900 (2.0504) lr 2.9874e-03 eta 0:00:37
+epoch [4/8] batch [40/116] time 0.048 (0.060) data 0.000 (0.007) loss 1.9326 (2.0972) lr 2.9874e-03 eta 0:00:32
+epoch [4/8] batch [60/116] time 0.046 (0.056) data 0.000 (0.005) loss 2.0156 (2.0982) lr 2.9874e-03 eta 0:00:29
+epoch [4/8] batch [80/116] time 0.056 (0.055) data 0.000 (0.004) loss 2.3789 (2.1327) lr 2.9874e-03 eta 0:00:27
+epoch [4/8] batch [100/116] time 0.049 (0.054) data 0.000 (0.003) loss 2.0059 (2.1315) lr 2.9874e-03 eta 0:00:25
+epoch [5/8] batch [20/116] time 0.064 (0.065) data 0.000 (0.013) loss 3.5098 (2.3286) lr 2.4197e-03 eta 0:00:28
+epoch [5/8] batch [40/116] time 0.056 (0.057) data 0.000 (0.006) loss 2.4297 (2.1322) lr 2.4197e-03 eta 0:00:24
+epoch [5/8] batch [60/116] time 0.063 (0.056) data 0.000 (0.004) loss 1.7637 (2.0920) lr 2.4197e-03 eta 0:00:22
+epoch [5/8] batch [80/116] time 0.051 (0.055) data 0.000 (0.003) loss 1.8369 (2.0298) lr 2.4197e-03 eta 0:00:20
+epoch [5/8] batch [100/116] time 0.049 (0.054) data 0.000 (0.003) loss 3.0508 (2.0358) lr 2.4197e-03 eta 0:00:19
+epoch [6/8] batch [20/116] time 0.045 (0.064) data 0.000 (0.015) loss 1.2891 (1.8653) lr 1.7500e-03 eta 0:00:20
+epoch [6/8] batch [40/116] time 0.060 (0.057) data 0.000 (0.008) loss 2.7188 (1.9128) lr 1.7500e-03 eta 0:00:17
+epoch [6/8] batch [60/116] time 0.052 (0.053) data 0.000 (0.005) loss 1.5332 (1.8873) lr 1.7500e-03 eta 0:00:15
+epoch [6/8] batch [80/116] time 0.049 (0.052) data 0.000 (0.004) loss 1.5068 (1.8990) lr 1.7500e-03 eta 0:00:14
+epoch [6/8] batch [100/116] time 0.047 (0.051) data 0.000 (0.003) loss 1.4453 (1.8843) lr 1.7500e-03 eta 0:00:12
+epoch [7/8] batch [20/116] time 0.049 (0.064) data 0.000 (0.014) loss 2.0234 (1.8272) lr 1.0803e-03 eta 0:00:13
+epoch [7/8] batch [40/116] time 0.053 (0.058) data 0.000 (0.007) loss 2.3398 (1.8648) lr 1.0803e-03 eta 0:00:11
+epoch [7/8] batch [60/116] time 0.044 (0.056) data 0.000 (0.005) loss 1.6631 (1.8801) lr 1.0803e-03 eta 0:00:09
+epoch [7/8] batch [80/116] time 0.060 (0.055) data 0.000 (0.004) loss 1.5088 (1.7905) lr 1.0803e-03 eta 0:00:08
+epoch [7/8] batch [100/116] time 0.055 (0.055) data 0.000 (0.003) loss 2.1348 (1.8076) lr 1.0803e-03 eta 0:00:07
+epoch [8/8] batch [20/116] time 0.044 (0.064) data 0.000 (0.014) loss 1.4912 (1.7477) lr 5.1256e-04 eta 0:00:06
+epoch [8/8] batch [40/116] time 0.051 (0.057) data 0.000 (0.007) loss 1.5654 (1.7601) lr 5.1256e-04 eta 0:00:04
+epoch [8/8] batch [60/116] time 0.044 (0.054) data 0.000 (0.005) loss 2.3555 (1.8159) lr 5.1256e-04 eta 0:00:03
+epoch [8/8] batch [80/116] time 0.048 (0.053) data 0.000 (0.004) loss 1.6279 (1.8234) lr 5.1256e-04 eta 0:00:01
+epoch [8/8] batch [100/116] time 0.061 (0.053) data 0.000 (0.003) loss 1.6016 (1.7970) lr 5.1256e-04 eta 0:00:00
+Checkpoint saved to output/CoPrompt/train_base/flowers102/shots_16/CoPrompt/coprompt/seed1/MultiModalPromptLearner/model.pth.tar-8
+Finish training
+Deploy the last-epoch model
+Evaluate on the *test* set
+=> result
+* total: 25
+* correct: 25
+* accuracy: 100.0%
+* error: 0.0%
+* macro_f1: 100.0%
+Elapsed: 0:00:53
+Runing the first phase job and save the output to output/CoPrompt/test_new/flowers102/shots_16/CoPrompt/coprompt/seed1
+Setting fixed seed: 1
+***************
+** Arguments **
+***************
+backbone: 
+config_file: configs/trainers/coprompt.yaml
+dataset_config_file: configs/datasets/flowers102.yaml
+eval_only: True
+head: 
+load_epoch: 8
+model_dir: output/CoPrompt/train_base/flowers102/shots_16/CoPrompt/coprompt/seed1
+no_train: False
+opts: ['DATASET.NUM_SHOTS', '16', 'DATASET.SUBSAMPLE_CLASSES', 'new']
+output_dir: output/CoPrompt/test_new/flowers102/shots_16/CoPrompt/coprompt/seed1
+pre_train_exp_name: 
+resume: 
+root: /home/mazaveri/hpc-prog/Vipul/data
+seed: 1
+source_domains: None
+target_domains: None
+trainer: CoPrompt
+transforms: None
+************
+** Config **
+************
+DATALOADER:
+  K_TRANSFORMS: 2
+  NUM_WORKERS: 8
+  RETURN_IMG0: False
+  TEST:
+    BATCH_SIZE: 100
+    SAMPLER: SequentialSampler
+  TRAIN_U:
+    BATCH_SIZE: 32
+    N_DOMAIN: 0
+    N_INS: 16
+    SAME_AS_X: True
+    SAMPLER: RandomSampler
+  TRAIN_X:
+    BATCH_SIZE: 4
+    N_DOMAIN: 0
+    N_INS: 16
+    SAMPLER: RandomSampler
+DATASET:
+  ALL_AS_UNLABELED: False
+  CIFAR_C_LEVEL: 1
+  CIFAR_C_TYPE: 
+  NAME: PreparedFlowers102
+  NUM_LABELED: -1
+  NUM_SHOTS: 16
+  ROOT: /home/mazaveri/hpc-prog/Vipul/data
+  SOURCE_DOMAINS: ()
+  STL10_FOLD: -1
+  SUBSAMPLE_CLASSES: new
+  TARGET_DOMAINS: ()
+  VAL_PERCENT: 0.1
+INPUT:
+  COLORJITTER_B: 0.4
+  COLORJITTER_C: 0.4
+  COLORJITTER_H: 0.1
+  COLORJITTER_S: 0.4
+  CROP_PADDING: 4
+  CUTOUT_LEN: 16
+  CUTOUT_N: 1
+  GB_K: 21
+  GB_P: 0.5
+  GN_MEAN: 0.0
+  GN_STD: 0.15
+  INTERPOLATION: bicubic
+  NO_TRANSFORM: False
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+  RANDAUGMENT_M: 10
+  RANDAUGMENT_N: 2
+  RGS_P: 0.2
+  RRCROP_SCALE: (0.08, 1.0)
+  SIZE: (224, 224)
+  TRANSFORMS: ('randaugment', 'normalize')
+MODEL:
+  BACKBONE:
+    NAME: ViT-B/16
+    PRETRAINED: True
+  HEAD:
+    ACTIVATION: relu
+    BN: True
+    DROPOUT: 0.0
+    HIDDEN_LAYERS: ()
+    NAME: 
+  INIT_WEIGHTS: 
+OPTIM:
+  ADAM_BETA1: 0.9
+  ADAM_BETA2: 0.999
+  BASE_LR_MULT: 0.1
+  GAMMA: 0.1
+  LR: 0.0035
+  LR_SCHEDULER: cosine
+  MAX_EPOCH: 8
+  MOMENTUM: 0.9
+  NAME: sgd
+  NEW_LAYERS: ()
+  RMSPROP_ALPHA: 0.99
+  SGD_DAMPNING: 0
+  SGD_NESTEROV: False
+  STAGED_LR: False
+  STEPSIZE: (-1,)
+  WARMUP_CONS_LR: 1e-05
+  WARMUP_EPOCH: 1
+  WARMUP_MIN_LR: 1e-05
+  WARMUP_RECOUNT: True
+  WARMUP_TYPE: constant
+  WEIGHT_DECAY: 0.0005
+OUTPUT_DIR: output/CoPrompt/test_new/flowers102/shots_16/CoPrompt/coprompt/seed1
+RESUME: 
+SEED: 1
+TEST:
+  COMPUTE_CMAT: False
+  EVALUATOR: Classification
+  FINAL_MODEL: last_step
+  NO_TEST: False
+  PER_CLASS_RESULT: False
+  SPLIT: test
+TRAIN:
+  CHECKPOINT_FREQ: 0
+  COUNT_ITER: train_x
+  PRINT_FREQ: 20
+TRAINER:
+  CDAC:
+    CLASS_LR_MULTI: 10
+    P_THRESH: 0.95
+    RAMPUP_COEF: 30
+    RAMPUP_ITRS: 1000
+    STRONG_TRANSFORMS: ()
+    TOPK_MATCH: 5
+  CROSSGRAD:
+    ALPHA_D: 0.5
+    ALPHA_F: 0.5
+    EPS_D: 1.0
+    EPS_F: 1.0
+  CoPrompt:
+    CTX_INIT: a photo of a
+    N_CTX: 4
+    PREC: fp16
+    PROMPT_DEPTH: 9
+  DAEL:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 0.5
+  DAELDG:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 0.5
+  DDAIG:
+    ALPHA: 0.5
+    CLAMP: False
+    CLAMP_MAX: 1.0
+    CLAMP_MIN: -1.0
+    G_ARCH: 
+    LMDA: 0.3
+    WARMUP: 0
+  DISTILL: cosine
+  DOMAINMIX:
+    ALPHA: 1.0
+    BETA: 1.0
+    TYPE: crossdomain
+  ENTMIN:
+    LMDA: 0.001
+  FIXMATCH:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 1.0
+  M3SDA:
+    LMDA: 0.5
+    N_STEP_F: 4
+  MCD:
+    N_STEP_F: 4
+  MEANTEACHER:
+    EMA_ALPHA: 0.999
+    RAMPUP: 5
+    WEIGHT_U: 1.0
+  MIXMATCH:
+    MIXUP_BETA: 0.75
+    RAMPUP: 20000
+    TEMP: 2.0
+    WEIGHT_U: 100.0
+  MME:
+    LMDA: 0.1
+  NAME: CoPrompt
+  SE:
+    CONF_THRE: 0.95
+    EMA_ALPHA: 0.999
+    RAMPUP: 300
+  W: 8.0
+USE_CUDA: True
+VERBOSE: True
+VERSION: 1
+Collecting env info ...
+Loading trainer: CoPrompt
+Loading dataset: PreparedFlowers102
+Loading preprocessed few-shot data from /home/mazaveri/hpc-prog/Vipul/data/flower_102/split_fewshot/shot_16-seed_1.pkl
+SUBSAMPLE NEW CLASSES!
+Building transform_train
++ resize to 224x224
++ randaugment (n=2, m=10)
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+Building transform_test
++ resize the smaller edge to 224
++ 224x224 center crop
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+---------  ------------------
+Dataset    PreparedFlowers102
+# classes  29
+# train_x  464
+# val      11
+# test     15
+---------  ------------------
+Loading CLIP (backbone: ViT-B/16)
+Loading original CLIP for distillation
+
+Getting textual features as CLIP's classifier.
+Building custom CLIP
+CoPrompt design: Multi-modal Prompt Learning
+Initial context: "a photo of a"
+Number of CoPrompt context words (tokens): 4
+Prompts: ['a photo of a pelargonium, a type of flower.', 'a photo of a bishop of llandaff, a type of flower.', 'a photo of a geranium, a type of flower.', 'a photo of a orange dahlia, a type of flower.', 'a photo of a pink-yellow dahlia, a type of flower.', 'a photo of a californian poppy, a type of flower.', 'a photo of a osteospermum, a type of flower.', 'a photo of a tree poppy, a type of flower.', 'a photo of a gazania, a type of flower.', 'a photo of a azalea, a type of flower.', 'a photo of a water lily, a type of flower.', 'a photo of a rose, a type of flower.', 'a photo of a thorn apple, a type of flower.', 'a photo of a morning glory, a type of flower.', 'a photo of a passion flower, a type of flower.', 'a photo of a lotus, a type of flower.', 'a photo of a anthurium, a type of flower.', 'a photo of a frangipani, a type of flower.', 'a photo of a clematis, a type of flower.', 'a photo of a hibiscus, a type of flower.', 'a photo of a columbine, a type of flower.', 'a photo of a desert-rose, a type of flower.', 'a photo of a tree mallow, a type of flower.', 'a photo of a magnolia, a type of flower.', 'a photo of a cyclamen, a type of flower.', 'a photo of a watercress, a type of flower.', 'a photo of a canna lily, a type of flower.', 'a photo of a hippeastrum, a type of flower.', 'a photo of a bee balm, a type of flower.']
+Turning off gradients in both the image and the text encoder
+Parameters to be updated: {'adapter_image.fc.2.weight', 'prompt_learner.compound_prompts_text.4', 'prompt_learner.ctx', 'prompt_learner.compound_prompt_projections.6.bias', 'prompt_learner.compound_prompt_projections.7.bias', 'adapter_text.fc.0.weight', 'prompt_learner.compound_prompt_projections.3.bias', 'adapter_text.fc.2.weight', 'prompt_learner.compound_prompt_projections.1.bias', 'prompt_learner.compound_prompt_projections.0.weight', 'prompt_learner.compound_prompts_text.3', 'prompt_learner.compound_prompt_projections.4.bias', 'prompt_learner.compound_prompts_text.7', 'prompt_learner.compound_prompts_text.2', 'prompt_learner.compound_prompt_projections.0.bias', 'prompt_learner.compound_prompt_projections.3.weight', 'prompt_learner.compound_prompt_projections.2.bias', 'prompt_learner.compound_prompt_projections.5.bias', 'prompt_learner.proj.weight', 'prompt_learner.compound_prompts_text.0', 'adapter_image.fc.0.weight', 'prompt_learner.compound_prompts_text.1', 'prompt_learner.compound_prompt_projections.7.weight', 'prompt_learner.compound_prompts_text.5', 'prompt_learner.compound_prompt_projections.6.weight', 'prompt_learner.compound_prompts_text.6', 'prompt_learner.compound_prompt_projections.4.weight', 'prompt_learner.compound_prompt_projections.2.weight', 'prompt_learner.compound_prompt_projections.5.weight', 'prompt_learner.compound_prompt_projections.1.weight', 'prompt_learner.proj.bias'}
+Loading evaluator: Classification
+Loading weights to MultiModalPromptLearner from "output/CoPrompt/train_base/flowers102/shots_16/CoPrompt/coprompt/seed1/MultiModalPromptLearner/model.pth.tar-8" (epoch = 8)
+Evaluate on the *test* set
+=> result
+* total: 15
+* correct: 14
+* accuracy: 93.3%
+* error: 6.7%
+* macro_f1: 83.3%

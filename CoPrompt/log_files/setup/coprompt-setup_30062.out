@@ -1,0 +1,9 @@
+============================================================
+Job Started
+Job ID    : 30062
+Node      : node2
+Date      : Sat Aug 29 01:14:32 PM IST 2026
+Time     : 13:14:32
+============================================================
+=== 0. Check git is available here (should be, on the login node) ===
+git still not found - try 'module load git' first

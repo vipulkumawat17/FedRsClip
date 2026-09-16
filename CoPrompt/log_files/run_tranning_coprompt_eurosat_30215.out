@@ -1,0 +1,579 @@
+Using DATA root: /home/mazaveri/hpc-prog/Vipul/data
+Dataset config:  configs/datasets/eurosat.yaml
+Load Epochs: 8
+Setting fixed seed: 1
+***************
+** Arguments **
+***************
+backbone: 
+config_file: configs/trainers/coprompt.yaml
+dataset_config_file: configs/datasets/eurosat.yaml
+eval_only: False
+head: 
+load_epoch: None
+model_dir: 
+no_train: False
+opts: ['DATASET.NUM_SHOTS', '16', 'DATASET.SUBSAMPLE_CLASSES', 'base']
+output_dir: output/CoPrompt/train_base/eurosat/shots_16/CoPrompt/coprompt/seed1
+pre_train_exp_name: 
+resume: 
+root: /home/mazaveri/hpc-prog/Vipul/data
+seed: 1
+source_domains: None
+target_domains: None
+trainer: CoPrompt
+transforms: None
+************
+** Config **
+************
+DATALOADER:
+  K_TRANSFORMS: 2
+  NUM_WORKERS: 8
+  RETURN_IMG0: False
+  TEST:
+    BATCH_SIZE: 100
+    SAMPLER: SequentialSampler
+  TRAIN_U:
+    BATCH_SIZE: 32
+    N_DOMAIN: 0
+    N_INS: 16
+    SAME_AS_X: True
+    SAMPLER: RandomSampler
+  TRAIN_X:
+    BATCH_SIZE: 4
+    N_DOMAIN: 0
+    N_INS: 16
+    SAMPLER: RandomSampler
+DATASET:
+  ALL_AS_UNLABELED: False
+  CIFAR_C_LEVEL: 1
+  CIFAR_C_TYPE: 
+  NAME: PreparedEuroSAT
+  NUM_LABELED: -1
+  NUM_SHOTS: 16
+  ROOT: /home/mazaveri/hpc-prog/Vipul/data
+  SOURCE_DOMAINS: ()
+  STL10_FOLD: -1
+  SUBSAMPLE_CLASSES: base
+  TARGET_DOMAINS: ()
+  VAL_PERCENT: 0.1
+INPUT:
+  COLORJITTER_B: 0.4
+  COLORJITTER_C: 0.4
+  COLORJITTER_H: 0.1
+  COLORJITTER_S: 0.4
+  CROP_PADDING: 4
+  CUTOUT_LEN: 16
+  CUTOUT_N: 1
+  GB_K: 21
+  GB_P: 0.5
+  GN_MEAN: 0.0
+  GN_STD: 0.15
+  INTERPOLATION: bicubic
+  NO_TRANSFORM: False
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+  RANDAUGMENT_M: 10
+  RANDAUGMENT_N: 2
+  RGS_P: 0.2
+  RRCROP_SCALE: (0.08, 1.0)
+  SIZE: (224, 224)
+  TRANSFORMS: ('randaugment', 'normalize')
+MODEL:
+  BACKBONE:
+    NAME: ViT-B/16
+    PRETRAINED: True
+  HEAD:
+    ACTIVATION: relu
+    BN: True
+    DROPOUT: 0.0
+    HIDDEN_LAYERS: ()
+    NAME: 
+  INIT_WEIGHTS: 
+OPTIM:
+  ADAM_BETA1: 0.9
+  ADAM_BETA2: 0.999
+  BASE_LR_MULT: 0.1
+  GAMMA: 0.1
+  LR: 0.0035
+  LR_SCHEDULER: cosine
+  MAX_EPOCH: 8
+  MOMENTUM: 0.9
+  NAME: sgd
+  NEW_LAYERS: ()
+  RMSPROP_ALPHA: 0.99
+  SGD_DAMPNING: 0
+  SGD_NESTEROV: False
+  STAGED_LR: False
+  STEPSIZE: (-1,)
+  WARMUP_CONS_LR: 1e-05
+  WARMUP_EPOCH: 1
+  WARMUP_MIN_LR: 1e-05
+  WARMUP_RECOUNT: True
+  WARMUP_TYPE: constant
+  WEIGHT_DECAY: 0.0005
+OUTPUT_DIR: output/CoPrompt/train_base/eurosat/shots_16/CoPrompt/coprompt/seed1
+RESUME: 
+SEED: 1
+TEST:
+  COMPUTE_CMAT: False
+  EVALUATOR: Classification
+  FINAL_MODEL: last_step
+  NO_TEST: False
+  PER_CLASS_RESULT: False
+  SPLIT: test
+TRAIN:
+  CHECKPOINT_FREQ: 0
+  COUNT_ITER: train_x
+  PRINT_FREQ: 20
+TRAINER:
+  CDAC:
+    CLASS_LR_MULTI: 10
+    P_THRESH: 0.95
+    RAMPUP_COEF: 30
+    RAMPUP_ITRS: 1000
+    STRONG_TRANSFORMS: ()
+    TOPK_MATCH: 5
+  CROSSGRAD:
+    ALPHA_D: 0.5
+    ALPHA_F: 0.5
+    EPS_D: 1.0
+    EPS_F: 1.0
+  CoPrompt:
+    CTX_INIT: a photo of a
+    N_CTX: 2
+    PREC: fp16
+    PROMPT_DEPTH: 12
+  DAEL:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 0.5
+  DAELDG:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 0.5
+  DDAIG:
+    ALPHA: 0.5
+    CLAMP: False
+    CLAMP_MAX: 1.0
+    CLAMP_MIN: -1.0
+    G_ARCH: 
+    LMDA: 0.3
+    WARMUP: 0
+  DISTILL: cosine
+  DOMAINMIX:
+    ALPHA: 1.0
+    BETA: 1.0
+    TYPE: crossdomain
+  ENTMIN:
+    LMDA: 0.001
+  FIXMATCH:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 1.0
+  M3SDA:
+    LMDA: 0.5
+    N_STEP_F: 4
+  MCD:
+    N_STEP_F: 4
+  MEANTEACHER:
+    EMA_ALPHA: 0.999
+    RAMPUP: 5
+    WEIGHT_U: 1.0
+  MIXMATCH:
+    MIXUP_BETA: 0.75
+    RAMPUP: 20000
+    TEMP: 2.0
+    WEIGHT_U: 100.0
+  MME:
+    LMDA: 0.1
+  NAME: CoPrompt
+  SE:
+    CONF_THRE: 0.95
+    EMA_ALPHA: 0.999
+    RAMPUP: 300
+  W: 0.1
+USE_CUDA: True
+VERBOSE: True
+VERSION: 1
+Collecting env info ...
+Loading trainer: CoPrompt
+Loading dataset: PreparedEuroSAT
+Loading preprocessed few-shot data from /home/mazaveri/hpc-prog/Vipul/data/eurosat/split_fewshot/shot_16-seed_1.pkl
+SUBSAMPLE BASE CLASSES!
+Building transform_train
++ resize to 224x224
++ randaugment (n=2, m=10)
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+Building transform_test
++ resize the smaller edge to 224
++ 224x224 center crop
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+---------  ---------------
+Dataset    PreparedEuroSAT
+# classes  3
+# train_x  48
+# val      12
+# test     1,350
+---------  ---------------
+Loading CLIP (backbone: ViT-B/16)
+Loading original CLIP for distillation
+
+Getting textual features as CLIP's classifier.
+Building custom CLIP
+CoPrompt design: Multi-modal Prompt Learning
+Initial context: "a photo of a"
+Number of CoPrompt context words (tokens): 2
+Prompts: ['a centered satellite photo of AnnualCrop.', 'a centered satellite photo of Forest.', 'a centered satellite photo of HerbaceousVegetation.']
+Turning off gradients in both the image and the text encoder
+Parameters to be updated: {'prompt_learner.compound_prompts_text.5', 'prompt_learner.proj.bias', 'prompt_learner.compound_prompts_text.9', 'prompt_learner.compound_prompts_text.6', 'prompt_learner.compound_prompt_projections.8.bias', 'prompt_learner.compound_prompt_projections.1.bias', 'prompt_learner.compound_prompt_projections.3.bias', 'prompt_learner.compound_prompt_projections.7.bias', 'prompt_learner.compound_prompt_projections.7.weight', 'prompt_learner.compound_prompt_projections.0.bias', 'prompt_learner.compound_prompts_text.8', 'prompt_learner.compound_prompt_projections.6.weight', 'prompt_learner.compound_prompts_text.1', 'prompt_learner.proj.weight', 'prompt_learner.compound_prompt_projections.9.weight', 'adapter_image.fc.0.weight', 'adapter_image.fc.2.weight', 'prompt_learner.compound_prompt_projections.8.weight', 'prompt_learner.compound_prompt_projections.9.bias', 'prompt_learner.compound_prompts_text.3', 'prompt_learner.ctx', 'adapter_text.fc.0.weight', 'prompt_learner.compound_prompts_text.7', 'prompt_learner.compound_prompt_projections.6.bias', 'prompt_learner.compound_prompt_projections.10.weight', 'adapter_text.fc.2.weight', 'prompt_learner.compound_prompts_text.4', 'prompt_learner.compound_prompts_text.0', 'prompt_learner.compound_prompts_text.10', 'prompt_learner.compound_prompt_projections.10.bias', 'prompt_learner.compound_prompt_projections.2.bias', 'prompt_learner.compound_prompt_projections.4.weight', 'prompt_learner.compound_prompt_projections.5.bias', 'prompt_learner.compound_prompt_projections.0.weight', 'prompt_learner.compound_prompt_projections.4.bias', 'prompt_learner.compound_prompt_projections.2.weight', 'prompt_learner.compound_prompts_text.2', 'prompt_learner.compound_prompt_projections.3.weight', 'prompt_learner.compound_prompt_projections.1.weight', 'prompt_learner.compound_prompt_projections.5.weight'}
+Loading evaluator: Classification
+No checkpoint found, train from scratch
+Initialize tensorboard (log_dir=output/CoPrompt/train_base/eurosat/shots_16/CoPrompt/coprompt/seed1/tensorboard)
+epoch [1/8] batch [1/12] time 1.191 (1.191) data 0.297 (0.297) loss 1.5781 (1.5781) lr 1.0000e-05 eta 0:01:53
+epoch [1/8] batch [2/12] time 0.057 (0.624) data 0.000 (0.149) loss 1.0859 (1.3320) lr 1.0000e-05 eta 0:00:58
+epoch [1/8] batch [3/12] time 0.043 (0.431) data 0.000 (0.099) loss 1.3359 (1.3333) lr 1.0000e-05 eta 0:00:40
+epoch [1/8] batch [4/12] time 0.041 (0.333) data 0.000 (0.074) loss 0.5039 (1.1260) lr 1.0000e-05 eta 0:00:30
+epoch [1/8] batch [5/12] time 0.038 (0.274) data 0.000 (0.060) loss 0.9956 (1.0999) lr 1.0000e-05 eta 0:00:24
+epoch [1/8] batch [6/12] time 0.038 (0.235) data 0.000 (0.050) loss 1.8848 (1.2307) lr 1.0000e-05 eta 0:00:21
+epoch [1/8] batch [7/12] time 0.039 (0.207) data 0.000 (0.043) loss 1.4189 (1.2576) lr 1.0000e-05 eta 0:00:18
+epoch [1/8] batch [8/12] time 0.048 (0.187) data 0.000 (0.037) loss 0.7759 (1.1974) lr 1.0000e-05 eta 0:00:16
+epoch [1/8] batch [9/12] time 0.041 (0.171) data 0.000 (0.033) loss 1.2881 (1.2075) lr 1.0000e-05 eta 0:00:14
+epoch [1/8] batch [10/12] time 0.041 (0.158) data 0.000 (0.030) loss 1.9629 (1.2830) lr 1.0000e-05 eta 0:00:13
+epoch [1/8] batch [11/12] time 0.056 (0.149) data 0.000 (0.027) loss 2.1934 (1.3658) lr 1.0000e-05 eta 0:00:12
+epoch [1/8] batch [12/12] time 0.052 (0.141) data 0.000 (0.025) loss 0.9434 (1.3306) lr 3.5000e-03 eta 0:00:11
+epoch [2/8] batch [1/12] time 0.349 (0.349) data 0.287 (0.287) loss 0.7397 (0.7397) lr 3.5000e-03 eta 0:00:28
+epoch [2/8] batch [2/12] time 0.043 (0.196) data 0.000 (0.144) loss 0.6460 (0.6929) lr 3.5000e-03 eta 0:00:16
+epoch [2/8] batch [3/12] time 0.043 (0.145) data 0.000 (0.096) loss 1.1777 (0.8545) lr 3.5000e-03 eta 0:00:11
+epoch [2/8] batch [4/12] time 0.038 (0.119) data 0.000 (0.072) loss 1.4492 (1.0032) lr 3.5000e-03 eta 0:00:09
+epoch [2/8] batch [5/12] time 0.038 (0.102) data 0.000 (0.058) loss 0.9990 (1.0023) lr 3.5000e-03 eta 0:00:08
+epoch [2/8] batch [6/12] time 0.038 (0.092) data 0.000 (0.048) loss 1.2422 (1.0423) lr 3.5000e-03 eta 0:00:07
+epoch [2/8] batch [7/12] time 0.043 (0.085) data 0.000 (0.041) loss 0.5566 (0.9729) lr 3.5000e-03 eta 0:00:06
+epoch [2/8] batch [8/12] time 0.045 (0.080) data 0.000 (0.036) loss 1.1924 (1.0004) lr 3.5000e-03 eta 0:00:06
+epoch [2/8] batch [9/12] time 0.041 (0.076) data 0.000 (0.032) loss 1.4277 (1.0479) lr 3.5000e-03 eta 0:00:05
+epoch [2/8] batch [10/12] time 0.048 (0.073) data 0.000 (0.029) loss 0.8965 (1.0327) lr 3.5000e-03 eta 0:00:05
+epoch [2/8] batch [11/12] time 0.049 (0.071) data 0.000 (0.026) loss 0.9458 (1.0248) lr 3.5000e-03 eta 0:00:05
+epoch [2/8] batch [12/12] time 0.038 (0.068) data 0.000 (0.024) loss 1.2178 (1.0409) lr 3.3668e-03 eta 0:00:04
+epoch [3/8] batch [1/12] time 0.344 (0.344) data 0.274 (0.274) loss 1.2559 (1.2559) lr 3.3668e-03 eta 0:00:24
+epoch [3/8] batch [2/12] time 0.039 (0.192) data 0.000 (0.137) loss 0.7559 (1.0059) lr 3.3668e-03 eta 0:00:13
+epoch [3/8] batch [3/12] time 0.041 (0.141) data 0.000 (0.092) loss 1.1113 (1.0410) lr 3.3668e-03 eta 0:00:09
+epoch [3/8] batch [4/12] time 0.040 (0.116) data 0.000 (0.069) loss 1.0508 (1.0435) lr 3.3668e-03 eta 0:00:07
+epoch [3/8] batch [5/12] time 0.040 (0.101) data 0.000 (0.055) loss 1.2568 (1.0861) lr 3.3668e-03 eta 0:00:06
+epoch [3/8] batch [6/12] time 0.040 (0.091) data 0.000 (0.046) loss 1.2666 (1.1162) lr 3.3668e-03 eta 0:00:05
+epoch [3/8] batch [7/12] time 0.040 (0.083) data 0.000 (0.039) loss 1.1592 (1.1223) lr 3.3668e-03 eta 0:00:05
+epoch [3/8] batch [8/12] time 0.040 (0.078) data 0.000 (0.034) loss 0.8613 (1.0897) lr 3.3668e-03 eta 0:00:04
+epoch [3/8] batch [9/12] time 0.048 (0.075) data 0.000 (0.031) loss 1.1826 (1.1000) lr 3.3668e-03 eta 0:00:04
+epoch [3/8] batch [10/12] time 0.046 (0.072) data 0.000 (0.028) loss 0.9575 (1.0858) lr 3.3668e-03 eta 0:00:04
+epoch [3/8] batch [11/12] time 0.042 (0.069) data 0.000 (0.025) loss 1.2002 (1.0962) lr 3.3668e-03 eta 0:00:04
+epoch [3/8] batch [12/12] time 0.050 (0.068) data 0.000 (0.023) loss 1.3379 (1.1163) lr 2.9874e-03 eta 0:00:04
+epoch [4/8] batch [1/12] time 0.344 (0.344) data 0.282 (0.282) loss 1.3252 (1.3252) lr 2.9874e-03 eta 0:00:20
+epoch [4/8] batch [2/12] time 0.041 (0.193) data 0.000 (0.141) loss 1.0391 (1.1821) lr 2.9874e-03 eta 0:00:11
+epoch [4/8] batch [3/12] time 0.040 (0.142) data 0.000 (0.094) loss 0.8779 (1.0807) lr 2.9874e-03 eta 0:00:08
+epoch [4/8] batch [4/12] time 0.056 (0.120) data 0.000 (0.071) loss 0.8726 (1.0287) lr 2.9874e-03 eta 0:00:06
+epoch [4/8] batch [5/12] time 0.042 (0.105) data 0.000 (0.057) loss 1.0947 (1.0419) lr 2.9874e-03 eta 0:00:05
+epoch [4/8] batch [6/12] time 0.041 (0.094) data 0.000 (0.047) loss 0.8462 (1.0093) lr 2.9874e-03 eta 0:00:05
+epoch [4/8] batch [7/12] time 0.044 (0.087) data 0.000 (0.040) loss 0.7451 (0.9715) lr 2.9874e-03 eta 0:00:04
+epoch [4/8] batch [8/12] time 0.043 (0.081) data 0.000 (0.035) loss 1.1885 (0.9987) lr 2.9874e-03 eta 0:00:04
+epoch [4/8] batch [9/12] time 0.038 (0.077) data 0.000 (0.031) loss 1.0186 (1.0009) lr 2.9874e-03 eta 0:00:03
+epoch [4/8] batch [10/12] time 0.038 (0.073) data 0.000 (0.028) loss 0.8721 (0.9880) lr 2.9874e-03 eta 0:00:03
+epoch [4/8] batch [11/12] time 0.038 (0.070) data 0.000 (0.026) loss 1.0527 (0.9939) lr 2.9874e-03 eta 0:00:03
+epoch [4/8] batch [12/12] time 0.041 (0.067) data 0.000 (0.024) loss 0.7710 (0.9753) lr 2.4197e-03 eta 0:00:03
+epoch [5/8] batch [1/12] time 0.336 (0.336) data 0.269 (0.269) loss 0.5938 (0.5938) lr 2.4197e-03 eta 0:00:15
+epoch [5/8] batch [2/12] time 0.041 (0.189) data 0.000 (0.134) loss 0.8740 (0.7339) lr 2.4197e-03 eta 0:00:08
+epoch [5/8] batch [3/12] time 0.045 (0.141) data 0.000 (0.090) loss 0.5337 (0.6672) lr 2.4197e-03 eta 0:00:06
+epoch [5/8] batch [4/12] time 0.039 (0.115) data 0.000 (0.067) loss 0.7710 (0.6931) lr 2.4197e-03 eta 0:00:05
+epoch [5/8] batch [5/12] time 0.039 (0.100) data 0.000 (0.054) loss 0.8872 (0.7319) lr 2.4197e-03 eta 0:00:04
+epoch [5/8] batch [6/12] time 0.042 (0.090) data 0.000 (0.045) loss 0.5605 (0.7034) lr 2.4197e-03 eta 0:00:03
+epoch [5/8] batch [7/12] time 0.042 (0.083) data 0.000 (0.038) loss 0.6406 (0.6944) lr 2.4197e-03 eta 0:00:03
+epoch [5/8] batch [8/12] time 0.040 (0.078) data 0.000 (0.034) loss 0.7817 (0.7053) lr 2.4197e-03 eta 0:00:03
+epoch [5/8] batch [9/12] time 0.038 (0.074) data 0.000 (0.030) loss 0.6304 (0.6970) lr 2.4197e-03 eta 0:00:02
+epoch [5/8] batch [10/12] time 0.038 (0.070) data 0.000 (0.027) loss 0.2192 (0.6492) lr 2.4197e-03 eta 0:00:02
+epoch [5/8] batch [11/12] time 0.049 (0.068) data 0.000 (0.025) loss 0.4668 (0.6326) lr 2.4197e-03 eta 0:00:02
+epoch [5/8] batch [12/12] time 0.040 (0.066) data 0.000 (0.022) loss 0.3535 (0.6094) lr 1.7500e-03 eta 0:00:02
+epoch [6/8] batch [1/12] time 0.344 (0.344) data 0.277 (0.277) loss 0.3843 (0.3843) lr 1.7500e-03 eta 0:00:12
+epoch [6/8] batch [2/12] time 0.055 (0.200) data 0.000 (0.139) loss 0.6772 (0.5308) lr 1.7500e-03 eta 0:00:06
+epoch [6/8] batch [3/12] time 0.038 (0.146) data 0.000 (0.092) loss 0.2583 (0.4399) lr 1.7500e-03 eta 0:00:04
+epoch [6/8] batch [4/12] time 0.038 (0.119) data 0.000 (0.069) loss 0.1467 (0.3666) lr 1.7500e-03 eta 0:00:03
+epoch [6/8] batch [5/12] time 0.044 (0.104) data 0.000 (0.055) loss 0.4775 (0.3888) lr 1.7500e-03 eta 0:00:03
+epoch [6/8] batch [6/12] time 0.041 (0.093) data 0.000 (0.046) loss 0.3132 (0.3762) lr 1.7500e-03 eta 0:00:02
+epoch [6/8] batch [7/12] time 0.041 (0.086) data 0.000 (0.040) loss 0.2617 (0.3599) lr 1.7500e-03 eta 0:00:02
+epoch [6/8] batch [8/12] time 0.039 (0.080) data 0.000 (0.035) loss 0.3674 (0.3608) lr 1.7500e-03 eta 0:00:02
+epoch [6/8] batch [9/12] time 0.039 (0.075) data 0.000 (0.031) loss 0.1787 (0.3406) lr 1.7500e-03 eta 0:00:02
+epoch [6/8] batch [10/12] time 0.050 (0.073) data 0.000 (0.028) loss 0.2905 (0.3356) lr 1.7500e-03 eta 0:00:01
+epoch [6/8] batch [11/12] time 0.044 (0.070) data 0.000 (0.025) loss 0.7705 (0.3751) lr 1.7500e-03 eta 0:00:01
+epoch [6/8] batch [12/12] time 0.043 (0.068) data 0.000 (0.023) loss 0.3853 (0.3760) lr 1.0803e-03 eta 0:00:01
+epoch [7/8] batch [1/12] time 0.351 (0.351) data 0.284 (0.284) loss 1.6406 (1.6406) lr 1.0803e-03 eta 0:00:08
+epoch [7/8] batch [2/12] time 0.052 (0.202) data 0.000 (0.142) loss 0.2194 (0.9300) lr 1.0803e-03 eta 0:00:04
+epoch [7/8] batch [3/12] time 0.049 (0.151) data 0.000 (0.095) loss 0.1239 (0.6613) lr 1.0803e-03 eta 0:00:03
+epoch [7/8] batch [4/12] time 0.055 (0.127) data 0.000 (0.071) loss 0.4062 (0.5975) lr 1.0803e-03 eta 0:00:02
+epoch [7/8] batch [5/12] time 0.053 (0.112) data 0.000 (0.057) loss 0.2861 (0.5353) lr 1.0803e-03 eta 0:00:02
+epoch [7/8] batch [6/12] time 0.048 (0.101) data 0.000 (0.047) loss 0.5098 (0.5310) lr 1.0803e-03 eta 0:00:01
+epoch [7/8] batch [7/12] time 0.049 (0.094) data 0.000 (0.041) loss 0.4773 (0.5233) lr 1.0803e-03 eta 0:00:01
+epoch [7/8] batch [8/12] time 0.048 (0.088) data 0.000 (0.036) loss 0.2722 (0.4919) lr 1.0803e-03 eta 0:00:01
+epoch [7/8] batch [9/12] time 0.049 (0.084) data 0.000 (0.032) loss 0.3630 (0.4776) lr 1.0803e-03 eta 0:00:01
+epoch [7/8] batch [10/12] time 0.048 (0.080) data 0.000 (0.028) loss 0.5654 (0.4864) lr 1.0803e-03 eta 0:00:01
+epoch [7/8] batch [11/12] time 0.051 (0.078) data 0.000 (0.026) loss 0.6562 (0.5018) lr 1.0803e-03 eta 0:00:01
+epoch [7/8] batch [12/12] time 0.051 (0.075) data 0.000 (0.024) loss 0.1755 (0.4747) lr 5.1256e-04 eta 0:00:00
+epoch [8/8] batch [1/12] time 0.341 (0.341) data 0.279 (0.279) loss 0.4014 (0.4014) lr 5.1256e-04 eta 0:00:03
+epoch [8/8] batch [2/12] time 0.053 (0.197) data 0.000 (0.140) loss 0.3960 (0.3987) lr 5.1256e-04 eta 0:00:01
+epoch [8/8] batch [3/12] time 0.043 (0.146) data 0.000 (0.093) loss 0.3284 (0.3752) lr 5.1256e-04 eta 0:00:01
+epoch [8/8] batch [4/12] time 0.044 (0.120) data 0.000 (0.070) loss 0.0878 (0.3034) lr 5.1256e-04 eta 0:00:00
+epoch [8/8] batch [5/12] time 0.058 (0.108) data 0.000 (0.056) loss 0.3931 (0.3213) lr 5.1256e-04 eta 0:00:00
+epoch [8/8] batch [6/12] time 0.043 (0.097) data 0.000 (0.047) loss 0.1086 (0.2859) lr 5.1256e-04 eta 0:00:00
+epoch [8/8] batch [7/12] time 0.040 (0.089) data 0.000 (0.040) loss 0.1045 (0.2600) lr 5.1256e-04 eta 0:00:00
+epoch [8/8] batch [8/12] time 0.042 (0.083) data 0.000 (0.035) loss 0.1455 (0.2457) lr 5.1256e-04 eta 0:00:00
+epoch [8/8] batch [9/12] time 0.042 (0.079) data 0.000 (0.031) loss 0.4976 (0.2736) lr 5.1256e-04 eta 0:00:00
+epoch [8/8] batch [10/12] time 0.039 (0.075) data 0.000 (0.028) loss 0.3640 (0.2827) lr 5.1256e-04 eta 0:00:00
+epoch [8/8] batch [11/12] time 0.039 (0.071) data 0.000 (0.025) loss 0.2488 (0.2796) lr 5.1256e-04 eta 0:00:00
+epoch [8/8] batch [12/12] time 0.038 (0.069) data 0.000 (0.023) loss 0.1025 (0.2648) lr 1.3321e-04 eta 0:00:00
+Checkpoint saved to output/CoPrompt/train_base/eurosat/shots_16/CoPrompt/coprompt/seed1/MultiModalPromptLearner/model.pth.tar-8
+Finish training
+Deploy the last-epoch model
+Evaluate on the *test* set
+=> result
+* total: 1,350
+* correct: 1,150
+* accuracy: 85.2%
+* error: 14.8%
+* macro_f1: 84.9%
+Elapsed: 0:00:13
+Runing the first phase job and save the output to output/CoPrompt/test_new/eurosat/shots_16/CoPrompt/coprompt/seed1
+Setting fixed seed: 1
+***************
+** Arguments **
+***************
+backbone: 
+config_file: configs/trainers/coprompt.yaml
+dataset_config_file: configs/datasets/eurosat.yaml
+eval_only: True
+head: 
+load_epoch: 8
+model_dir: output/CoPrompt/train_base/eurosat/shots_16/CoPrompt/coprompt/seed1
+no_train: False
+opts: ['DATASET.NUM_SHOTS', '16', 'DATASET.SUBSAMPLE_CLASSES', 'new']
+output_dir: output/CoPrompt/test_new/eurosat/shots_16/CoPrompt/coprompt/seed1
+pre_train_exp_name: 
+resume: 
+root: /home/mazaveri/hpc-prog/Vipul/data
+seed: 1
+source_domains: None
+target_domains: None
+trainer: CoPrompt
+transforms: None
+************
+** Config **
+************
+DATALOADER:
+  K_TRANSFORMS: 2
+  NUM_WORKERS: 8
+  RETURN_IMG0: False
+  TEST:
+    BATCH_SIZE: 100
+    SAMPLER: SequentialSampler
+  TRAIN_U:
+    BATCH_SIZE: 32
+    N_DOMAIN: 0
+    N_INS: 16
+    SAME_AS_X: True
+    SAMPLER: RandomSampler
+  TRAIN_X:
+    BATCH_SIZE: 4
+    N_DOMAIN: 0
+    N_INS: 16
+    SAMPLER: RandomSampler
+DATASET:
+  ALL_AS_UNLABELED: False
+  CIFAR_C_LEVEL: 1
+  CIFAR_C_TYPE: 
+  NAME: PreparedEuroSAT
+  NUM_LABELED: -1
+  NUM_SHOTS: 16
+  ROOT: /home/mazaveri/hpc-prog/Vipul/data
+  SOURCE_DOMAINS: ()
+  STL10_FOLD: -1
+  SUBSAMPLE_CLASSES: new
+  TARGET_DOMAINS: ()
+  VAL_PERCENT: 0.1
+INPUT:
+  COLORJITTER_B: 0.4
+  COLORJITTER_C: 0.4
+  COLORJITTER_H: 0.1
+  COLORJITTER_S: 0.4
+  CROP_PADDING: 4
+  CUTOUT_LEN: 16
+  CUTOUT_N: 1
+  GB_K: 21
+  GB_P: 0.5
+  GN_MEAN: 0.0
+  GN_STD: 0.15
+  INTERPOLATION: bicubic
+  NO_TRANSFORM: False
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+  RANDAUGMENT_M: 10
+  RANDAUGMENT_N: 2
+  RGS_P: 0.2
+  RRCROP_SCALE: (0.08, 1.0)
+  SIZE: (224, 224)
+  TRANSFORMS: ('randaugment', 'normalize')
+MODEL:
+  BACKBONE:
+    NAME: ViT-B/16
+    PRETRAINED: True
+  HEAD:
+    ACTIVATION: relu
+    BN: True
+    DROPOUT: 0.0
+    HIDDEN_LAYERS: ()
+    NAME: 
+  INIT_WEIGHTS: 
+OPTIM:
+  ADAM_BETA1: 0.9
+  ADAM_BETA2: 0.999
+  BASE_LR_MULT: 0.1
+  GAMMA: 0.1
+  LR: 0.0035
+  LR_SCHEDULER: cosine
+  MAX_EPOCH: 8
+  MOMENTUM: 0.9
+  NAME: sgd
+  NEW_LAYERS: ()
+  RMSPROP_ALPHA: 0.99
+  SGD_DAMPNING: 0
+  SGD_NESTEROV: False
+  STAGED_LR: False
+  STEPSIZE: (-1,)
+  WARMUP_CONS_LR: 1e-05
+  WARMUP_EPOCH: 1
+  WARMUP_MIN_LR: 1e-05
+  WARMUP_RECOUNT: True
+  WARMUP_TYPE: constant
+  WEIGHT_DECAY: 0.0005
+OUTPUT_DIR: output/CoPrompt/test_new/eurosat/shots_16/CoPrompt/coprompt/seed1
+RESUME: 
+SEED: 1
+TEST:
+  COMPUTE_CMAT: False
+  EVALUATOR: Classification
+  FINAL_MODEL: last_step
+  NO_TEST: False
+  PER_CLASS_RESULT: False
+  SPLIT: test
+TRAIN:
+  CHECKPOINT_FREQ: 0
+  COUNT_ITER: train_x
+  PRINT_FREQ: 20
+TRAINER:
+  CDAC:
+    CLASS_LR_MULTI: 10
+    P_THRESH: 0.95
+    RAMPUP_COEF: 30
+    RAMPUP_ITRS: 1000
+    STRONG_TRANSFORMS: ()
+    TOPK_MATCH: 5
+  CROSSGRAD:
+    ALPHA_D: 0.5
+    ALPHA_F: 0.5
+    EPS_D: 1.0
+    EPS_F: 1.0
+  CoPrompt:
+    CTX_INIT: a photo of a
+    N_CTX: 2
+    PREC: fp16
+    PROMPT_DEPTH: 12
+  DAEL:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 0.5
+  DAELDG:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 0.5
+  DDAIG:
+    ALPHA: 0.5
+    CLAMP: False
+    CLAMP_MAX: 1.0
+    CLAMP_MIN: -1.0
+    G_ARCH: 
+    LMDA: 0.3
+    WARMUP: 0
+  DISTILL: cosine
+  DOMAINMIX:
+    ALPHA: 1.0
+    BETA: 1.0
+    TYPE: crossdomain
+  ENTMIN:
+    LMDA: 0.001
+  FIXMATCH:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 1.0
+  M3SDA:
+    LMDA: 0.5
+    N_STEP_F: 4
+  MCD:
+    N_STEP_F: 4
+  MEANTEACHER:
+    EMA_ALPHA: 0.999
+    RAMPUP: 5
+    WEIGHT_U: 1.0
+  MIXMATCH:
+    MIXUP_BETA: 0.75
+    RAMPUP: 20000
+    TEMP: 2.0
+    WEIGHT_U: 100.0
+  MME:
+    LMDA: 0.1
+  NAME: CoPrompt
+  SE:
+    CONF_THRE: 0.95
+    EMA_ALPHA: 0.999
+    RAMPUP: 300
+  W: 0.1
+USE_CUDA: True
+VERBOSE: True
+VERSION: 1
+Collecting env info ...
+Loading trainer: CoPrompt
+Loading dataset: PreparedEuroSAT
+Loading preprocessed few-shot data from /home/mazaveri/hpc-prog/Vipul/data/eurosat/split_fewshot/shot_16-seed_1.pkl
+SUBSAMPLE NEW CLASSES!
+Building transform_train
++ resize to 224x224
++ randaugment (n=2, m=10)
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+Building transform_test
++ resize the smaller edge to 224
++ 224x224 center crop
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+---------  ---------------
+Dataset    PreparedEuroSAT
+# classes  2
+# train_x  32
+# val      8
+# test     750
+---------  ---------------
+Loading CLIP (backbone: ViT-B/16)
+Loading original CLIP for distillation
+
+Getting textual features as CLIP's classifier.
+Building custom CLIP
+CoPrompt design: Multi-modal Prompt Learning
+Initial context: "a photo of a"
+Number of CoPrompt context words (tokens): 2
+Prompts: ['a centered satellite photo of Highway.', 'a centered satellite photo of Industrial.']
+Turning off gradients in both the image and the text encoder
+Parameters to be updated: {'prompt_learner.compound_prompt_projections.6.weight', 'prompt_learner.compound_prompt_projections.7.bias', 'prompt_learner.compound_prompt_projections.10.weight', 'prompt_learner.compound_prompts_text.6', 'prompt_learner.ctx', 'prompt_learner.proj.weight', 'prompt_learner.compound_prompt_projections.4.bias', 'adapter_image.fc.2.weight', 'adapter_image.fc.0.weight', 'prompt_learner.compound_prompt_projections.3.bias', 'prompt_learner.compound_prompt_projections.8.bias', 'prompt_learner.compound_prompts_text.7', 'prompt_learner.compound_prompt_projections.0.bias', 'prompt_learner.compound_prompt_projections.3.weight', 'prompt_learner.proj.bias', 'prompt_learner.compound_prompts_text.2', 'prompt_learner.compound_prompt_projections.5.weight', 'prompt_learner.compound_prompts_text.10', 'prompt_learner.compound_prompts_text.3', 'prompt_learner.compound_prompt_projections.2.weight', 'prompt_learner.compound_prompts_text.9', 'prompt_learner.compound_prompt_projections.9.bias', 'prompt_learner.compound_prompts_text.1', 'prompt_learner.compound_prompt_projections.1.bias', 'prompt_learner.compound_prompt_projections.10.bias', 'prompt_learner.compound_prompt_projections.6.bias', 'adapter_text.fc.0.weight', 'prompt_learner.compound_prompt_projections.5.bias', 'prompt_learner.compound_prompts_text.5', 'prompt_learner.compound_prompt_projections.8.weight', 'prompt_learner.compound_prompt_projections.9.weight', 'prompt_learner.compound_prompt_projections.0.weight', 'prompt_learner.compound_prompts_text.4', 'prompt_learner.compound_prompt_projections.4.weight', 'prompt_learner.compound_prompt_projections.7.weight', 'adapter_text.fc.2.weight', 'prompt_learner.compound_prompt_projections.2.bias', 'prompt_learner.compound_prompts_text.0', 'prompt_learner.compound_prompts_text.8', 'prompt_learner.compound_prompt_projections.1.weight'}
+Loading evaluator: Classification
+Loading weights to MultiModalPromptLearner from "output/CoPrompt/train_base/eurosat/shots_16/CoPrompt/coprompt/seed1/MultiModalPromptLearner/model.pth.tar-8" (epoch = 8)
+Evaluate on the *test* set
+=> result
+* total: 750
+* correct: 639
+* accuracy: 85.2%
+* error: 14.8%
+* macro_f1: 85.0%

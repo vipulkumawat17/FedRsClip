@@ -1,0 +1,36 @@
+============================================================
+Job Started
+Job ID    : 30070
+Node      : node1
+Date      : Sat Aug 29 06:29:45 PM IST 2026
+Time     : 18:29:45
+============================================================
+
+============================================================
+Python Environment
+============================================================
+Python : /home/mazaveri/.conda/envs/fedrsclip/bin/python
+Python 3.10.20
+Python executable: /home/mazaveri/.conda/envs/fedrsclip/bin/python
+Torch: /home/mazaveri/.conda/envs/fedrsclip/lib/python3.10/site-packages/torch/__init__.py
+Torch version: 2.13.0+cu130
+CUDA: True
+CUDA version: 13.0
+GPU: NVIDIA H100 NVL
+open_clip version: 3.3.0
+============================================================
+Generate Gpt-prompts substitution file for CoPrompt
+============================================================
+Wrote 100 classes x 80 prompts to gpt_file/cifar100_prompt.json
+Wrote 10 classes x 80 prompts to gpt_file/eurosat_prompt.json
+Wrote 102 classes x 80 prompts to gpt_file/flowers102_prompt.json
+Wrote 101 classes x 80 prompts to gpt_file/food101_prompt.json
+Wrote 102 classes x 80 prompts to gpt_file/caltech101_prompt.json
+
+============================================================
+Job Finished
+Job ID    : 30070
+Node      : node1
+Date      : Sat Aug 29 06:29:50 PM IST 2026
+Time      : 18:29:50
+============================================================

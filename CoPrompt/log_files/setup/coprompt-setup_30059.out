@@ -1,0 +1,11 @@
+============================================================
+Job Started
+Job ID    : 30059
+Node      : node2
+Date      : Sat Aug 29 12:47:09 PM IST 2026
+Time     : 12:47:09
+============================================================
+=== 1. Activate existing environment ===
+Python 3.10.20
+torch 2.13.0+cu130 | CUDA available: True
+=== 2. Dassl.pytorch (training engine CoPrompt is built on) ===
